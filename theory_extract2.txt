@@ -1,0 +1,321 @@
+﻿ﾂｧ 窶弩ork backwards窶・from output classes.
+ﾂｧ For the Triangle Problem, could have
+ﾂｧ {x, y, z such that they form an Equilateral triangle}
+ﾂｧ {x, y, z such that they form an Isosceles triangle with x = y}
+ﾂｧ {x, y, z such that they form an Isosceles triangle with x = z}
+ﾂｧ {x, y, z such that they form an Isosceles triangle with y = z}
+ﾂｧ {x, y, z such that they form a Scalene triangle}
+ﾂｧ How many equivalence classes will be needed for x,y,z such that
+they are not a triangle?
+Software Testing - Black-box testing Jan 2026 52
+Valid Values Valid and Invalid Values
+Boundary Value Robust Boundary Value
+Single fault
+Weak Normal Equiv. Class Weak Robust Equiv. Class
+Worst Case Boundary Value Robust Worst Case Boundary Value
+Multiple fault
+Strong Normal Equiv. Class Strong Robust Equiv. Class
+Software Testing - Black-box testing Jan 2026 54
+55
+Software Testing - Black-box testing Jan 2026
+https://flylib.com/books/en/2.156.1/domain_analysis_testing.html
+Software Testing - Black-box testing Jan 2026 56
+ﾂｧ Domain analysis facilitates the testing of multiple variables
+simultaneously.
+ﾂｧ It builds on and generalizes equivalence class and boundary value
+testing to n simultaneous dimensions.
+ﾂｧ In using the 1x1 domain analysis technique
+ﾂｧ for each relational condition (竕･, >, 竕､, or <) we choose one on point and one
+off point
+ﾂｧ for each strict equality condition (=) we choose one on point and two off
+points:
+ﾂｧ one slightly less than the conditional value and one slightly greater than the value.
+Software Testing - Black-box testing Jan 2026 57
+Chapter 7
+Decision Table-Based Testing
+SoftwareTesting:ACraftsman窶冱Approach,4thEdition Chapter7DecisionTableTesting
+58
+Software Testing - Black-box testing Jan 2026
+ﾂｧ Equivalent to forming a decision table in which:
+ﾂｧ inputs are conditions
+ﾂｧ outputs are actions
+ﾂｧ Test every (possible) rule in the decision table.
+ﾂｧ Recommended for logically complex situations.
+Software Testing - Black-box testing Jan 2026 59
+ﾂｧ Conditions
+ﾂｧ binary in a Limited Entry Decision Table (LEDT)
+ﾂｧ finite set in an Extended Entry Decision Table (EEDT)
+ﾂｧ condition stub
+ﾂｧ condition entries
+ﾂｧ Actions
+ﾂｧ also binary, either do or skip
+ﾂｧ the 窶彿mpossible窶・action
+ﾂｧ Rules
+ﾂｧ a rule consists of condition entries and action entries
+ﾂｧ a complete, non-redundant LEDT with n conditions has 2n rules
+ﾂｧ logically impossible combinations of conditions are 窶彿mpossible rules窶・ denoted by
+an entry in the impossible action
+Software Testing - Black-box testing Jan 2026 61
+Rule 3 Rule 7
+Stub Rule 1 Rule 2 Rule 4 Rule 5 Rule 6 Rule 8
+c1 T T T T F F F F
+c2 T T F F T T F F
+c3 T F T F T F T F
+a1 X X X
+a2 X X
+a3 X
+a4 X X X X X
+Condition c3 has no effect on the actions of Rules 3 and 4.
+Similarly for Rules 7 and 8. They can be algebraically combined.
+Software Testing - Black-box testing Jan 2026 62
+Stub Rule 1 Rule 2 Rules 3, 4 Rule 5 Rule 6 Rules 7, 8
+c1 T T T F F F
+c2 T T F T T F
+c3 T F 窶・T F T
+a1 X X X 窶・
+a2 X X
+a3 X
+a4 X X X
+The condition entries in rules 3 and 4, and rules 7 and
+8 have the same actions. The 窶懌披・means ...
+窶｢ 窶廛on窶冲 Care窶・(as in circuit analysis),
+窶｢ Irrelevant, or
+窶｢ not applicable, n/a
+Software Testing - Black-box testing Jan 2026 63
+Stub Rule 1 Rule 2 Rules 3, 4, 7, 8 Rule 5 Rule 6
+c1 T T 窶・F F
+c2 T T F T T
+c3 T F 窶・T F
+a1 X X X
+a2 X X
+a3 X
+a4 X X
+One more algebraic simplification
+Software Testing - Black-box testing Jan 2026 64
+Stub Rule 1 Rule 2 Rules 3, 4, 7, 8 Rule 5 Rule 6
+c1 T T 窶・F F
+c2 T T F T T
+c3 T F 窶・T F
+a1 X X X
+a2 X X
+a3 X
+a4 X X
+count 1 1 4 1 1
+Rule counting
+窶｢ a rule with no don窶冲 care entries counts as 1
+窶｢ each don窶冲 care entry in a rule doubles the rule count
+窶｢ for a table with n limited entry conditions, the sum of the
+rule counts should be 2n.
+Software Testing - Black-box testing Jan 2026 65
+ﾂｧ For LEDTs, simple rule counting helps identify decision tables that
+are ...
+ﾂｧ incomplete ( rule count < 2n ) ,
+ﾂｧ redundant ( rule count > 2n ) , or
+ﾂｧ inconsistent
+ﾂｧ ( rule count > 2n ) AND
+ﾂｧ at least two rules have identical condition entries but different action entries.
+ﾂｧ Redundancy and inconsistency are more likely with algebraically
+simplified tables that have been 窶徇aintained窶・
+Software Testing - Black-box testing Jan 2026 66
+conditions 1 窶・4 5 6 7 8 9
+c1 T F F F F T
+c2 窶・T T F F F
+c3 窶・T F T F F
+a1 X X X 窶・窶・X
+a2 窶・X X X 窶・窶・
+a3 X 窶・X X X X
+ﾂｧ Rule 9 is redundant with Rules 1 窶・4 (technically, with what
+was rule 4)
+ﾂｧ But the action entries are identical (No harm, no foul?)
+Software Testing - Black-box testing Jan 2026 67
+conditions 1 窶・4 5 6 7 8 9
+c1 T F F F F T
+c2 窶・T T F F F
+c3 窶・T F T F F
+a1 X X X 窶・窶・窶・
+a2 窶・X X X 窶・X
+a3 X 窶・X X X 窶・
+ﾂｧ Rule 9 is inconsistent with Rules 1 窶・4 (technically, with what was rule 4)
+ﾂｧ condition portion is identical, BUT
+ﾂｧ action portion is different
+ﾂｧ What happens when Rule 4 is executed? Rule 9?
+Software Testing - Black-box testing Jan 2026 68
+conditions 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+c1. month in M1? T T T T T T T T F F F F F F F F
+c2. month in M2? T T T T F F F F T T T T F F F F
+c3. month in M3? T T F F T T F F T T F F T T F F
+c4. leap year? T F T F T F T F T F T F T F T F
+a1. last day = 30 x
+a2. last day = 31 x x
+a3. last day = 28 x
+a4. last day = 29 x
+a5. impossible x x x x x x x x x x
+ﾂｧ Rule pairs 1 and 2, 3 and 4, 5 and 6, 9 and 10 don窶冲 need c4, so they
+could be combined, BUT
+ﾂｧ Impossible because c1, c2, and c3 are mutually exclusive.
+Software Testing - Black-box testing Jan 2026 69
+ﾂｧ When conditions are mutually exclusive, exactly one must be true.
+ﾂｧ Extended entry decision tables typically (but not necessarily) have
+mutually exclusive conditions.
+ﾂｧ The 窶彳xtended窶・part is because a condition stub is an incomplete
+statement that is completed by the condition entry.
+ﾂｧ (See the revised Last Day of Month EEDT)
+Software Testing - Black-box testing Jan 2026 70
+c1. month in M1 M1 窶・窶・窶・窶・
+c2. month in 窶・窶・M2 M2 窶・窶・
+c3. month in 窶・窶・窶・窶・M3 M3
+c4. leap year? T F T F T F
+a1. last day = 30 x x
+a2. last day = 31 x x
+a3. last day = 28 x
+a4. last day = 29 x
+ﾂｧ When conditions are mutually exclusive, exactly one must be
+true.
+ﾂｧ This can be further simplified.
+Software Testing - Black-box testing Jan 2026 71
+c1. month in M1 窶・窶・窶・
+c2. month in 窶・M2 窶・窶・
+c3. month in 窶・窶・M3 M3
+c4. leap year? 窶・窶・T F
+a1. last day = 30 x
+a2. last day = 31 x
+a3. last day = 28 x
+a4. last day = 29 x
+ﾂｧ Maybe 窶懌披・should be replaced by 窶徇ust be False窶・
+ﾂｧ One writer suggested 窶廡!窶・(before 窶・窶・meant 窶廸OT窶・
+ﾂｧ It is a Don窶冲 Care in c4.
+ﾂｧ Technically, this is a Mixed Entry Decision Table, because it has both
+extended and limited entry conditions.
+Software Testing - Black-box testing Jan 2026 72
+c1: a, b, c form a triangle? F T T T T T T T T
+c2: a = b? 窶・T T T T F F F F
+c3: a = c? 窶・T T F F T T F F
+c4: b = c? 窶・T F T F T F T F
+a1: Not a triangle X
+a2: Scalene X
+a3: Isosceles X X X
+a4: Equilateral X
+a5: Impossible X X X
+Why are some rules impossible?
+Software Testing - Black-box testing Jan 2026 73
+c1: a<b+c? F T T T T T T T T T T
+c2: b<a+c? 窶・F T T T T T T T T T
+c3: c<a+b? 窶・窶・F T T T T T T T T
+c4: a = b? 窶・窶・窶・T T T T F F F F
+c5: a = c? 窶・窶・窶・T T F F T T F F
+c6: b = c? 窶・窶・窶・T F T F T F T F
+a1: Not a triangle x x x
+a2: Scalene x
+a3: Isosceles x x x
+a4: Equilateral x
+a5: Impossible x x x
+窶｢ Is this a complete decision table?
+How many test cases does this imply?
+Software Testing - Black-box testing Jan 2026 74
+c1: a<b+c? F T T T T T T T T T T
+c2: b<a+c? 窶・F T T T T T T T T T
+c3: c<a+b? 窶・窶・F T T T T T T T T
+c4: a = b? 窶・窶・窶・T T T T F F F F
+c5: a = c? 窶・窶・窶・T T F F T T F F
+c6: b = c? 窶・窶・窶・T F T F T F T F
+Rule count 32 16 8 1 1 1 1 1 1 1 1
+a1: Not a triangle x x x
+a2: Scalene x
+a3: Isosceles x x x
+a4: Equilateral x
+a5: Impossible x x x
+Software Testing - Black-box testing Jan 2026 75
+Case ID a b c Expected Output
+DT1 4 1 2 Not a Triangle
+DT2 1 4 2 Not a Triangle
+DT3 1 2 4 Not a Triangle
+DT4 5 5 5 Equilateral
+DT5 ? ? ? Impossible
+DT6 ? ? ? Impossible
+DT7 2 2 3 Isosceles
+DT8 ? ? ? Impossible
+DT9 2 3 2 Isosceles
+DT10 3 2 2 Isosceles
+DT11 3 4 5 Scalene
+Software Testing - Black-box testing Jan 2026 76
+1 2 3 4 5 6 7 8 9 10
+c1: month in M1 M1 M1 M1 M1 M2 M2 M2 M2 M2
+c2: day in D1 D2 D3 D4 D5 D1 D2 D3 D4 D5
+c3: year in 窶・窶・窶・窶・窶・窶・窶・窶・窶・窶・
+a1: impossible X
+a2: increment day X X X X X X X
+a3: reset day X X
+a4: increment month X X
+a5: reset month
+a6: increment year
+Software Testing - Black-box testing Jan 2026 77
+1窶・ 4 5 6窶・ 10
+c1: month in M1 M1 M1 M2 M2
+c2: day in D1, D2, D3 D4 D5 D1, D2, D3, D4 D5
+c3: year in 窶・窶・窶・窶・窶・
+a1: impossible X
+a2: increment day X X
+a3: reset day X X
+a4: increment month X X
+a5: reset month
+a6: increment year
+Software Testing - Black-box testing Jan 2026 78
+11 12 13 14 15 16 17 18 19 20 21 22
+c1: month in M3 M3 M3 M3 M3 M4 M4 M4 M4 M4 M4 M4
+c2: day in D1 D2 D3 D4 D5 D1 D2 D2 D3 D3 D4 D5
+c3: year in 窶・窶・窶・窶・窶・窶・Y1 Y2 Y1 Y2 窶・窶・
+a1: impossible X X X
+a2: increment day X X X X X X
+a3: reset day X X X
+a4: increment month X X
+a5: reset month X
+a6: increment year X
+Software Testing - Black-box testing Jan 2026 79
+11窶・4 15 16 17 18 19 20 21, 22
+c1: month in M3 M3 M4 M4 M4 M4 M4 M4
+D1, D2,
+c2: day in D5 D1 D2 D2 D3 D3 D4, D5
+D3, D4
+c3: year in 窶・窶・窶・Y1 Y2 Y1 Y2 窶・
+a1: impossible X X
+a2: increment day X X
+a3: reset day X X X X
+a4: increment month X X
+a5: reset month X
+a6: increment year X
+Software Testing - Black-box testing Jan 2026 80
+Test Case Rule(s) Month Day Year Expected Output
+1 1窶・3 4 15 2001 4/16/2001
+2 4 4 30 2001 5/1/2001
+3 5 4 31 2001 Invalid Input Date
+4 6窶・ 1 15 2001 1/16/2001
+5 10 1 31 2001 2/1/2001
+6 11窶・4 12 15 2001 12/16/2001
+7 15 12 31 2001 1/1/2002
+8 16 2 15 2001 2/16/2001
+9 17 2 28 2004 2/29/2004
+10 18 2 28 2001 3/1/2001
+11 19 2 29 2004 3/1/2004
+12 20 2 29 2001 Invalid Input Date
+13 21, 22 2 30 2001 Invalid Input Date
+Software Testing - Black-box testing Jan 2026 81
+Cause and Effect Graphs (basic gates)
+Input 1
+Input 2 ﾋ・Stage Input 2 ~ Stage
+Input 3 AND NOT
+Input 1 Input 1
+Input 2 ﾋ・Stage Input 2 EOR Stage
+Input 3 Inclusive OR Input 3 Exclusive OR
+SoftwareTesting:ACraftsman窶冱Approach,4thEdition Chapter7DecisionTableTesting
+82
+Software Testing - Black-box testing Jan 2026
+ﾂｧ Cause and Effect Graphing
+ﾂｧ Done with a graphical technique that expressed AND-OR-NOT logic.
+ﾂｧ Causes and Effects were graphed like circuit components
+ﾂｧ Inputs to a circuit 窶彡aused窶・outputs (effects)
+ﾂｧ Equivalent to forming a decision table in which:
+ﾂｧ inputs are conditions
+ﾂｧ outputs are actions
+ﾂｧ Test every (possible) rule in the decision table.
+ﾂｧ Recommended for logically complex situations.
+Software Testing - Black-box testing Jan 2026 83

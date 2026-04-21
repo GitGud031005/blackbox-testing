@@ -1,0 +1,419 @@
+﻿ﾂｧ The rationale for referring to specification-based testing as
+窶彷unctional testing窶・is likely due to the abstraction that any program
+can be viewed as a mapping from its Input Domain to its Output
+Range:
+Output = F ( Input )
+ﾂｧ Functional testing uses information about functional mappings to
+identify test cases.
+Software Testing - Black-box testing Jan 2026 8
+ﾂｧ Two considerations apply to boundary value testing
+ﾂｧ are invalid values an issue?
+ﾂｧ can we make the 窶徭ingle fault assumption窶・of reliability theory?
+ﾂｧ Consequences...
+ﾂｧ invalid values require the robust choice
+ﾂｧ multiplicity of faults requires worst case testing
+ﾂｧ Taken together, these yield four variations
+ﾂｧ Normal boundary value testing
+ﾂｧ Robust boundary value testing
+ﾂｧ Worst case boundary value testing
+ﾂｧ Robust worst case boundary value testing
+Software Testing - Black-box testing Jan 2026 9
+%
+'
+$
+#
+%
+&
+! "
+Software Testing - Black-box testing Jan 2026 10
+ﾂｧ Test values for variable x, where
+ﾂｧ a 竕､ x1 竕､ b, and
+ﾂｧ x(min), x(min+), ... x(max)
+#
+$
+! "
+Software Testing - Black-box testing Jan 2026 11
+)('&%#
+)*('&%#
+),!('&+(%#
+)-#!&%# )#!&%#
+%
+'
+$
+#
+%
+&
+! "
+As in reliability theory, two variables rarely both assume
+their extreme values.
+Software Testing - Black-box testing Jan 2026 12
+ﾂｧ Hold all variables at their nominal values.
+ﾂｧ Let one variable assume its boundary values.
+ﾂｧ Repeat this for each variable.
+ﾂｧ This will (hopefully) reveal all faults that can be attributed to a
+single variable.
+Software Testing - Black-box testing Jan 2026 13
+ﾂｧ Stress boundaries
+ﾂｧ Possible advantages
+ﾂｧ find hidden functionality
+#
+$
+ﾂｧ leads to exploratory testing
+! "
+ﾂｧ But...
+ﾂｧ what are the expected outputs?
+ﾂｧ what if the programming language is strongly typed? (e.g., Ada)
+Software Testing - Black-box testing Jan 2026 14
+)+('&%#
+)('&%#
+)*('&%# )+#!&%# )#!&%#
+)*#!&%#
+%
+'
+$
+#
+%
+&
+! "
+Software Testing - Black-box testing Jan 2026 15
+%
+'
+$
+#
+%
+&
+! "
+Responding to the single-fault assumption.
+Software Testing - Black-box testing Jan 2026 16
+%
+'
+$
+#
+%
+&
+! "
+Software Testing - Black-box testing Jan 2026 17
+ﾂｧ Appropriate for
+ﾂｧ complex mathematical calculations
+ﾂｧ worst case situations ( similar to robustness)
+ﾂｧ problematic situations from past experience
+ﾂｧ Characterized by...
+ﾂｧ "second guess" likely implementations
+ﾂｧ experience helps
+ﾂｧ frequently done by customer/user
+ﾂｧ defies measurement
+ﾂｧ highly intuitive
+ﾂｧ seldom repeatable
+ﾂｧ (and is often most effective)
+Software Testing - Black-box testing Jan 2026 18
+ﾂｧ 1. Work "backwards" from expected outputs
+ﾂｧ (assume that inputs cause outputs).
+ﾂｧ 2. Mirror image of equivalence partitioning
+ﾂｧ (good cross check)
+ﾂｧ 3. Helps identify ambiguous causes of outputs.
+Software Testing - Black-box testing Jan 2026 19
+()**+,B
+-'
+&4
+4'789),:+B
+5'
+S;789),:+B
+S'789),:+B
+4434 5' &'
+!"#$B
+2232
+1'
+0'
+.L"#$B
+Software Testing - Black-box testing Jan 2026 20
+ﾂｧ NEXTDATE is a function of three variables: month, day, and year, for
+years from 1812 to 2012. It returns the date of the next day.
+ﾂｧ NEXTDATE( Dec, 31, 1991) returns Jan 1 1992
+ﾂｧ NEXTDATE( Feb, 21, 1991) returns Feb 22 1991
+ﾂｧ NEXTDATE( Feb, 28, 1991) returns Mar 1 1991
+ﾂｧ NEXTDATE( Feb, 28, 1992) returns Feb 29 1992
+ﾂｧ Leap Year: Years divisible by 4 except for century years not
+divisible by 400. Leap Years include 1992, 1996, 2000. 1900 was not
+be a leap year.
+Software Testing - Black-box testing Jan 2026 21
+ﾂｧ Observations
+ﾂｧ not much reason for robustness testing
+ﾂｧ good reasons for worst case testing
+ﾂｧ Large number of test cases
+ﾂｧ 15 normal boundary value test cases
+ﾂｧ 125 worst case boundary value test cases
+Software Testing - Black-box testing Jan 2026 22
+Case Month Day Year Expected Output
+1 1 1 1812 1, 2, 1812
+2 1 1 1813 1, 2, 1813
+3 1 1 1912 1, 2, 1912
+4 1 1 2011 1, 2, 2011
+5 1 1 2012 1, 2, 2012
+6 1 2 1812 1, 3, 1812
+7 1 2 1813 1, 3, 1813
+8 1 2 1912 1, 3, 1912
+9 1 2 2011 1, 3, 2011
+10 1 2 2012 1, 3, 2012
+11 1 15 1812 1, 16, 1812
+12 1 15 1813 1, 16, 1813
+13 1 15 1912 1, 16, 1912
+14 1 15 2011 1, 16, 2011
+15 1 15 2012 1, 16, 2012
+Software Testing - Black-box testing Jan 2026 23
+Case Month Day Year Reason
+SV-1 2 28 2012 Feb. 28 in a leap year
+SV-2 2 28 2013 Feb. 28 in a common year
+SV-3 2 29 2012 Leap day in a leap year
+SV-4 2 29 2000 Leap day in 2000
+SV-5 2 28 1900 Feb. 28 in 1900
+SV-6 12 31 2011 End of year
+SV-7 10 31 2012 End of 31-day month
+SV-8 11 30 2012 End of 30-day month
+SV-9 12 31 2012 Last day of defined interval
+Software Testing - Black-box testing Jan 2026 24
+ﾂｧ In the case of the NextDate function, the range and domain are
+identical except for one day. Nothing interesting will be learned
+from output range test cases for this example.
+ﾂｧ Part of the reason for this is that the NextDate function is a one-to-
+one mapping from its domain onto its range. When functions are not
+one-to-one, output range test cases are more useful.
+Software Testing - Black-box testing Jan 2026 25
+ﾂｧ Advantages
+ﾂｧ (Commercial tool support available)
+ﾂｧ Easy to do/automate
+ﾂｧ Appropriate for calculation-intensive applications with variables that
+represent physical quantities (e.g., have units, such as meters, degrees,
+kilograms)
+ﾂｧ Disadvantages
+ﾂｧ Inevitable potential for both gaps and redundancies
+ﾂｧ The gaps and redundancies can never be identified (specification-based)
+ﾂｧ (Does not scale up well (?))
+ﾂｧ Tools only generate inputs, user must generate expected outputs.
+Software Testing - Black-box testing Jan 2026 26
+Chapter 6
+Equivalence Class Testing
+SoftwareTesting:ACraftsman窶冱Approach,4thEdition Chapter6EquivalenceClassTesting
+27
+Software Testing - Black-box testing Jan 2026
+Equivalence class testing uses information about the
+functional mapping itself to identify test cases
+Software Testing - Black-box testing Jan 2026 28
+ﾂｧ Given a relation R defined on some set S, R is an equivalence
+relation if (and only if), for all, x, y, and z elements of S:
+ﾂｧ R is reflexive, i.e., xRx
+ﾂｧ R is symmetric, i.e., if xRy, then yRx
+ﾂｧ R is transitive, i.e., if xRy and yRz, then xRz
+ﾂｧ An equivalence relation, R, induces a partition on the set S, where a
+partition is a set of subsets of S such that:
+ﾂｧ The intersection of any two subsets is empty, and
+ﾂｧ The union of all the subsets is the original set S
+ﾂｧ Note that the intersection property assures no redundancy, and the
+union property assures no gaps.
+ﾂｧ vs. Boundary analysis techniques?
+Software Testing - Black-box testing Jan 2026 29
+ﾂｧ Define a relation R on the input domain D as:
+ﾂｧ 竏 x, y ﾏｵ D, xRy iff F(x) = F(y), where F is the program function.
+ﾂｧ R is the 窶徼reated the same窶・relation
+ﾂｧ R is an equivalence relation ?
+Software Testing - Black-box testing Jan 2026 30
+ﾂｧ Works best when F is a many-to-one function
+ﾂｧ Test cases are formed by selecting one value from each equivalence
+class.
+ﾂｧ Identifying the classes may be hard
+-
+Software Testing - Black-box testing Jan 2026 31
+ﾂｧ Normal: classes of valid values of inputs
+ﾂｧ Robust: classes of valid and invalid values of inputs
+ﾂｧ Weak: (single fault assumption) one from each class
+ﾂｧ Strong: (multiple fault assumption) one from each class in Cartesian
+Product
+Software Testing - Black-box testing Jan 2026 33
+ﾂｧ F(x1, x2) has these classes...
+ﾂｧ valid values of x1: a 竕､ x1 竕､ b
+ﾂｧ invalid values of x1: x1 < a, b < x1
+ﾂｧ valid values of x2: c 竕､ x2 竕､ d
+ﾂｧ invalid values of x2: x2 < c, d < x2
+ﾂｧ Process
+ﾂｧ test F for valid values of all variables,
+ﾂｧ then test one invalid variable at a time
+ﾂｧ (note this makes the single fault assumption)
+Software Testing - Black-box testing Jan 2026 34
+Example
+%
+'
+23I!)*$+I!)-./+01+%
+'
+$
+(!)*$+I!)-./+01+%
+'
+#
+23I!)*$+I!)-./+01+%
+'
+%
+&
+! "
+23I!)*$+I!)-./+01+% (!)*$+I!)-./+01+% 23I!)*$+I!)-./+01+%
+& & &
+Software Testing - Black-box testing Jan 2026 35
+ﾂｧ Identify equivalence classes of valid values.
+ﾂｧ Test cases have all valid values.
+ﾂｧ Detects faults due to calculations with valid values of a single
+variable.
+ﾂｧ OK for regression testing.
+ﾂｧ Need an expanded set of valid classes
+ﾂｧ valid classes: {a <= x1 < b}, {b <= x1 < c}, {c <= x1 <= d}, {e <= x2 < f}, {f <=
+x2 <= g}
+ﾂｧ invalid classes: {x1 < a}, {x1 > d}, {x2 < e}, {x2 > g}
+Software Testing - Black-box testing Jan 2026 36
+!
+"
+)
+Number of test cases?
+(
+'
+!
+*
+# $ % &
+Software Testing - Black-box testing Jan 2026 37
+ﾂｧ Identify equivalence classes of valid and invalid values.
+ﾂｧ Test cases have all valid values except one invalid value.
+ﾂｧ Detects faults due to calculations with valid values of a single
+variable.
+ﾂｧ Detects faults due to invalid values of a single variable.
+ﾂｧ OK for regression testing.
+Software Testing - Black-box testing Jan 2026 38
+(
+*
+#
+"
+Errors for (x1>d, x2>g) or
+(x1<a, x2<e) could be due to
+the interaction of two variables
+!
+(
+)
+$ % & '
+x1 has all valid and invalid (one for each class)
+x2 has all valid and invalid (one for each class)
+Software Testing - Black-box testing Jan 2026 39
+Single-fault !!!
+Number of test cases?
+x1 has all valid and invalid (one for each class)
+x2 has all valid and invalid (one for each class)
+Software Testing - Black-box testing Jan 2026 40
+ﾂｧ Identify equivalence classes of valid values.
+ﾂｧ Test cases from Cartesian Product of valid values.
+ﾂｧ Detects faults due to interactions with valid values of any number of
+variables.
+ﾂｧ OK for regression testing, better for progression testing.
+Software Testing - Black-box testing Jan 2026 41
+(
+*
+#
+Number of test cases?
+"
+!
+(
+)
+$ % & '
+Software Testing - Black-box testing Jan 2026 42
+ﾂｧ Identify equivalence classes of valid and invalid values.
+ﾂｧ Test cases from Cartesian Product of all classes.
+ﾂｧ Detects faults due to interactions with any values of any number of
+variables.
+ﾂｧ OK for regression testing, better for progression testing.
+ﾂｧ (Most rigorous form of Equivalence Class testing, BUT,
+ﾂｧ Jorgensen窶冱 First Law of Software Engineering applies.)
+ﾂｧ Jorgensen窶冱 First Law of Software Engineering:
+ﾂｧ The product of two big numbers is a really big number.
+ﾂｧ (More elegant: scaling up can be problematic)
+Software Testing - Black-box testing Jan 2026 43
+(
+*
+#
+Number of test cases?
+"
+!
+(
+)
+$ % & '
+Software Testing - Black-box testing Jan 2026 44
+ﾂｧ There is no such thing as THE equivalence relation.
+ﾂｧ If x and y are days, some possibilities for Nextdate are:
+ﾂｧ x R y iff x and y are mapped onto the same year
+ﾂｧ x R y iff x and y are mapped onto the same month
+ﾂｧ x R y iff x and y are mapped onto the same date
+ﾂｧ x R y iff x(day) and y(day) are 窶徼reated the same窶・
+ﾂｧ x R y iff x(month) and y(month) are 窶徼reated the same窶・
+ﾂｧ x R y iff x(year) and y(year) are 窶徼reated the same窶・
+ﾂｧ Best practice is to select an equivalence relation that reflects the
+behavior being tested.
+Software Testing - Black-box testing Jan 2026 45
+ﾂｧ Month:
+ﾂｧ M1 = { month : month has 30 days}
+ﾂｧ M2 = { month : month has 31 days}
+ﾂｧ M3 = { month : month is February}
+ﾂｧ Day
+ﾂｧ D1 = {day : 1 <= day <= 28}
+ﾂｧ D2 = {day : day = 29 }
+ﾂｧ D3 = {day : day = 30 }
+ﾂｧ D4 = {day : day = 31 }
+ﾂｧ Year (are these disjoint?)
+ﾂｧ Y1 = {year : year = 2000}
+ﾂｧ Y2 = {year : 1812 <= year <= 2012 AND (year 竕 0 Mod 100) and (year = 0
+Mod 4)
+ﾂｧ Y3 = {year : (1812 <= year <= 2012 AND (year 竕 0 Mod 4)
+Software Testing - Black-box testing Jan 2026 46
+ﾂｧ A better set of equivalence classes for year is
+ﾂｧ Y1 = {century years divisible by 400} i.e., century leap years
+ﾂｧ Y2 = {century years not divisible by 400} i.e., century common years
+ﾂｧ Y3 = {non-century years divisible by 4} i.e., ordinary leap years
+ﾂｧ Y4 = {non-century years not divisible by 4} i.e., ordinary common years
+ﾂｧ All years must be in range: 1812 <= year <= 2012
+ﾂｧ Note that these equivalence classes are disjoint.
+Software Testing - Black-box testing Jan 2026 47
+ﾂｧ Select test cases so that one element from each input domain
+equivalence class is used as a test input value.
+ﾂｧ The number of test cases is the same as the highest number of equivalence
+classes for a variable.
+ﾂｧ Notice that all forms of equivalence class testing presume that the variables in
+the input domain are independent; logical dependencies are not recognized.
+Test Input Domain Input Values Expected Outputs
+Case Equiv. Classes
+WN-1 M1, D1, Y1 April 1 2000 April 2 2000
+WN-2 M2, D2, Y2 Jan. 29 1900 Jan. 30 1900
+WN-3 M3, D3, Y3 Feb. 30 1812 impossible
+WN-4 M1, D4, Y4 April 31 1901 impossible
+Software Testing - Black-box testing Jan 2026 48
+ﾂｧ With 4 day classes, 3 month classes, and 4 year classes, the
+Cartesian Product will have 48 equivalence class test cases.
+(Jorgensen窶冱 First Law of Software Engineering strikes again!)
+ﾂｧ Note some judgment is required. Would it be better to have 5 day
+classes, 4 month classes and only 2 year classes? (40 test cases)
+ﾂｧ Questions such as this can be resolved by considering Risk.
+Software Testing - Black-box testing Jan 2026 49
+ﾂｧ Month:
+ﾂｧ M1 = { month : month has 30 days}
+ﾂｧ M2 = { month : month has 31 days except December}
+ﾂｧ M3 = { month : month is February}
+ﾂｧ M4 = {month : month is December}
+ﾂｧ Day
+ﾂｧ D1 = {day : 1 <= day <= 27}
+The Cartesian Product of
+ﾂｧ D2 = {day : day = 28 }
+these contains 40 elements.
+ﾂｧ D3 = {day : day = 29 }
+ﾂｧ D4 = {day : day = 30 }
+ﾂｧ D5 = {day : day = 31 }
+ﾂｧ Year (are these disjoint?)
+ﾂｧ Y1 = {year : year is a leap year}
+ﾂｧ Y2 = {year : year is a common year}
+Software Testing - Black-box testing Jan 2026 50
+ﾂｧ Variables represent logical (rather than physical) quantities.
+ﾂｧ 窶徼reated as the same窶・
+ﾂｧ Variables 窶徭upport窶・useful equivalence classes.
+ﾂｧ => Equivalence class testing is appropriate when input data is
+defined in terms of intervals and sets of discrete values. This is
+certainly the case when system malfunctions can occur for out-of-
+limit variable values.
+Software Testing - Black-box testing Jan 2026 51
