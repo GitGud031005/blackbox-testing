@@ -14,8 +14,8 @@
 |-----|-------------|------------|------------|------|------------------|-------|
 | 1   |             |            |            |      |                  | Feature 001, 002 |
 | 2   |             |            |            |      |                  | Feature 003, 004 |
-| 3   |             |            |            |      |                  | Feature 005, 006 |
-| 4   |             |            |            |      |                  | Feature 007, 008 |
+| 3   |             |            |            |      |                  | Feature 005 |
+| 4   |             |            |            |      |                  | Feature 006 |
 
 ---
 
@@ -58,23 +58,9 @@ The Site Administration module allows managers to manually create new user accou
 
 Following the lecture theory (Chapter 5): For each variable x with bounds a ≤ x ≤ b, the robust BVA test values are: **x(min−), x(min), x(min+), x(nom), x(max−), x(max), x(max+)**.
 
-### Variable 1: Password Length
+### Variable 1: Username Length
 
-Password must have **at least 8 characters**. Moodle typically allows up to **255** characters for password fields.
-
-| BVA Value | Length | Test Input | Expected Result |
-|-----------|--------|------------|-----------------|
-| min− | 7 chars | `Ab1!xyz` | ❌ Error: "Passwords must be at least 8 characters long" |
-| min | 8 chars | `Ab1!xyzw` | ✅ Accepted (if other rules met) |
-| min+ | 9 chars | `Ab1!xyzwq` | ✅ Accepted |
-| nom | 12 chars | `Abcde1!@xyzw` | ✅ Accepted |
-| max− | 254 chars | (254-char string meeting rules) | ✅ Accepted |
-| max | 255 chars | (255-char string meeting rules) | ✅ Accepted |
-| max+ | 256 chars | (256-char string meeting rules) | ❌ Error or truncation |
-
-### Variable 2: Username Length
-
-Moodle usernames must be **at least 1 character**, **max 100 characters**, using only lowercase letters, numbers, hyphens, underscores, periods, or `@`.
+Moodle usernames must be **at least 1 character**, with **no maximum limit**, using only lowercase letters, numbers, hyphens, underscores, periods, or `@`.
 
 | BVA Value | Length | Test Input | Expected Result |
 |-----------|--------|------------|-----------------|
@@ -82,20 +68,45 @@ Moodle usernames must be **at least 1 character**, **max 100 characters**, using
 | min | 1 char | `a` | ✅ Accepted |
 | min+ | 2 chars | `ab` | ✅ Accepted |
 | nom | 10 chars | `testuser01` | ✅ Accepted |
-| max− | 99 chars | (99 lowercase chars) | ✅ Accepted |
-| max | 100 chars | (100 lowercase chars) | ✅ Accepted |
-| max+ | 101 chars | (101 lowercase chars) | ❌ Error or truncation |
 
-### Variable 3: First Name / Last Name Length
+### Variable 2: Password Length
 
-Required text fields. Moodle enforces a **max of 100 characters**.
+Password must be between **0 and 128 characters**.
+
+| BVA Value | Length | Test Input | Expected Result |
+|-----------|--------|------------|-----------------|
+| min | 0 chars | *(empty)* | ❌ Error: required field |
+| min+ | 1 char | `A` | ❌ Error: fails complexity |
+| nom | 12 chars | `Abcde1!@xyzw` | ✅ Accepted |
+| max− | 127 chars | (127-char string meeting rules) | ✅ Accepted |
+| max | 128 chars | (128-char string meeting rules) | ✅ Accepted |
+| max+ | 129 chars | (129-char string meeting rules) | ❌ Error or truncation |
+
+### Variable 3: First Name Length
+
+A required text field. Moodle enforces a **max of 100 characters** for the first name.
 
 | BVA Value | Length | Test Input | Expected Result |
 |-----------|--------|------------|-----------------|
 | min− | 0 chars | *(empty)* | ❌ Error: "Required" |
 | min | 1 char | `A` | ✅ Accepted |
 | min+ | 2 chars | `Ab` | ✅ Accepted |
-| nom | 10 chars | `JohnSmith1` | ✅ Accepted |
+| nom | 10 chars | `John` | ✅ Accepted |
+| max− | 99 chars | (99 chars) | ✅ Accepted |
+| max | 100 chars | (100 chars) | ✅ Accepted |
+| max+ | 101 chars | (101 chars) | ❌ Error or truncation |
+
+### Variable 4: Last Name Length
+
+A required text field. Moodle enforces a **max of 100 characters** for the last name.
+
+| BVA Value | Length | Test Input | Expected Result |
+|-----------|--------|------------|-----------------|
+| min− | 0 chars | *(empty)* | ❌ Error: "Required" |
+| min | 1 char | `A` | ✅ Accepted |
+| min+ | 2 chars | `Ab` | ✅ Accepted |
+| nom | 10 chars | `Smith` | ✅ Accepted |
+| max− | 99 chars | (99 chars) | ✅ Accepted |
 | max | 100 chars | (100 chars) | ✅ Accepted |
 | max+ | 101 chars | (101 chars) | ❌ Error or truncation |
 
@@ -224,31 +235,34 @@ Conditions: Password policy components. Testing combinations that should pass vs
 
 | TC ID | Technique | Test Case Name | Precondition | Steps | Expected Result |
 |-------|-----------|----------------|--------------|-------|-----------------|
-| TC-001-001 | BVA | Password length = 7 (min−) | Logged in as manager, on Add User page | Enter username `bvauser1`, password `Ab1!xyz` (7 chars), first name `Test`, last name `User`, email `bva1@test.com`. Click Create. | Error: password must be at least 8 characters |
-| TC-001-002 | BVA | Password length = 8 (min) | Same | Password `Ab1!xyzw` (8 chars), other fields valid | User created successfully |
-| TC-001-003 | BVA | Password length = 9 (min+) | Same | Password `Ab1!xyzwq` (9 chars), other fields valid | User created successfully |
-| TC-001-004 | BVA | Username length = 0 (min−) | Same | Leave username empty, all other valid | Error: required field |
-| TC-001-005 | BVA | Username length = 1 (min) | Same | Username `a`, all other valid | User created successfully |
-| TC-001-006 | BVA | First name empty (min−) | Same | Leave first name empty | Error: required field |
-| TC-001-007 | BVA | First name = 1 char (min) | Same | First name `A` | User created successfully |
-| TC-001-008 | ECP | Username with uppercase (U5) | Same | Username `JohnDoe`, other valid | Error: invalid username characters |
-| TC-001-009 | ECP | Username with space (U6) | Same | Username `john doe`, other valid | Error: invalid username |
-| TC-001-010 | ECP | Username already exists (U9) | Same | Username `admin`, other valid | Error: username already exists |
-| TC-001-011 | ECP | Password missing digit (P2) | Same | Password `Abcdefg!`, other valid | Error: password must have at least 1 digit |
-| TC-001-012 | ECP | Password missing uppercase (P3) | Same | Password `abcde1!@`, other valid | Error: must have uppercase |
-| TC-001-013 | ECP | Password missing lowercase (P4) | Same | Password `ABCDE1!@`, other valid | Error: must have lowercase |
-| TC-001-014 | ECP | Password missing special char (P5) | Same | Password `Abcdefg1`, other valid | Error: must have special char |
-| TC-001-015 | ECP | Email missing @ (E4) | Same | Email `testexample.com` | Error: invalid email |
-| TC-001-016 | ECP | Email missing domain (E5) | Same | Email `test@` | Error: invalid email |
-| TC-001-017 | ECP | Email with spaces (E7) | Same | Email `test @ex.com` | Error: invalid email |
-| TC-001-018 | ECP | Valid email standard (E1) | Same | Email `valid@example.com` | Accepted |
-| TC-001-019 | UC | Happy path (S1) | Same | All fields valid, manual password | User created, redirect to user list |
-| TC-001-020 | UC | Generate password path (S2) | Same | Check "Generate password", skip password field | User created, notification sent |
-| TC-001-021 | UC | Duplicate username exception (S3) | Same | Enter existing username | Error shown, form re-displayed |
-| TC-001-022 | UC | Empty required fields (S6) | Same | Leave first name and last name empty | Error for each required field |
-| TC-001-023 | DT | All password rules met (R1) | Same | `Abcde1!@` | Accepted |
-| TC-001-024 | DT | Missing lowercase (R2) | Same | `ABCDE1!@` | Rejected |
-| TC-001-025 | DT | Missing uppercase (R3) | Same | `abcde1!@` | Rejected |
+| TC-001-001 | BVA | Password length = 0 (min) | Logged in as manager, on Add User page | Leave password empty | Error: required field |
+| TC-001-002 | BVA | Password length = 128 (max) | Same | Enter 128-char valid password | Accepted |
+| TC-001-003 | BVA | Password length = 129 (max+) | Same | Enter 129-char password | Error: exceeds maximum |
+| TC-001-004 | BVA | Username length = 0 (min−) | Same | Leave username empty | Error: required field |
+| TC-001-005 | BVA | Username length = 1 (min) | Same | Enter 1-char username `a` | Accepted |
+| TC-001-006 | BVA | Username length = 2 (min+) | Same | Enter 2-char valid username | Accepted |
+| TC-001-007 | BVA | First name empty (min−) | Same | Leave first name empty | Error: required field |
+| TC-001-008 | BVA | First name = 100 chars (max) | Same | Enter 100-char first name | Accepted |
+| TC-001-009 | BVA | Last name empty (min−) | Same | Leave last name empty | Error: required field |
+| TC-001-010 | BVA | Last name = 100 chars (max) | Same | Enter 100-char last name | Accepted |
+| TC-001-011 | ECP | Username with uppercase (U5) | Same | Username `JohnDoe` | Error: invalid characters |
+| TC-001-012 | ECP | Username with space (U6) | Same | Username `john doe` | Error: invalid characters |
+| TC-001-013 | ECP | Username already exists (U9) | Same | Username `admin` | Error: username already exists |
+| TC-001-014 | ECP | Password missing digit (P2) | Same | Password `Abcdefg!` | Error: must have 1 digit |
+| TC-001-015 | ECP | Password missing uppercase (P3) | Same | Password `abcde1!@` | Error: must have uppercase |
+| TC-001-016 | ECP | Password missing lowercase (P4) | Same | Password `ABCDE1!@` | Error: must have lowercase |
+| TC-001-017 | ECP | Password missing special char (P5) | Same | Password `Abcdefg1` | Error: must have special |
+| TC-001-018 | ECP | Email missing @ (E4) | Same | Email `testexample.com` | Error: invalid email |
+| TC-001-019 | ECP | Email missing domain (E5) | Same | Email `test@` | Error: invalid email |
+| TC-001-020 | ECP | Email with spaces (E7) | Same | Email `test @ex.com` | Error: invalid email |
+| TC-001-021 | ECP | Valid email standard (E1) | Same | Email `valid@example.com` | Accepted |
+| TC-001-022 | UC | Happy path (S1) | Same | All fields valid, manual password | User created |
+| TC-001-023 | UC | Generate password path (S2) | Same | Check "Generate password", skip password field | User created |
+| TC-001-024 | UC | Duplicate username exception (S3) | Same | Enter existing username | Error shown |
+| TC-001-025 | UC | Empty required fields (S6) | Same | Leave first name/last name empty | Error shown |
+| TC-001-026 | DT | All password rules met (R1) | Same | `Abcde1!@` | Accepted |
+| TC-001-027 | DT | Missing lowercase (R2) | Same | `ABCDE1!@` | Rejected |
+| TC-001-028 | DT | Missing uppercase (R3) | Same | `abcde1!@` | Rejected |
 
 ---
 
@@ -710,103 +724,13 @@ flowchart TD
 | TC-004-017 | UC | Over max error S4 | Rejected |
 | TC-004-018 | UC | Non-numeric error S6 | Rejected |
 
+
+
 ---
 
-# Feature 005: Student Uploads Assignment File
+# Feature 005: User Creates Calendar Event
 
 ## 5.1 Feature Description
-
-Students submit files for assessment. Moodle enforces file size limits, file type restrictions, and maximum number of files.
-
-**Execution Flow:**
-1. Log in as `student`.
-2. Navigate to a course > Assignment.
-3. Click **Add submission**.
-4. Upload file(s) via the File Picker.
-5. Click **Save changes**.
-
-## 5.2 Form Fields Catalog
-
-| Field | Type | Constraints |
-|-------|------|-------------|
-| File submission area | File picker (drag & drop or browse) | Max file size (e.g. 2MB by default), accepted file types, max number of files |
-| Online text | Rich text editor | Only if enabled. May have word limit. |
-| Submission statement checkbox | Checkbox | "This submission is my own work..." — must be checked |
-
-## 5.3 Boundary Value Analysis (BVA)
-
-### Variable 1: Online Text Word Limit (if enabled, e.g. max 400 words)
-
-| BVA Value | Word Count | Expected Result |
-|-----------|-----------|-----------------|
-| min | 1 word | ✅ Accepted |
-| max− | 399 words | ✅ Accepted |
-| max | 400 words | ✅ Accepted |
-| max+ | 401 words | ❌ Error: word limit exceeded |
-
-## 5.5 Use-Case Testing
-
-**Use Case Name:** Upload Assignment File  
-**Actor:** Student  
-**Precondition:** Student is on an open assignment page with submission enabled.
-
-**Basic Flow:**
-1. Student clicks "Add submission".
-2. Student uploads a valid file within size/type limits.
-3. Student checks submission statement.
-4. Student clicks "Save changes".
-5. Status changes to "Submitted for grading".
-
-**Alternative Flows:**
-- AF1: Student uploads multiple files (within limit).
-- AF2: Student edits a previous submission (replaces file before deadline).
-
-**Exception Flows:**
-- EF1: File exceeds size limit.
-- EF2: File type not accepted.
-- EF3: Too many files uploaded.
-- EF4: Submission after cut-off date.
-
-```mermaid
-flowchart TD
-    A[Start: Open Assignment] --> B{Submission Open?}
-    B -->|Yes| C[Click Add Submission]
-    B -->|No - Past Cutoff| D[Error: Submission closed]
-    C --> E[Upload File via File Picker]
-    E --> F{File Valid?}
-    F -->|Size OK + Type OK| G[Check Submission Statement]
-    F -->|Size Too Large| H[Error: File too large]
-    F -->|Type Not Allowed| I[Error: File type not accepted]
-    G --> J[Click Save Changes]
-    J --> K[Submission Saved]
-    K --> L[End]
-    D --> L
-```
-
-| Scenario | Description |
-|----------|-------------|
-| S1 | Happy path: valid file, within limits |
-| S2 | Multiple files within limit |
-| S3 | File too large |
-| S4 | File type rejected |
-| S5 | Edit previous submission |
-| S6 | Submission past cut-off |
-
-## 5.6 Test Cases Summary (Feature 005)
-
-| TC ID | Technique | Test Case Name | Expected Result |
-|-------|-----------|----------------|-----------------|
-| TC-005-007 | BVA | Word count = max (400) | Accepted |
-| TC-005-008 | BVA | Word count = max+ (401) | Error: word limit |
-| TC-005-014 | UC | Happy path S1 | Status = Submitted |
-| TC-005-017 | UC | Edit submission S5 | Old file replaced |
-| TC-005-018 | UC | Past cut-off S6 | Submission blocked |
-
----
-
-# Feature 006: User Creates Calendar Event
-
-## 6.1 Feature Description
 
 Users create personal events on their Moodle calendar, specifying title, date, and optionally a duration.
 
@@ -817,7 +741,7 @@ Users create personal events on their Moodle calendar, specifying title, date, a
 4. Fill in event title, date, type, duration.
 5. Click **Save**.
 
-## 6.2 Form Fields Catalog
+## 5.2 Form Fields Catalog
 
 | Field | Type | Required | Constraints |
 |-------|------|----------|-------------|
@@ -830,7 +754,7 @@ Users create personal events on their Moodle calendar, specifying title, date, a
 | Until date | Date picker | Conditional | Must be after event start date |
 | Repeat this event | Checkbox + count | No | Number of events (e.g., weekly for N weeks) |
 
-## 6.3 Boundary Value Analysis (BVA)
+## 5.3 Boundary Value Analysis (BVA)
 
 ### Variable 1: Event Title Length
 
@@ -862,7 +786,7 @@ Let Event Date = Jan 10.
 | same as event | Jan 10 | Edge case |
 | after event | Jan 11 | ✅ Accepted |
 
-## 6.4 Equivalence Class Partitioning (ECP)
+## 5.4 Equivalence Class Partitioning (ECP)
 
 ### Variable 1: Duration Type
 
@@ -875,7 +799,7 @@ Let Event Date = Jan 10.
 | DT5 | Duration in minutes (text) | Invalid | `abc` |
 | DT6 | Duration in minutes (negative) | Invalid | `-10` |
 
-## 6.5 Use-Case Testing
+## 5.5 Use-Case Testing
 
 **Use Case Name:** Create Calendar Event  
 **Actor:** User (student, teacher, or admin)  
@@ -909,7 +833,7 @@ flowchart TD
 | S4 | Empty title error |
 | S5 | Negative duration error |
 
-## 6.6 Decision Table (Bonus)
+## 5.6 Decision Table (Bonus)
 
 Conditions: Duration radio selection and Repeat checkbox. These control which fields are visible/enabled — verifiable UI changes.
 
@@ -922,35 +846,35 @@ Conditions: Duration radio selection and Repeat checkbox. These control which fi
 | **A3:** Repeat count field visible | | | | ✅ | ✅ | ✅ |
 | **A4:** All duration fields hidden | ✅ | | | | | |
 
-## 6.7 Test Cases Summary (Feature 006)
+## 5.7 Test Cases Summary (Feature 005)
 
 | TC ID | Technique | Test Case Name | Expected Result |
 |-------|-----------|----------------|-----------------|
-| TC-006-001 | BVA | Title empty (min−) | Error: required |
-| TC-006-002 | BVA | Title 1 char (min) | Accepted |
-| TC-006-003 | BVA | Title 255 chars (max) | Accepted |
-| TC-006-004 | BVA | Duration = −1 (min−) | Error: negative |
-| TC-006-005 | BVA | Duration = 0 | Edge case |
-| TC-006-006 | BVA | Duration = 1 (min+) | Accepted |
-| TC-006-007 | BVA | Duration = 60 (nom) | Accepted |
-| TC-006-008 | BVA | Until date before event date | Error |
-| TC-006-009 | ECP | Duration type = minutes int (DT2) | Accepted |
-| TC-006-010 | ECP | Duration type = float (DT4) | Rejected |
-| TC-006-011 | ECP | Duration type = text (DT5) | Rejected |
-| TC-006-012 | ECP | Duration type = negative (DT6) | Rejected |
-| TC-006-013 | DT | Without duration, no repeat (R1) | Duration fields hidden, repeat hidden |
-| TC-006-014 | DT | Until mode, no repeat (R2) | Until date picker visible |
-| TC-006-015 | DT | Minutes mode + repeat (R6) | Minutes input + repeat count visible |
-| TC-006-016 | UC | Happy path S1 | Event on calendar |
-| TC-006-017 | UC | With minutes S2 | Event with duration |
-| TC-006-018 | UC | Empty title error S4 | Error shown |
-| TC-006-019 | UC | Negative duration S5 | Error shown |
+| TC-005-001 | BVA | Title empty (min−) | Error: required |
+| TC-005-002 | BVA | Title 1 char (min) | Accepted |
+| TC-005-003 | BVA | Title 255 chars (max) | Accepted |
+| TC-005-004 | BVA | Duration = −1 (min−) | Error: negative |
+| TC-005-005 | BVA | Duration = 0 | Edge case |
+| TC-005-006 | BVA | Duration = 1 (min+) | Accepted |
+| TC-005-007 | BVA | Duration = 60 (nom) | Accepted |
+| TC-005-008 | BVA | Until date before event date | Error |
+| TC-005-009 | ECP | Duration type = minutes int (DT2) | Accepted |
+| TC-005-010 | ECP | Duration type = float (DT4) | Rejected |
+| TC-005-011 | ECP | Duration type = text (DT5) | Rejected |
+| TC-005-012 | ECP | Duration type = negative (DT6) | Rejected |
+| TC-005-013 | DT | Without duration, no repeat (R1) | Duration fields hidden, repeat hidden |
+| TC-005-014 | DT | Until mode, no repeat (R2) | Until date picker visible |
+| TC-005-015 | DT | Minutes mode + repeat (R6) | Minutes input + repeat count visible |
+| TC-005-016 | UC | Happy path S1 | Event on calendar |
+| TC-005-017 | UC | With minutes S2 | Event with duration |
+| TC-005-018 | UC | Empty title error S4 | Error shown |
+| TC-005-019 | UC | Negative duration S5 | Error shown |
 
 ---
 
-# Feature 007: Teacher Sets Up a Quiz
+# Feature 006: Teacher Sets Up a Quiz
 
-## 7.1 Feature Description
+## 6.1 Feature Description
 
 Teachers create Quiz activities with configurable grading rules, attempt limits, time limits, and access restrictions.
 
@@ -961,7 +885,7 @@ Teachers create Quiz activities with configurable grading rules, attempt limits,
 4. Configure: Name, Timing, Grade, Layout, Review options.
 5. Click **Save and return to course**.
 
-## 7.2 Form Fields Catalog
+## 6.2 Form Fields Catalog
 
 | Field | Type | Required | Constraints |
 |-------|------|----------|-------------|
@@ -978,7 +902,7 @@ Teachers create Quiz activities with configurable grading rules, attempt limits,
 | Layout: New page | Dropdown | No | Every question, Every 2, Every 5, etc. |
 | Shuffle within questions | Checkbox | No | Default varies |
 
-## 7.3 Boundary Value Analysis (BVA)
+## 6.3 Boundary Value Analysis (BVA)
 
 ### Variable 1: Grade to Pass (Max grade default = 10.00)
 
@@ -1010,7 +934,7 @@ Teachers create Quiz activities with configurable grading rules, attempt limits,
 | same as open | Same date/time | Edge case |
 | after open | Open + 1 day | ✅ Accepted |
 
-## 7.4 Equivalence Class Partitioning (ECP)
+## 6.4 Equivalence Class Partitioning (ECP)
 
 ### Variable 1: Quiz Name
 
@@ -1019,7 +943,7 @@ Teachers create Quiz activities with configurable grading rules, attempt limits,
 | QN1 | Normal text | Valid | `Midterm Quiz` |
 | QN3 | Empty | Invalid | *(empty)* |
 
-## 7.5 Use-Case Testing
+## 6.5 Use-Case Testing
 
 **Use Case Name:** Create Quiz  
 **Actor:** Teacher
@@ -1056,7 +980,7 @@ flowchart TD
 | S4 | Grade to pass > Max grade error |
 | S5 | Empty name error |
 
-## 7.6 Decision Table (Bonus)
+## 6.6 Decision Table (Bonus)
 
 Conditions: Timing Enable checkboxes. Each checkbox controls whether its date/time input is enabled — verifiable UI changes.
 
@@ -1071,146 +995,27 @@ Conditions: Timing Enable checkboxes. Each checkbox controls whether its date/ti
 | **A4:** "When time expires" dropdown visible | ✅ | | ✅ | ✅ | |
 | **A5:** All timing fields disabled | | | | | ✅ |
 
-## 7.7 Test Cases Summary (Feature 007)
+## 6.7 Test Cases Summary (Feature 006)
 
 | TC ID | Technique | Test Case Name | Expected Result |
 |-------|-----------|----------------|-----------------|
-| TC-007-001 | BVA | Grade to pass = −0.01 (min−) | Rejected |
-| TC-007-002 | BVA | Grade to pass = 0 (min) | Accepted |
-| TC-007-003 | BVA | Grade to pass = 10 (max) | Accepted |
-| TC-007-004 | BVA | Grade to pass = 10.01 (max+) | Rejected |
-| TC-007-005 | BVA | Time limit = 1 min (min) | Accepted |
-| TC-007-006 | BVA | Time limit = −1 | Rejected |
-| TC-007-007 | BVA | Close before open date | Error |
-| TC-007-008 | BVA | Close after open date | Accepted |
-| TC-007-009 | ECP | Empty quiz name QN3 | Error |
-| TC-007-010 | DT | All timing enabled (R1) | Open/Close date pickers and time limit input all enabled |
-| TC-007-011 | DT | Open+Close only (R2) | Date pickers enabled, time limit input disabled |
-| TC-007-012 | DT | Open+Time only (R3) | Open date and time limit enabled, close date disabled |
-| TC-007-013 | DT | All timing disabled (R5) | All timing fields disabled |
-| TC-007-014 | UC | Happy path S1 | Quiz created |
-| TC-007-015 | UC | Unlimited + no time S2 | Created open |
-| TC-007-016 | UC | Date conflict S3 | Error shown |
-| TC-007-017 | UC | Grade exceeds max S4 | Error shown |
-| TC-007-018 | UC | Empty name S5 | Error shown |
+| TC-006-001 | BVA | Grade to pass = −0.01 (min−) | Rejected |
+| TC-006-002 | BVA | Grade to pass = 0 (min) | Accepted |
+| TC-006-003 | BVA | Grade to pass = 10 (max) | Accepted |
+| TC-006-004 | BVA | Grade to pass = 10.01 (max+) | Rejected |
+| TC-006-005 | BVA | Time limit = 1 min (min) | Accepted |
+| TC-006-006 | BVA | Time limit = −1 | Rejected |
+| TC-006-007 | BVA | Close before open date | Error |
+| TC-006-008 | BVA | Close after open date | Accepted |
+| TC-006-009 | ECP | Empty quiz name QN3 | Error |
+| TC-006-010 | DT | All timing enabled (R1) | Open/Close date pickers and time limit input all enabled |
+| TC-006-011 | DT | Open+Close only (R2) | Date pickers enabled, time limit input disabled |
+| TC-006-012 | DT | Open+Time only (R3) | Open date and time limit enabled, close date disabled |
+| TC-006-013 | DT | All timing disabled (R5) | All timing fields disabled |
+| TC-006-014 | UC | Happy path S1 | Quiz created |
+| TC-006-015 | UC | Unlimited + no time S2 | Created open |
+| TC-006-016 | UC | Date conflict S3 | Error shown |
+| TC-006-017 | UC | Grade exceeds max S4 | Error shown |
+| TC-006-018 | UC | Empty name S5 | Error shown |
 
----
 
-# Feature 008: Teacher Posts Forum Announcement
-
-## 8.1 Feature Description
-
-Teachers create new discussion topics in course forums (especially the "Announcements" forum), optionally attaching files.
-
-**Execution Flow:**
-1. Log in as `teacher`.
-2. Navigate to a course > Announcements forum.
-3. Click **Add a new topic**.
-4. Fill in Subject, Message, attach files.
-5. Click **Post to forum**.
-
-## 8.2 Form Fields Catalog
-
-| Field | Type | Required | Constraints |
-|-------|------|----------|-------------|
-| Subject | Text input | Yes (❗) | Cannot be empty |
-| Message | Rich text editor | Yes (❗) | Cannot be empty |
-| Attachment | File picker | No | Max attachments (e.g., 9), max file size per attachment |
-| Discussion subscription | Dropdown | No | Options vary |
-| Pin this discussion | Checkbox | No | Pinned at top |
-| Display period: Start | Date picker + Enable | No | Valid date |
-| Display period: End | Date picker + Enable | No | After start |
-
-## 8.3 Boundary Value Analysis (BVA)
-
-### Variable 1: Subject Length
-
-| BVA Value | Length | Expected Result |
-|-----------|--------|-----------------|
-| min− | 0 | ❌ Error: required |
-| min | 1 | ✅ Accepted |
-| nom | 30 | ✅ Accepted |
-| max | 255 | ✅ Accepted |
-| max+ | 256 | ❌ Error or truncation |
-
-## 8.4 Equivalence Class Partitioning (ECP)
-
-### Variable 1: Subject
-
-| Class ID | Description | Valid/Invalid | Representative |
-|----------|-------------|---------------|----------------|
-| SJ1 | Normal text | Valid | `Week 1 Announcement` |
-| SJ3 | Empty | Invalid | *(empty)* |
-
-### Variable 2: Message
-
-| Class ID | Description | Valid/Invalid | Representative |
-|----------|-------------|---------------|----------------|
-| MG1 | Plain text | Valid | `Please read chapter 3.` |
-| MG3 | Empty | Invalid | *(empty)* |
-
-## 8.5 Use-Case Testing
-
-**Use Case Name:** Post Forum Announcement  
-**Actor:** Teacher
-
-```mermaid
-flowchart TD
-    A[Start: Open Forum] --> B[Click Add New Topic]
-    B --> C[Enter Subject]
-    C --> D[Enter Message]
-    D --> E{Attach Files?}
-    E -->|Yes| F[Upload Attachment]
-    E -->|No| G{Pin Discussion?}
-    F --> G
-    G -->|Yes| H[Check Pin Checkbox]
-    G -->|No| I[Click Post to Forum]
-    H --> I
-    I --> J{Validation OK?}
-    J -->|Yes| K[Topic Posted]
-    J -->|No - Empty Subject| L[Error: Subject required]
-    J -->|No - Empty Message| M[Error: Message required]
-    J -->|No - File Too Large| N[Error: File exceeds limit]
-    L --> C
-    M --> D
-    N --> F
-    K --> O[End]
-```
-
-| Scenario | Description |
-|----------|-------------|
-| S1 | Happy path: subject + message + no attachment |
-| S2 | With attachment |
-| S3 | Pinned discussion |
-| S4 | Empty subject error |
-| S5 | Empty message error |
-| S6 | Attachment too large |
-
-## 8.6 Decision Table (Bonus)
-
-| Rule | R1 | R2 | R3 |
-|------|----|----|----|
-| **C1:** Subject filled | T | F | T |
-| **C2:** Message filled | T | T | F |
-| **Action: Post success** | ✅ | | |
-| **Action: Error subject** | | ❌ | |
-| **Action: Error message** | | | ❌ |
-
-## 8.7 Test Cases Summary (Feature 008)
-
-| TC ID | Technique | Test Case Name | Expected Result |
-|-------|-----------|----------------|-----------------|
-| TC-008-001 | BVA | Subject empty (min−) | Error: required |
-| TC-008-002 | BVA | Subject 1 char (min) | Accepted |
-| TC-008-003 | BVA | Subject 255 chars (max) | Accepted |
-| TC-008-008 | ECP | Normal subject SJ1 | Accepted |
-| TC-008-009 | ECP | Empty subject SJ3 | Error |
-| TC-008-010 | ECP | Plain text msg MG1 | Accepted |
-| TC-008-011 | ECP | Empty message MG3 | Error |
-| TC-008-014 | UC | Happy path S1 | Topic posted |
-| TC-008-016 | UC | Pinned discussion S3 | Pinned at top |
-| TC-008-017 | UC | Empty subject S4 | Error shown |
-| TC-008-018 | UC | Empty message S5 | Error shown |
-| TC-008-019 | DT | Subject + Message filled (R1) | Posted |
-| TC-008-020 | DT | Subject empty (R3) | Error: Subject required |
-| TC-008-021 | DT | Message empty (R4) | Error: Message required |
