@@ -45,14 +45,14 @@ The Site Administration module allows managers to manually create new user accou
 | Field | Type | Required | Constraints / Rules |
 |-------|------|----------|---------------------|
 | Username | Text input | Yes | Lowercase letters, digits, hyphens, underscores, periods, @. No spaces. Must be unique. |
-| Choose an authentication method | Dropdown | Yes | Default: "Manual accounts". Options: Manual, Email-based, No login, etc. |
+| Authentication method | Dropdown | Yes | Default: "Manual accounts". Options: Manual, Email-based self-registration, etc. |
 | Suspended account | Checkbox | No | Default: unchecked |
 | Generate password and notify user | Checkbox | No | If checked, password field becomes optional |
-| New password | Text input | Conditional | Min 8 chars, ≥1 digit, ≥1 lowercase, ≥1 uppercase, ≥1 non-alphanumeric char |
+| Password | Text input | Conditional | Subject to site policies (e.g., Min 8 chars, ≥1 digit, ≥1 lowercase, ≥1 uppercase, ≥1 non-alphanumeric char) |
 | Force password change | Checkbox | No | Default: unchecked |
-| First name | Text input | Yes (❗) | Cannot be empty |
-| Last name | Text input | Yes (❗) | Cannot be empty |
-| Email address | Text input | Yes (❗) | Must be valid email format (RFC-compliant) |
+| First name | Text input | Yes (❗) | Cannot be empty. Max 100 chars. |
+| Last name | Text input | Yes (❗) | Cannot be empty. Max 100 chars. |
+| Email address | Text input | Yes (❗) | Must be valid email format. Max 100 chars. Duplicates rejected unless allowed by site policy. |
 
 ## 1.3 Boundary Value Analysis (BVA)
 
@@ -60,7 +60,7 @@ Following the lecture theory (Chapter 5): For each variable x with bounds a ≤ 
 
 ### Variable 1: Username Length
 
-Moodle usernames must be **at least 1 character**, with **no maximum limit**, using only lowercase letters, numbers, hyphens, underscores, periods, or `@`.
+Moodle usernames must be **at least 1 character**, using only lowercase letters, numbers, hyphens, underscores, periods, or `@`. (No maximum length specified).
 
 | BVA Value | Length | Test Input | Expected Result |
 |-----------|--------|------------|-----------------|
@@ -71,44 +71,59 @@ Moodle usernames must be **at least 1 character**, with **no maximum limit**, us
 
 ### Variable 2: Password Length
 
-Password must be between **0 and 128 characters**.
+Subject to password policy, required minimum of **8 characters** and maximum of **128 characters**.
 
 | BVA Value | Length | Test Input | Expected Result |
 |-----------|--------|------------|-----------------|
-| min | 0 chars | *(empty)* | ❌ Error: required field |
-| min+ | 1 char | `A` | ❌ Error: fails complexity |
+| min− | 7 chars | `Abcde1!` | ❌ Error: too short |
+| min | 8 chars | `Abcde1!@` | ✅ Accepted |
+| min+ | 9 chars | `Abcde1!@x` | ✅ Accepted |
 | nom | 12 chars | `Abcde1!@xyzw` | ✅ Accepted |
 | max− | 127 chars | (127-char string meeting rules) | ✅ Accepted |
 | max | 128 chars | (128-char string meeting rules) | ✅ Accepted |
-| max+ | 129 chars | (129-char string meeting rules) | ❌ Error or truncation |
+| max+ | 129 chars | (129-char string meeting rules) | ❌ Error: exceeds maximum |
 
 ### Variable 3: First Name Length
 
-A required text field. Moodle enforces a **max of 100 characters** for the first name.
+A required text field. Moodle enforces a maximum of **100 characters** for the first name.
 
 | BVA Value | Length | Test Input | Expected Result |
 |-----------|--------|------------|-----------------|
-| min− | 0 chars | *(empty)* | ❌ Error: "Required" |
+| min− | 0 chars | *(empty)* | ❌ Error: required field |
 | min | 1 char | `A` | ✅ Accepted |
 | min+ | 2 chars | `Ab` | ✅ Accepted |
 | nom | 10 chars | `John` | ✅ Accepted |
 | max− | 99 chars | (99 chars) | ✅ Accepted |
 | max | 100 chars | (100 chars) | ✅ Accepted |
-| max+ | 101 chars | (101 chars) | ❌ Error or truncation |
+| max+ | 101 chars | (101 chars) | ❌ Error: exceeds maximum |
 
 ### Variable 4: Last Name Length
 
-A required text field. Moodle enforces a **max of 100 characters** for the last name.
+A required text field. Moodle enforces a maximum of **100 characters** for the last name.
 
 | BVA Value | Length | Test Input | Expected Result |
 |-----------|--------|------------|-----------------|
-| min− | 0 chars | *(empty)* | ❌ Error: "Required" |
+| min− | 0 chars | *(empty)* | ❌ Error: required field |
 | min | 1 char | `A` | ✅ Accepted |
 | min+ | 2 chars | `Ab` | ✅ Accepted |
 | nom | 10 chars | `Smith` | ✅ Accepted |
 | max− | 99 chars | (99 chars) | ✅ Accepted |
 | max | 100 chars | (100 chars) | ✅ Accepted |
-| max+ | 101 chars | (101 chars) | ❌ Error or truncation |
+| max+ | 101 chars | (101 chars) | ❌ Error: exceeds maximum |
+
+### Variable 5: Email Address Length
+
+A required text field. Maximum of **100 characters**.
+
+| BVA Value | Length | Test Input | Expected Result |
+|-----------|--------|------------|-----------------|
+| min− | 0 chars | *(empty)* | ❌ Error: required field |
+| min | 6 chars | `a@b.co` | ✅ Accepted |
+| min+ | 7 chars | `ab@b.co` | ✅ Accepted |
+| nom | 20 chars | `test@example.com` | ✅ Accepted |
+| max− | 99 chars | (99 chars valid format) | ✅ Accepted |
+| max | 100 chars | (100 chars valid format) | ✅ Accepted |
+| max+ | 101 chars | (101 chars valid format) | ❌ Error: exceeds maximum |
 
 ## 1.4 Equivalence Class Partitioning (ECP)
 
@@ -150,6 +165,16 @@ The password must satisfy ALL of: ≥8 chars, ≥1 digit, ≥1 lowercase, ≥1 u
 | E7 | Contains spaces | Invalid | `test @example.com` |
 | E8 | Empty string | Invalid | *(empty)* |
 | E9 | Duplicate email (already in system) | Invalid | *(existing email)* |
+
+### Variable 4: Required Text Fields (First Name, Last Name)
+
+According to strict validation rules, these fields cannot contain only spaces or line breaks.
+
+| Class ID | Class Description | Valid/Invalid | Representative Value |
+|----------|-------------------|---------------|----------------------|
+| R1 | Contains valid text | Valid | `John` |
+| R2 | Only spaces/line breaks | Invalid | `   ` (spaces) |
+| R3 | Empty string | Invalid | *(empty)* |
 
 ## 1.5 Use-Case Testing
 
@@ -215,7 +240,7 @@ flowchart TD
 | S3 | A→B→C(No)→E→F→G→H→I→J(No)→L→B→... | Duplicate username error, re-enter |
 | S4 | A→B→C(No)→E→F→G→H→I→J(No)→M→E→... | Invalid password error, re-enter |
 | S5 | A→B→C(No)→E→F→G→H→I→J(No)→N→H→... | Invalid email error, re-enter |
-| S6 | A→B→C(No)→E→F→G→H→I→J(No)→O→F→... | Empty first/last name error |
+| S6 | A→B→C(No)→E→F→G→H→I→J(No)→O→F→... | Empty first name/surname error |
 
 ## 1.6 Decision Table (Bonus)
 
@@ -224,27 +249,35 @@ Conditions: Password policy components. Testing combinations that should pass vs
 | Rule | R1 | R2 | R3 | R4 | R5 | R6 |
 |------|----|----|----|----|----|----|
 | **C1:** Length ≥ 8 | T | T | T | T | T | F |
-| **C2:** Has digit | T | T | T | F | T | T |
-| **C3:** Has uppercase | T | T | F | T | T | T |
-| **C4:** Has lowercase | T | F | T | T | T | T |
-| **C5:** Has special char | T | T | T | T | F | T |
+| **C2:** Has digit | T | T | T | T | F | - |
+| **C3:** Has uppercase | T | T | T | F | - | - |
+| **C4:** Has lowercase | T | T | F | - | - | - |
+| **C5:** Has special char | T | F | - | - | - | - |
 | **Action: Accept** | ✅ | | | | | |
 | **Action: Reject** | | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+> **Note:** According to decision table theory (Chapter 7), the rules here are algebraically simplified using "Don't Care" (`-`) entries. Rule 6 represents 16 impossible/rejected rules, Rule 5 represents 8 rules, etc., ensuring all 32 combinations of the 5 binary conditions are covered completely without redundancy.
 
 ## 1.7 Test Cases Summary (Feature 001)
 
 | TC ID | Technique | Test Case Name | Precondition | Steps | Expected Result |
 |-------|-----------|----------------|--------------|-------|-----------------|
-| TC-001-001 | BVA | Password length = 0 (min) | Logged in as manager, on Add User page | Leave password empty | Error: required field |
-| TC-001-002 | BVA | Password length = 128 (max) | Same | Enter 128-char valid password | Accepted |
-| TC-001-003 | BVA | Password length = 129 (max+) | Same | Enter 129-char password | Error: exceeds maximum |
-| TC-001-004 | BVA | Username length = 0 (min−) | Same | Leave username empty | Error: required field |
-| TC-001-005 | BVA | Username length = 1 (min) | Same | Enter 1-char username `a` | Accepted |
-| TC-001-006 | BVA | Username length = 2 (min+) | Same | Enter 2-char valid username | Accepted |
-| TC-001-007 | BVA | First name empty (min−) | Same | Leave first name empty | Error: required field |
-| TC-001-008 | BVA | First name = 100 chars (max) | Same | Enter 100-char first name | Accepted |
-| TC-001-009 | BVA | Last name empty (min−) | Same | Leave last name empty | Error: required field |
-| TC-001-010 | BVA | Last name = 100 chars (max) | Same | Enter 100-char last name | Accepted |
+| TC-001-001 | BVA | Password length = 7 (min−) | Logged in as manager, on Add User page | Enter 7-char password | Error: too short |
+| TC-001-002 | BVA | Password length = 8 (min) | Same | Enter 8-char valid password | Accepted |
+| TC-001-002b | BVA | Password length = 128 (max) | Same | Enter 128-char valid password | Accepted |
+| TC-001-002c | BVA | Password length = 129 (max+) | Same | Enter 129-char password | Error: exceeds maximum |
+| TC-001-003 | BVA | Username length = 0 (min−) | Same | Leave username empty | Error: required field |
+| TC-001-004 | BVA | Username length = 1 (min) | Same | Enter 1-char username `a` | Accepted |
+| TC-001-005 | BVA | First name empty (min−) | Same | Leave first name empty | Error: required field |
+| TC-001-005b | BVA | First name = 100 chars (max) | Same | Enter 100-char first name | Accepted |
+| TC-001-005c | BVA | First name = 101 chars (max+) | Same | Enter 101-char first name | Error: exceeds maximum |
+| TC-001-006 | BVA | Last name empty (min−) | Same | Leave last name empty | Error: required field |
+| TC-001-006b | BVA | Last name = 100 chars (max) | Same | Enter 100-char last name | Accepted |
+| TC-001-006c | BVA | Last name = 101 chars (max+) | Same | Enter 101-char last name | Error: exceeds maximum |
+| TC-001-006d | BVA | Email length = 0 (min−) | Same | Leave email empty | Error: required field |
+| TC-001-006e | BVA | Email length = 100 (max) | Same | Enter 100-char valid email | Accepted |
+| TC-001-006f | BVA | Email length = 101 (max+) | Same | Enter 101-char valid email | Error: exceeds maximum |
+| TC-001-007 | ECP | Required field spaces only (R2) | Same | Enter only spaces in First Name | Error: required field |
 | TC-001-011 | ECP | Username with uppercase (U5) | Same | Username `JohnDoe` | Error: invalid characters |
 | TC-001-012 | ECP | Username with space (U6) | Same | Username `john doe` | Error: invalid characters |
 | TC-001-013 | ECP | Username already exists (U9) | Same | Username `admin` | Error: username already exists |
@@ -261,8 +294,8 @@ Conditions: Password policy components. Testing combinations that should pass vs
 | TC-001-024 | UC | Duplicate username exception (S3) | Same | Enter existing username | Error shown |
 | TC-001-025 | UC | Empty required fields (S6) | Same | Leave first name/last name empty | Error shown |
 | TC-001-026 | DT | All password rules met (R1) | Same | `Abcde1!@` | Accepted |
-| TC-001-027 | DT | Missing lowercase (R2) | Same | `ABCDE1!@` | Rejected |
-| TC-001-028 | DT | Missing uppercase (R3) | Same | `abcde1!@` | Rejected |
+| TC-001-027 | DT | Missing special char (R2) | Same | `Abcdefg1` | Rejected |
+| TC-001-028 | DT | Missing lowercase (R3) | Same | `ABCDE1!@` | Rejected |
 
 ---
 
@@ -305,8 +338,6 @@ Managers can create new course spaces with configurable settings. The form enfor
 | min | 1 char | `A` | ✅ Accepted |
 | min+ | 2 chars | `Ab` | ✅ Accepted |
 | nom | 20 chars | `Introduction to CS` | ✅ Accepted |
-| max | 254 chars | (254 chars) | ✅ Accepted |
-| max+ | 255+ chars | (overflow) | ❌ Error or truncation |
 
 ### Variable 2: Course Short Name Length
 
@@ -314,9 +345,8 @@ Managers can create new course spaces with configurable settings. The form enfor
 |-----------|--------|------------|-----------------|
 | min− | 0 chars | *(empty)* | ❌ Error: required |
 | min | 1 char | `X` | ✅ Accepted (if unique) |
+| min+ | 2 chars | `XY` | ✅ Accepted (if unique) |
 | nom | 8 chars | `CS101-S2` | ✅ Accepted |
-| max | 255 chars | (255 chars) | ✅ Accepted |
-| max+ | 256 chars | (overflow) | ❌ Error or truncation |
 
 ### Variable 3: Date Chronology (End Date relative to Start Date)
 
@@ -411,17 +441,18 @@ flowchart TD
 
 ## 2.6 Decision Table (Bonus)
 
-Conditions: End date configuration checkboxes. These control whether date picker fields are enabled or auto-calculated — verifiable UI changes.
+Conditions: Course format and End date configuration checkboxes. According to the documentation, "Calculate the end date from the number of sections" is available **for courses in weekly format only**.
 
-| Rule | R1 | R2 | R3 | R4 |
-|------|----|----|----|-----|
-| **C1:** End date Enable checked | T | T | F | F |
-| **C2:** Calculate end date from sections | T | F | T | F |
-| **A1:** End date pickers enabled | | ✅ | | |
-| **A2:** End date pickers disabled (auto‑calculated) | ✅ | | | |
-| **A3:** End date pickers disabled (unchecked) | | | ✅ | ✅ |
+| Rule | R1 | R2 | R3 | R4 | R5 |
+|------|----|----|----|----|----|
+| **C1:** Course format = Weekly | F | F | T | T | T |
+| **C2:** End date Enable checked | F | T | F | T | T |
+| **C3:** Calculate end date from sections checked | - | - | - | F | T |
+| **A1:** End date pickers enabled (editable) | | ✅ | | ✅ | |
+| **A2:** End date pickers disabled (auto‑calculated) | | | | | ✅ |
+| **A3:** End date pickers disabled (unchecked/hidden) | ✅ | | ✅ | | |
 
-> Note: When "Calculate end date from sections" is checked AND End date is enabled, the date fields are **disabled** because the system auto-calculates the end date from the number of sections. When only End date is enabled (no auto-calc), the fields are **editable**.
+> Note: Rules are logically reduced using "Don't Care" (`-`) notation (Chapter 7). For instance, if the course format is not "Weekly" (C1=F) or if the end date is disabled entirely (C2=F), the value of C3 has no impact on the outcome.
 
 ## 2.7 Test Cases Summary (Feature 002)
 
@@ -435,9 +466,10 @@ Conditions: End date configuration checkboxes. These control whether date picker
 | TC-002-006 | BVA | End date = Start date + 1 day | Accepted |
 | TC-002-007 | BVA | Number of sections = 0 | Accepted |
 | TC-002-008 | ECP | Duplicate short name (SN2) | Error: already exists |
-| TC-002-010 | DT | End date + Auto-calc ON (R1) | End date pickers disabled (auto-calculated) |
-| TC-002-011 | DT | End date ON + Auto-calc OFF (R2) | End date pickers enabled (manual entry) |
-| TC-002-012 | DT | End date OFF (R3) | End date pickers disabled (hidden) |
+| TC-002-010 | DT | End date + Auto-calc ON, Weekly (R5) | End date pickers disabled (auto-calculated) |
+| TC-002-011 | DT | End date ON + Auto-calc OFF, Weekly (R4) | End date pickers enabled (manual entry) |
+| TC-002-011b | DT | End date ON, Not Weekly (R2) | End date pickers enabled (manual entry) |
+| TC-002-012 | DT | End date OFF (R1/R3) | End date pickers disabled (hidden) |
 | TC-002-013 | UC | Happy path S1 | Course created successfully |
 | TC-002-014 | UC | End date disabled S2 | Course created without end date |
 | TC-002-015 | UC | Duplicate short name S4 | Error displayed, return to form |
@@ -486,6 +518,9 @@ Teachers create assignment activities within courses, configuring submission typ
 | min− | 0 | ❌ Error: required |
 | min | 1 | ✅ Accepted |
 | nom | 30 | ✅ Accepted |
+| max− | 254 | ✅ Accepted |
+| max | 255 | ✅ Accepted |
+| max+ | 256 | ❌ Error or truncation |
 
 ### Variable 2: Grade to Pass vs Maximum Grade
 
@@ -763,6 +798,7 @@ Users create personal events on their Moodle calendar, specifying title, date, a
 | min− | 0 | ❌ Error: required |
 | min | 1 | ✅ Accepted |
 | nom | 20 | ✅ Accepted |
+| max− | 254 | ✅ Accepted |
 | max | 255 | ✅ Accepted |
 | max+ | 256 | ❌ Error or truncation |
 
