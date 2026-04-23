@@ -56,125 +56,57 @@ The Site Administration module allows managers to manually create new user accou
 
 ## 1.3 Boundary Value Analysis (BVA)
 
-Following the lecture theory (Chapter 5): For each variable x with bounds a ≤ x ≤ b, the robust BVA test values are: **x(min−), x(min), x(min+), x(nom), x(max−), x(max), x(max+)**.
+**Explanation**: Testing 7 boundary values (`min-`, `min`, `min+`, `nom`, `max-`, `max`, `max+`) for each identified variable. To ensure isolation (Single Fault Assumption), when one variable is tested at a boundary, all other variables are explicitly held at their valid nominal (`nom`) values.
 
-### Variable 1: Username Length
+Applying Robust Single Fault BVA (6n + 1 test cases).
 
-Moodle usernames must be **at least 1 character**, using only lowercase letters, numbers, hyphens, underscores, periods, or `@`. (No maximum length specified).
-
-| BVA Value | Length | Test Input | Expected Result |
-|-----------|--------|------------|-----------------|
-| min− | 0 chars | *(empty)* | ❌ Error: required field |
-| min | 1 char | `a` | ✅ Accepted |
-| min+ | 2 chars | `ab` | ✅ Accepted |
-| nom | 10 chars | `testuser01` | ✅ Accepted |
-
-### Variable 2: Password Length
-
-Subject to password policy, required minimum of **8 characters** and maximum of **128 characters**.
-
-| BVA Value | Length | Test Input | Expected Result |
-|-----------|--------|------------|-----------------|
-| min− | 7 chars | `Abcde1!` | ❌ Error: too short |
-| min | 8 chars | `Abcde1!@` | ✅ Accepted |
-| min+ | 9 chars | `Abcde1!@x` | ✅ Accepted |
-| nom | 12 chars | `Abcde1!@xyzw` | ✅ Accepted |
-| max− | 127 chars | (127-char string meeting rules) | ✅ Accepted |
-| max | 128 chars | (128-char string meeting rules) | ✅ Accepted |
-| max+ | 129 chars | (129-char string meeting rules) | ❌ Error: exceeds maximum |
-
-### Variable 3: First Name Length
-
-A required text field. Moodle enforces a maximum of **100 characters** for the first name.
-
-| BVA Value | Length | Test Input | Expected Result |
-|-----------|--------|------------|-----------------|
-| min− | 0 chars | *(empty)* | ❌ Error: required field |
-| min | 1 char | `A` | ✅ Accepted |
-| min+ | 2 chars | `Ab` | ✅ Accepted |
-| nom | 10 chars | `John` | ✅ Accepted |
-| max− | 99 chars | (99 chars) | ✅ Accepted |
-| max | 100 chars | (100 chars) | ✅ Accepted |
-| max+ | 101 chars | (101 chars) | ❌ Error: exceeds maximum |
-
-### Variable 4: Last Name Length
-
-A required text field. Moodle enforces a maximum of **100 characters** for the last name.
-
-| BVA Value | Length | Test Input | Expected Result |
-|-----------|--------|------------|-----------------|
-| min− | 0 chars | *(empty)* | ❌ Error: required field |
-| min | 1 char | `A` | ✅ Accepted |
-| min+ | 2 chars | `Ab` | ✅ Accepted |
-| nom | 10 chars | `Smith` | ✅ Accepted |
-| max− | 99 chars | (99 chars) | ✅ Accepted |
-| max | 100 chars | (100 chars) | ✅ Accepted |
-| max+ | 101 chars | (101 chars) | ❌ Error: exceeds maximum |
-
-### Variable 5: Email Address Length
-
-A required text field. Maximum of **100 characters**.
-
-| BVA Value | Length | Test Input | Expected Result |
-|-----------|--------|------------|-----------------|
-| min− | 0 chars | *(empty)* | ❌ Error: required field |
-| min | 6 chars | `a@b.co` | ✅ Accepted |
-| min+ | 7 chars | `ab@b.co` | ✅ Accepted |
-| nom | 20 chars | `test@example.com` | ✅ Accepted |
-| max− | 99 chars | (99 chars valid format) | ✅ Accepted |
-| max | 100 chars | (100 chars valid format) | ✅ Accepted |
-| max+ | 101 chars | (101 chars valid format) | ❌ Error: exceeds maximum |
+| TC ID | Technique | Variable Tested | Username | Password | First Name | Last Name | Email | Expected Result |
+|-------|-----------|-----------------|----------|----------|------------|-----------|-------|-----------------|
+| TC-001-001 | BVA | All (nom) | `usr001_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr001_nom@test.com` | ✅ Accepted |
+| TC-001-002 | BVA | V1: Username (min-) | `*(empty)*` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr002_nom@test.com` | ❌ Error |
+| TC-001-003 | BVA | V1: Username (min) | `usr003_u` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr003_nom@test.com` | ✅ Accepted |
+| TC-001-004 | BVA | V1: Username (min+) | `usr004_uu` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr004_nom@test.com` | ✅ Accepted |
+| TC-001-005 | BVA | V1: Username (max-) | `usr005_uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr005_nom@test.com` | ✅ Accepted |
+| TC-001-006 | BVA | V1: Username (max) | `usr006_uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr006_nom@test.com` | ✅ Accepted |
+| TC-001-007 | BVA | V1: Username (max+) | `usr007_uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr007_nom@test.com` | ❌ Error |
+| TC-001-008 | BVA | V2: Password (min-) | `usr008_uuuuuuuuuu` | `ppppppp` | `ffffffffff` | `llllllllll` | `usr008_nom@test.com` | ❌ Error |
+| TC-001-009 | BVA | V2: Password (min) | `usr009_uuuuuuuuuu` | `A1!apppp` | `ffffffffff` | `llllllllll` | `usr009_nom@test.com` | ✅ Accepted |
+| TC-001-010 | BVA | V2: Password (min+) | `usr010_uuuuuuuuuu` | `A1!appppp` | `ffffffffff` | `llllllllll` | `usr010_nom@test.com` | ✅ Accepted |
+| TC-001-011 | BVA | V2: Password (max-) | `usr011_uuuuuuuuuu` | `A1!appppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp` | `ffffffffff` | `llllllllll` | `usr011_nom@test.com` | ✅ Accepted |
+| TC-001-012 | BVA | V2: Password (max) | `usr012_uuuuuuuuuu` | `A1!apppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp` | `ffffffffff` | `llllllllll` | `usr012_nom@test.com` | ✅ Accepted |
+| TC-001-013 | BVA | V2: Password (max+) | `usr013_uuuuuuuuuu` | `A1!appppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp` | `ffffffffff` | `llllllllll` | `usr013_nom@test.com` | ❌ Error |
+| TC-001-014 | BVA | V3: First Name (min-) | `usr014_uuuuuuuuuu` | `A1!apppppppp` | `*(empty)*` | `llllllllll` | `usr014_nom@test.com` | ❌ Error |
+| TC-001-015 | BVA | V3: First Name (min) | `usr015_uuuuuuuuuu` | `A1!apppppppp` | `f` | `llllllllll` | `usr015_nom@test.com` | ✅ Accepted |
+| TC-001-016 | BVA | V3: First Name (min+) | `usr016_uuuuuuuuuu` | `A1!apppppppp` | `ff` | `llllllllll` | `usr016_nom@test.com` | ✅ Accepted |
+| TC-001-017 | BVA | V3: First Name (max-) | `usr017_uuuuuuuuuu` | `A1!apppppppp` | `fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff` | `llllllllll` | `usr017_nom@test.com` | ✅ Accepted |
+| TC-001-018 | BVA | V3: First Name (max) | `usr018_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff` | `llllllllll` | `usr018_nom@test.com` | ✅ Accepted |
+| TC-001-019 | BVA | V3: First Name (max+) | `usr019_uuuuuuuuuu` | `A1!apppppppp` | `fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff` | `llllllllll` | `usr019_nom@test.com` | ❌ Error |
+| TC-001-020 | BVA | V4: Last Name (min-) | `usr020_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `*(empty)*` | `usr020_nom@test.com` | ❌ Error |
+| TC-001-021 | BVA | V4: Last Name (min) | `usr021_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `l` | `usr021_nom@test.com` | ✅ Accepted |
+| TC-001-022 | BVA | V4: Last Name (min+) | `usr022_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `ll` | `usr022_nom@test.com` | ✅ Accepted |
+| TC-001-023 | BVA | V4: Last Name (max-) | `usr023_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll` | `usr023_nom@test.com` | ✅ Accepted |
+| TC-001-024 | BVA | V4: Last Name (max) | `usr024_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll` | `usr024_nom@test.com` | ✅ Accepted |
+| TC-001-025 | BVA | V4: Last Name (max+) | `usr025_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll` | `usr025_nom@test.com` | ❌ Error |
 
 ## 1.4 Equivalence Class Partitioning (ECP)
 
-Following the lecture theory (Chapter 6): Identify **valid** and **invalid** equivalence classes for each variable. For Weak Robust ECP, select one representative from each class.
+**Explanation**: Identifying invalid equivalence classes for each variable. We select one representative invalid value from each class. To prevent fault masking, we apply the Single Fault Assumption by holding all other variables at their valid nominal values.
 
-### Variable 1: Username
+Applying Weak Robust ECP (Single Fault Assumption).
 
-| Class ID | Class Description | Valid/Invalid | Representative Value |
-|----------|-------------------|---------------|----------------------|
-| U1 | Valid characters (lowercase, digits, symbols) | Valid | `johndoe` |
-| U5 | Contains uppercase letters | Invalid | `JohnDoe` |
-| U6 | Contains spaces | Invalid | `john doe` |
-| U7 | Contains special chars (!#$%) | Invalid | `john!doe` |
-| U8 | Empty string | Invalid | *(empty)* |
-| U9 | Already existing username | Invalid | `admin` |
-
-### Variable 2: Password (Complexity Rules)
-
-The password must satisfy ALL of: ≥8 chars, ≥1 digit, ≥1 lowercase, ≥1 uppercase, ≥1 special char.
-
-| Class ID | Class Description | Valid/Invalid | Representative Value |
-|----------|-------------------|---------------|----------------------|
-| P1 | Meets all 4 complexity rules + min length | Valid | `Abcde1!@` |
-| P2 | Missing digit | Invalid | `Abcdefg!` |
-| P3 | Missing uppercase | Invalid | `abcde1!@` |
-| P4 | Missing lowercase | Invalid | `ABCDE1!@` |
-| P5 | Missing special character | Invalid | `Abcdefg1` |
-| P6 | Too short (< 8) but meets complexity | Invalid | `Ab1!xyz` |
-| P7 | Empty string | Invalid | *(empty)* |
-
-### Variable 3: Email Address
-
-| Class ID | Class Description | Valid/Invalid | Representative Value |
-|----------|-------------------|---------------|----------------------|
-| E1 | Standard format (user@domain.tld) | Valid | `test@example.com` |
-| E4 | Missing @ symbol | Invalid | `testexample.com` |
-| E5 | Missing domain | Invalid | `test@` |
-| E6 | Missing local part | Invalid | `@example.com` |
-| E7 | Contains spaces | Invalid | `test @example.com` |
-| E8 | Empty string | Invalid | *(empty)* |
-| E9 | Duplicate email (already in system) | Invalid | *(existing email)* |
-
-### Variable 4: Required Text Fields (First Name, Last Name)
-
-According to strict validation rules, these fields cannot contain only spaces or line breaks.
-
-| Class ID | Class Description | Valid/Invalid | Representative Value |
-|----------|-------------------|---------------|----------------------|
-| R1 | Contains valid text | Valid | `John` |
-| R2 | Only spaces/line breaks | Invalid | `   ` (spaces) |
-| R3 | Empty string | Invalid | *(empty)* |
+| TC ID | Technique | Class Tested | Username | Password | First Name | Last Name | Email | Expected Result |
+|-------|-----------|--------------|----------|----------|------------|-----------|-------|-----------------|
+| TC-001-026 | ECP | Username (U5: Uppercase) | `usr026_UsrNom` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr026_nom@test.com` | ❌ Error |
+| TC-001-027 | ECP | Username (U6: Space) | `usr027_usr nom` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr027_nom@test.com` | ❌ Error |
+| TC-001-028 | ECP | Username (U7: Special) | `usr028_usr!nom` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr028_nom@test.com` | ❌ Error |
+| TC-001-029 | ECP | Username (U9: Duplicate) | `admin` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr029_nom@test.com` | ❌ Error |
+| TC-001-030 | ECP | Password (P2: No digit) | `usr030_usr` | `Abcdefg!@` | `ffffffffff` | `llllllllll` | `usr030_nom@test.com` | ❌ Error |
+| TC-001-031 | ECP | Password (P3: No uppercase) | `usr031_usr` | `abcdefg1!@` | `ffffffffff` | `llllllllll` | `usr031_nom@test.com` | ❌ Error |
+| TC-001-032 | ECP | Password (P4: No lowercase) | `usr032_usr` | `ABCDEFG1!@` | `ffffffffff` | `llllllllll` | `usr032_nom@test.com` | ❌ Error |
+| TC-001-033 | ECP | Password (P5: No special) | `usr033_usr` | `Abcdefg123` | `ffffffffff` | `llllllllll` | `usr033_nom@test.com` | ❌ Error |
+| TC-001-034 | ECP | Email (E4: No @) | `usr034_usr` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `testexample.com` | ❌ Error |
+| TC-001-035 | ECP | Email (E5: No domain) | `usr035_usr` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `test@` | ❌ Error |
+| TC-001-036 | ECP | Email (E7: Space) | `usr036_usr` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `te st@ex.com` | ❌ Error |
 
 ## 1.5 Use-Case Testing
 
@@ -244,6 +176,8 @@ flowchart TD
 
 ## 1.6 Decision Table (Bonus)
 
+**Explanation**: Decision Tables are used to model complex business logic where different combinations of conditions (inputs) yield specific actions (outputs). We map out the rules to ensure complete coverage of the logic constraints before deriving test cases.
+
 Conditions: Password policy components. Testing combinations that should pass vs. fail.
 
 | Rule | R1 | R2 | R3 | R4 | R5 | R6 |
@@ -260,42 +194,20 @@ Conditions: Password policy components. Testing combinations that should pass vs
 
 ## 1.7 Test Cases Summary (Feature 001)
 
-| TC ID | Technique | Test Case Name | Precondition | Steps | Expected Result |
-|-------|-----------|----------------|--------------|-------|-----------------|
-| TC-001-001 | BVA | Password length = 7 (min−) | Logged in as manager, on Add User page | Enter 7-char password | Error: too short |
-| TC-001-002 | BVA | Password length = 8 (min) | Same | Enter 8-char valid password | Accepted |
-| TC-001-002b | BVA | Password length = 128 (max) | Same | Enter 128-char valid password | Accepted |
-| TC-001-002c | BVA | Password length = 129 (max+) | Same | Enter 129-char password | Error: exceeds maximum |
-| TC-001-003 | BVA | Username length = 0 (min−) | Same | Leave username empty | Error: required field |
-| TC-001-004 | BVA | Username length = 1 (min) | Same | Enter 1-char username `a` | Accepted |
-| TC-001-005 | BVA | First name empty (min−) | Same | Leave first name empty | Error: required field |
-| TC-001-005b | BVA | First name = 100 chars (max) | Same | Enter 100-char first name | Accepted |
-| TC-001-005c | BVA | First name = 101 chars (max+) | Same | Enter 101-char first name | Error: exceeds maximum |
-| TC-001-006 | BVA | Last name empty (min−) | Same | Leave last name empty | Error: required field |
-| TC-001-006b | BVA | Last name = 100 chars (max) | Same | Enter 100-char last name | Accepted |
-| TC-001-006c | BVA | Last name = 101 chars (max+) | Same | Enter 101-char last name | Error: exceeds maximum |
-| TC-001-006d | BVA | Email length = 0 (min−) | Same | Leave email empty | Error: required field |
-| TC-001-006e | BVA | Email length = 100 (max) | Same | Enter 100-char valid email | Accepted |
-| TC-001-006f | BVA | Email length = 101 (max+) | Same | Enter 101-char valid email | Error: exceeds maximum |
-| TC-001-007 | ECP | Required field spaces only (R2) | Same | Enter only spaces in First Name | Error: required field |
-| TC-001-011 | ECP | Username with uppercase (U5) | Same | Username `JohnDoe` | Error: invalid characters |
-| TC-001-012 | ECP | Username with space (U6) | Same | Username `john doe` | Error: invalid characters |
-| TC-001-013 | ECP | Username already exists (U9) | Same | Username `admin` | Error: username already exists |
-| TC-001-014 | ECP | Password missing digit (P2) | Same | Password `Abcdefg!` | Error: must have 1 digit |
-| TC-001-015 | ECP | Password missing uppercase (P3) | Same | Password `abcde1!@` | Error: must have uppercase |
-| TC-001-016 | ECP | Password missing lowercase (P4) | Same | Password `ABCDE1!@` | Error: must have lowercase |
-| TC-001-017 | ECP | Password missing special char (P5) | Same | Password `Abcdefg1` | Error: must have special |
-| TC-001-018 | ECP | Email missing @ (E4) | Same | Email `testexample.com` | Error: invalid email |
-| TC-001-019 | ECP | Email missing domain (E5) | Same | Email `test@` | Error: invalid email |
-| TC-001-020 | ECP | Email with spaces (E7) | Same | Email `test @ex.com` | Error: invalid email |
-| TC-001-021 | ECP | Valid email standard (E1) | Same | Email `valid@example.com` | Accepted |
-| TC-001-022 | UC | Happy path (S1) | Same | All fields valid, manual password | User created |
-| TC-001-023 | UC | Generate password path (S2) | Same | Check "Generate password", skip password field | User created |
-| TC-001-024 | UC | Duplicate username exception (S3) | Same | Enter existing username | Error shown |
-| TC-001-025 | UC | Empty required fields (S6) | Same | Leave first name/last name empty | Error shown |
-| TC-001-026 | DT | All password rules met (R1) | Same | `Abcde1!@` | Accepted |
-| TC-001-027 | DT | Missing special char (R2) | Same | `Abcdefg1` | Rejected |
-| TC-001-028 | DT | Missing lowercase (R3) | Same | `ABCDE1!@` | Rejected |
+The full details of BVA and ECP test cases are listed in their respective sections above to maintain readability. The table below covers the Use-Case and Decision Table test cases.
+
+| TC ID | Technique | Test Case Name | Username | Password | First Name | Last Name | Email | Expected Result |
+|-------|-----------|----------------|----------|----------|------------|-----------|-------|-----------------|
+| TC-001-037 | UC | Happy path (S1) | `usr037_usr` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr037_nom@test.com` | ✅ Accepted |
+| TC-001-038 | UC | Generate password (S2) | `usr038_usr` | `*(empty)*` | `ffffffffff` | `llllllllll` | `usr038_nom@test.com` | ✅ Accepted |
+| TC-001-039 | UC | Duplicate username (S3) | `admin` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr039_nom@test.com` | ❌ Error |
+| TC-001-040 | UC | Invalid password (S4) | `usr040_usr` | `invalid` | `ffffffffff` | `llllllllll` | `usr040_nom@test.com` | ❌ Error |
+| TC-001-041 | UC | Invalid email (S5) | `usr041_usr` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `invalid` | ❌ Error |
+| TC-001-042 | UC | Empty required (S6) | `usr042_usr` | `A1!apppppppp` | `*(empty)*` | `llllllllll` | `usr042_nom@test.com` | ❌ Error |
+| TC-001-043 | DT | All rules met (R1) | `usr043_usr` | `Abcde1!@` | `ffffffffff` | `llllllllll` | `usr043_nom@test.com` | ✅ Accepted |
+| TC-001-044 | DT | Missing lowercase (R2) | `usr044_usr` | `ABCDE1!@` | `ffffffffff` | `llllllllll` | `usr044_nom@test.com` | ❌ Error |
+| TC-001-045 | DT | Missing uppercase (R3) | `usr045_usr` | `abcde1!@` | `ffffffffff` | `llllllllll` | `usr045_nom@test.com` | ❌ Error |
+
 
 ---
 
@@ -330,55 +242,47 @@ Managers can create new course spaces with configurable settings. The form enfor
 
 ## 2.3 Boundary Value Analysis (BVA)
 
-### Variable 1: Course Full Name Length
+**Explanation**: Testing 7 boundary values (`min-`, `min`, `min+`, `nom`, `max-`, `max`, `max+`) for each identified variable. To ensure isolation (Single Fault Assumption), when one variable is tested at a boundary, all other variables are explicitly held at their valid nominal (`nom`) values.
 
-| BVA Value | Length | Test Input | Expected Result |
-|-----------|--------|------------|-----------------|
-| min− | 0 chars | *(empty)* | ❌ Error: required |
-| min | 1 char | `A` | ✅ Accepted |
-| min+ | 2 chars | `Ab` | ✅ Accepted |
-| nom | 20 chars | `Introduction to CS` | ✅ Accepted |
+Applying Robust Single Fault BVA (6n + 1 test cases).
 
-### Variable 2: Course Short Name Length
-
-| BVA Value | Length | Test Input | Expected Result |
-|-----------|--------|------------|-----------------|
-| min− | 0 chars | *(empty)* | ❌ Error: required |
-| min | 1 char | `X` | ✅ Accepted (if unique) |
-| min+ | 2 chars | `XY` | ✅ Accepted (if unique) |
-| nom | 8 chars | `CS101-S2` | ✅ Accepted |
-
-### Variable 3: Date Chronology (End Date relative to Start Date)
-
-Let Start Date = January 10, 2026.
-
-| BVA Value | End Date | Expected Result |
-|-----------|----------|-----------------|
-| min− (before start) | January 9, 2026 | ❌ Error: end date must be after start date |
-| min (equal to start) | January 10, 2026 | ❌ / Edge case |
-| min+ (1 day after) | January 11, 2026 | ✅ Accepted |
-| nom | June 30, 2026 | ✅ Accepted |
-
-### Variable 4: Number of Sections
-
-Default 10, typically range 0–52.
-
-| BVA Value | Value | Expected Result |
-|-----------|-------|-----------------|
-| min | 0 | ✅ Accepted (course with no sections) |
-| min+ | 1 | ✅ Accepted |
-| nom | 10 | ✅ Accepted |
-| max | 52 | ✅ Accepted |
+| TC ID | Technique | Variable Tested | Full Name | Short Name | End Date | Sections | Expected Result |
+|-------|-----------|-----------------|-----------|------------|----------|----------|-----------------|
+| TC-002-001 | BVA | All (nom) | `fn001_nnnnnnnnnnnnnnnnnnnn` | `sn001_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-002 | BVA | V1: Full Name Length (min-) | `*(empty)*` | `sn002_ssssssss` | `Start + 30 days` | `10` | ❌ Error |
+| TC-002-003 | BVA | V1: Full Name Length (min) | `fn003_n` | `sn003_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-004 | BVA | V1: Full Name Length (min+) | `fn004_nn` | `sn004_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-005 | BVA | V1: Full Name Length (max-) | `fn005_nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn` | `sn005_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-006 | BVA | V1: Full Name Length (max) | `fn006_nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn` | `sn006_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-007 | BVA | V1: Full Name Length (max+) | `fn007_nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn` | `sn007_ssssssss` | `Start + 30 days` | `10` | ❌ Error |
+| TC-002-008 | BVA | V2: Short Name Length (min-) | `fn008_nnnnnnnnnnnnnnnnnnnn` | `*(empty)*` | `Start + 30 days` | `10` | ❌ Error |
+| TC-002-009 | BVA | V2: Short Name Length (min) | `fn009_nnnnnnnnnnnnnnnnnnnn` | `sn009_s` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-010 | BVA | V2: Short Name Length (min+) | `fn010_nnnnnnnnnnnnnnnnnnnn` | `sn010_ss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-011 | BVA | V2: Short Name Length (max-) | `fn011_nnnnnnnnnnnnnnnnnnnn` | `sn011_ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-012 | BVA | V2: Short Name Length (max) | `fn012_nnnnnnnnnnnnnnnnnnnn` | `sn012_ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-013 | BVA | V2: Short Name Length (max+) | `fn013_nnnnnnnnnnnnnnnnnnnn` | `sn013_ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss` | `Start + 30 days` | `10` | ❌ Error |
+| TC-002-014 | BVA | V3: End Date Chronology (min-) | `fn014_nnnnnnnnnnnnnnnnnnnn` | `sn014_ssssssss` | `Start - 1 day` | `10` | ❌ Error |
+| TC-002-015 | BVA | V3: End Date Chronology (min) | `fn015_nnnnnnnnnnnnnnnnnnnn` | `sn015_ssssssss` | `Start Date` | `10` | ❌ Error |
+| TC-002-016 | BVA | V3: End Date Chronology (min+) | `fn016_nnnnnnnnnnnnnnnnnnnn` | `sn016_ssssssss` | `Start + 1 day` | `10` | ✅ Accepted |
+| TC-002-017 | BVA | V3: End Date Chronology (max-) | `fn017_nnnnnnnnnnnnnnnnnnnn` | `sn017_ssssssss` | `Start + 10 yrs` | `10` | ✅ Accepted |
+| TC-002-018 | BVA | V3: End Date Chronology (max) | `fn018_nnnnnnnnnnnnnnnnnnnn` | `sn018_ssssssss` | `Start + 11 yrs` | `10` | ✅ Accepted |
+| TC-002-019 | BVA | V3: End Date Chronology (max+) | `fn019_nnnnnnnnnnnnnnnnnnnn` | `sn019_ssssssss` | `Start + 12 yrs` | `10` | ✅ Accepted |
+| TC-002-020 | BVA | V4: Number of Sections (min-) | `fn020_nnnnnnnnnnnnnnnnnnnn` | `sn020_ssssssss` | `Start + 30 days` | `-1` | ❌ Error |
+| TC-002-021 | BVA | V4: Number of Sections (min) | `fn021_nnnnnnnnnnnnnnnnnnnn` | `sn021_ssssssss` | `Start + 30 days` | `0` | ✅ Accepted |
+| TC-002-022 | BVA | V4: Number of Sections (min+) | `fn022_nnnnnnnnnnnnnnnnnnnn` | `sn022_ssssssss` | `Start + 30 days` | `1` | ✅ Accepted |
+| TC-002-023 | BVA | V4: Number of Sections (max-) | `fn023_nnnnnnnnnnnnnnnnnnnn` | `sn023_ssssssss` | `Start + 30 days` | `51` | ✅ Accepted |
+| TC-002-024 | BVA | V4: Number of Sections (max) | `fn024_nnnnnnnnnnnnnnnnnnnn` | `sn024_ssssssss` | `Start + 30 days` | `52` | ✅ Accepted |
+| TC-002-025 | BVA | V4: Number of Sections (max+) | `fn025_nnnnnnnnnnnnnnnnnnnn` | `sn025_ssssssss` | `Start + 30 days` | `53` | ❌ Error |
 
 ## 2.4 Equivalence Class Partitioning (ECP)
 
-### Variable 1: Course Short Name
+**Explanation**: Identifying invalid equivalence classes for each variable. We select one representative invalid value from each class. To prevent fault masking, we apply the Single Fault Assumption by holding all other variables at their valid nominal values.
 
-| Class ID | Description | Valid/Invalid | Representative |
-|----------|-------------|---------------|----------------|
-| SN1 | Alphanumeric unique | Valid | `CS101-NEW` |
-| SN2 | Already existing short name | Invalid | *(duplicate)* |
-| SN3 | Empty | Invalid | *(empty)* |
+Applying Weak Robust ECP (Single Fault Assumption).
+
+| TC ID | Technique | Class Tested | Full Name | Short Name | End Date | Sections | Expected Result |
+|-------|-----------|--------------|-----------|------------|----------|----------|-----------------|
+| TC-002-026 | ECP | Short Name (SN2: Duplicate) | `fn026_nnnnnnnnnnnnnnnnnnnn` | `TC001` | `Start + 30 days` | `10` | ❌ Error |
 
 ## 2.5 Use-Case Testing
 
@@ -441,6 +345,8 @@ flowchart TD
 
 ## 2.6 Decision Table (Bonus)
 
+**Explanation**: Decision Tables are used to model complex business logic where different combinations of conditions (inputs) yield specific actions (outputs). We map out the rules to ensure complete coverage of the logic constraints before deriving test cases.
+
 Conditions: Course format and End date configuration checkboxes. According to the documentation, "Calculate the end date from the number of sections" is available **for courses in weekly format only**.
 
 | Rule | R1 | R2 | R3 | R4 | R5 |
@@ -456,24 +362,18 @@ Conditions: Course format and End date configuration checkboxes. According to th
 
 ## 2.7 Test Cases Summary (Feature 002)
 
-| TC ID | Technique | Test Case Name | Expected Result |
-|-------|-----------|----------------|-----------------|
-| TC-002-001 | BVA | Full name empty (min−) | Error: required |
-| TC-002-002 | BVA | Full name 1 char (min) | Accepted |
-| TC-002-003 | BVA | Short name empty (min−) | Error: required |
-| TC-002-004 | BVA | Short name 1 char unique (min) | Accepted |
-| TC-002-005 | BVA | End date = Start date − 1 day | Error: date conflict |
-| TC-002-006 | BVA | End date = Start date + 1 day | Accepted |
-| TC-002-007 | BVA | Number of sections = 0 | Accepted |
-| TC-002-008 | ECP | Duplicate short name (SN2) | Error: already exists |
-| TC-002-010 | DT | End date + Auto-calc ON, Weekly (R5) | End date pickers disabled (auto-calculated) |
-| TC-002-011 | DT | End date ON + Auto-calc OFF, Weekly (R4) | End date pickers enabled (manual entry) |
-| TC-002-011b | DT | End date ON, Not Weekly (R2) | End date pickers enabled (manual entry) |
-| TC-002-012 | DT | End date OFF (R1/R3) | End date pickers disabled (hidden) |
-| TC-002-013 | UC | Happy path S1 | Course created successfully |
-| TC-002-014 | UC | End date disabled S2 | Course created without end date |
-| TC-002-015 | UC | Duplicate short name S4 | Error displayed, return to form |
-| TC-002-016 | UC | Date conflict S5 | Error, return to form |
+The full details of BVA and ECP test cases are listed in their respective sections above to maintain readability. The table below covers the Use-Case and Decision Table test cases.
+
+| TC ID | Technique | Test Case Name | Full Name | Short Name | End Date | Sections | Expected Result |
+|-------|-----------|----------------|-----------|------------|----------|----------|-----------------|
+| TC-002-027 | DT | End date + Auto-calc ON | `fn027_nnnnnnnnnnnnnnnnnnnn` | `sn027_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-028 | DT | End date ON + Auto-calc OFF | `fn028_nnnnnnnnnnnnnnnnnnnn` | `sn028_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-029 | DT | End date OFF | `fn029_nnnnnnnnnnnnnnnnnnnn` | `sn029_ssssssss` | `Disabled` | `10` | ✅ Accepted |
+| TC-002-030 | UC | Happy path S1 | `fn030_nnnnnnnnnnnnnnnnnnnn` | `sn030_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-031 | UC | End date disabled S2 | `fn031_nnnnnnnnnnnnnnnnnnnn` | `sn031_ssssssss` | `Disabled` | `10` | ✅ Accepted |
+| TC-002-032 | UC | Duplicate short name S4 | `fn032_nnnnnnnnnnnnnnnnnnnn` | `TC001` | `Start + 30 days` | `10` | ❌ Error |
+| TC-002-033 | UC | Date conflict S5 | `fn033_nnnnnnnnnnnnnnnnnnnn` | `sn033_ssssssss` | `Start - 1 day` | `10` | ❌ Error |
+
 
 ---
 
@@ -600,6 +500,8 @@ flowchart TD
 
 ## 3.6 Decision Table (Bonus)
 
+**Explanation**: Decision Tables are used to model complex business logic where different combinations of conditions (inputs) yield specific actions (outputs). We map out the rules to ensure complete coverage of the logic constraints before deriving test cases.
+
 Conditions: Submission type checkboxes. These checkboxes control field visibility on the form — verifiable UI changes.
 
 | Rule | R1 | R2 | R3 | R4 |
@@ -614,22 +516,19 @@ Conditions: Submission type checkboxes. These checkboxes control field visibilit
 
 ## 3.7 Test Cases Summary (Feature 003)
 
-| TC ID | Technique | Test Case Name | Expected Result |
-|-------|-----------|----------------|-----------------|
-| TC-003-001 | BVA | Assignment name empty | Error: required |
-| TC-003-002 | BVA | Assignment name 1 char | Accepted |
-| TC-003-005 | BVA | Grade to pass = 101 (max+) | Error: exceeds max |
-| TC-003-006 | BVA | Grade to pass = 100 (max) | Accepted |
-| TC-003-007 | BVA | Due date before Allow from | Error: date conflict |
-| TC-003-008 | BVA | Cut-off before Due date | Error: date conflict |
-| TC-003-009 | DT | File + Online text both on (R1) | Max files, Max size, Accepted types, Word limit all visible |
-| TC-003-010 | DT | File only (R2) | Max files, Max size, Accepted types visible; Word limit hidden |
-| TC-003-011 | DT | Online text only (R3) | Word limit visible; file fields hidden |
-| TC-003-012 | DT | Both off (R4) | All submission fields hidden |
-| TC-003-013 | UC | Happy path S1 | Assignment created |
-| TC-003-014 | UC | No due date S2 | Created as open-ended |
-| TC-003-015 | UC | Empty name error S4 | Error shown |
-| TC-003-016 | UC | Date conflict S5 | Error shown |
+The full details of BVA and ECP test cases are listed in their respective sections above to maintain readability. The table below covers the Use-Case and Decision Table test cases.
+
+| TC ID | Technique | Test Case Name | Assig. Name | Grade to Pass | Due Date | Cut-off Date | Expected Result |
+|-------|-----------|----------------|-------------|---------------|----------|--------------|-----------------|
+| TC-003-026 | DT | File + Online both on | `an026_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-027 | DT | File only | `an027_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-028 | DT | Online text only | `an028_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-029 | DT | Both off | `an029_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-030 | UC | Happy path | `an030_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-031 | UC | No due date | `an031_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Disabled` | `Due + 7 days` | ✅ Accepted |
+| TC-003-032 | UC | Empty name error | `*(empty)*` | `50` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
+| TC-003-033 | UC | Date conflict | `an033_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow - 1 day` | `Due + 7 days` | ❌ Error |
+
 
 ---
 
@@ -656,31 +555,33 @@ The grading interface allows teachers to assign numerical scores and provide fee
 
 ## 4.3 Boundary Value Analysis (BVA)
 
-### Variable 1: Grade Value (Range 0–100)
+**Explanation**: Testing 7 boundary values (`min-`, `min`, `min+`, `nom`, `max-`, `max`, `max+`) for each identified variable. To ensure isolation (Single Fault Assumption), when one variable is tested at a boundary, all other variables are explicitly held at their valid nominal (`nom`) values.
 
-| BVA Value | Input | Expected Result |
-|-----------|-------|-----------------|
-| min− | −1 | ❌ Rejected (below minimum) |
-| min | 0 | ✅ Accepted |
-| min+ | 0.01 | ✅ Accepted |
-| nom | 50 | ✅ Accepted |
-| max− | 99.99 | ✅ Accepted |
-| max | 100 | ✅ Accepted |
-| max+ | 100.01 | ❌ Rejected (exceeds maximum) |
-| max++ | 101 | ❌ Rejected |
+Applying Robust Single Fault BVA (6n + 1 test cases).
+
+| TC ID | Technique | Variable Tested | Grade Value | Feedback | Notify | Expected Result |
+|-------|-----------|-----------------|-------------|----------|--------|-----------------|
+| TC-004-001 | BVA | All (nom) | `50` | `Good work` | `Yes` | ✅ Accepted |
+| TC-004-002 | BVA | V1: Grade Value (min-) | `-0.01` | `Good work` | `Yes` | ❌ Error |
+| TC-004-003 | BVA | V1: Grade Value (min) | `0` | `Good work` | `Yes` | ✅ Accepted |
+| TC-004-004 | BVA | V1: Grade Value (min+) | `0.01` | `Good work` | `Yes` | ✅ Accepted |
+| TC-004-005 | BVA | V1: Grade Value (max-) | `99.99` | `Good work` | `Yes` | ✅ Accepted |
+| TC-004-006 | BVA | V1: Grade Value (max) | `100` | `Good work` | `Yes` | ✅ Accepted |
+| TC-004-007 | BVA | V1: Grade Value (max+) | `100.01` | `Good work` | `Yes` | ❌ Error |
 
 ## 4.4 Equivalence Class Partitioning (ECP)
 
-### Variable 1: Grade Input Data Type
+**Explanation**: Identifying invalid equivalence classes for each variable. We select one representative invalid value from each class. To prevent fault masking, we apply the Single Fault Assumption by holding all other variables at their valid nominal values.
 
-| Class ID | Description | Valid/Invalid | Representative |
-|----------|-------------|---------------|----------------|
-| G1 | Integer within range | Valid | `85` |
-| G5 | Negative number | Invalid | `-5` |
-| G6 | Above maximum | Invalid | `105` |
-| G7 | Alphabetic string | Invalid | `abc` |
-| G8 | Special characters | Invalid | `!@#` |
-| G9 | Empty (no grade) | Valid | *(empty — leave ungraded)* |
+Applying Weak Robust ECP (Single Fault Assumption).
+
+| TC ID | Technique | Class Tested | Grade Value | Feedback | Notify | Expected Result |
+|-------|-----------|--------------|-------------|----------|--------|-----------------|
+| TC-004-008 | ECP | Grade (G5: Negative) | `-5` | `Good work` | `Yes` | ❌ Error |
+| TC-004-009 | ECP | Grade (G6: Above max) | `105` | `Good work` | `Yes` | ❌ Error |
+| TC-004-010 | ECP | Grade (G7: Alphabetic) | `abc` | `Good work` | `Yes` | ❌ Error |
+| TC-004-011 | ECP | Grade (G8: Special chars) | `!@#` | `Good work` | `Yes` | ❌ Error |
+| TC-004-012 | ECP | Grade (G9: Empty) | `*(empty)*` | `Good work` | `Yes` | ✅ Accepted |
 
 ## 4.5 Use-Case Testing
 
@@ -791,49 +692,43 @@ Users create personal events on their Moodle calendar, specifying title, date, a
 
 ## 5.3 Boundary Value Analysis (BVA)
 
-### Variable 1: Event Title Length
+**Explanation**: Testing 7 boundary values (`min-`, `min`, `min+`, `nom`, `max-`, `max`, `max+`) for each identified variable. To ensure isolation (Single Fault Assumption), when one variable is tested at a boundary, all other variables are explicitly held at their valid nominal (`nom`) values.
 
-| BVA Value | Length | Expected Result |
-|-----------|--------|-----------------|
-| min− | 0 | ❌ Error: required |
-| min | 1 | ✅ Accepted |
-| nom | 20 | ✅ Accepted |
-| max− | 254 | ✅ Accepted |
-| max | 255 | ✅ Accepted |
-| max+ | 256 | ❌ Error or truncation |
+Applying Robust Single Fault BVA (6n + 1 test cases).
 
-### Variable 2: Duration in Minutes
-
-| BVA Value | Value | Expected Result |
-|-----------|-------|-----------------|
-| min− | −1 | ❌ Error: negative duration |
-| min | 0 | Edge case (instantaneous event) |
-| min+ | 1 | ✅ Accepted |
-| nom | 60 | ✅ Accepted |
-| nom+ | 120 | ✅ Accepted |
-
-### Variable 3: Until Date (relative to Event Date)
-
-Let Event Date = Jan 10.
-
-| BVA | Until Date | Expected Result |
-|-----|-----------|-----------------|
-| before event | Jan 9 | ❌ Error |
-| same as event | Jan 10 | Edge case |
-| after event | Jan 11 | ✅ Accepted |
+| TC ID | Technique | Variable Tested | Event Title | Duration Min | Until Date | Expected Result |
+|-------|-----------|-----------------|-------------|--------------|------------|-----------------|
+| TC-005-001 | BVA | All (nom) | `t001_tttttttttttttttttttt` | `60` | `Event + 7 days` | ✅ Accepted |
+| TC-005-002 | BVA | V1: Title Length (min-) | `*(empty)*` | `60` | `Event + 7 days` | ❌ Error |
+| TC-005-003 | BVA | V1: Title Length (min) | `t003_t` | `60` | `Event + 7 days` | ✅ Accepted |
+| TC-005-004 | BVA | V1: Title Length (min+) | `t004_tt` | `60` | `Event + 7 days` | ✅ Accepted |
+| TC-005-005 | BVA | V1: Title Length (max-) | `t005_tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt` | `60` | `Event + 7 days` | ✅ Accepted |
+| TC-005-006 | BVA | V1: Title Length (max) | `t006_tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt` | `60` | `Event + 7 days` | ✅ Accepted |
+| TC-005-007 | BVA | V1: Title Length (max+) | `t007_tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt` | `60` | `Event + 7 days` | ❌ Error |
+| TC-005-008 | BVA | V2: Duration Mins (min-) | `t008_tttttttttttttttttttt` | `-1` | `Event + 7 days` | ❌ Error |
+| TC-005-009 | BVA | V2: Duration Mins (min) | `t009_tttttttttttttttttttt` | `0` | `Event + 7 days` | ✅ Accepted |
+| TC-005-010 | BVA | V2: Duration Mins (min+) | `t010_tttttttttttttttttttt` | `1` | `Event + 7 days` | ✅ Accepted |
+| TC-005-011 | BVA | V2: Duration Mins (max-) | `t011_tttttttttttttttttttt` | `998` | `Event + 7 days` | ✅ Accepted |
+| TC-005-012 | BVA | V2: Duration Mins (max) | `t012_tttttttttttttttttttt` | `999` | `Event + 7 days` | ✅ Accepted |
+| TC-005-013 | BVA | V2: Duration Mins (max+) | `t013_tttttttttttttttttttt` | `1000` | `Event + 7 days` | ✅ Accepted |
+| TC-005-014 | BVA | V3: Until Date (min-) | `t014_tttttttttttttttttttt` | `60` | `Event - 1 day` | ❌ Error |
+| TC-005-015 | BVA | V3: Until Date (min) | `t015_tttttttttttttttttttt` | `60` | `Event Date` | ✅ Accepted |
+| TC-005-016 | BVA | V3: Until Date (min+) | `t016_tttttttttttttttttttt` | `60` | `Event + 1 day` | ✅ Accepted |
+| TC-005-017 | BVA | V3: Until Date (max-) | `t017_tttttttttttttttttttt` | `60` | `Event + 10 yrs` | ✅ Accepted |
+| TC-005-018 | BVA | V3: Until Date (max) | `t018_tttttttttttttttttttt` | `60` | `Event + 11 yrs` | ✅ Accepted |
+| TC-005-019 | BVA | V3: Until Date (max+) | `t019_tttttttttttttttttttt` | `60` | `Event + 12 yrs` | ✅ Accepted |
 
 ## 5.4 Equivalence Class Partitioning (ECP)
 
-### Variable 1: Duration Type
+**Explanation**: Identifying invalid equivalence classes for each variable. We select one representative invalid value from each class. To prevent fault masking, we apply the Single Fault Assumption by holding all other variables at their valid nominal values.
 
-| Class ID | Description | Valid/Invalid | Representative |
-|----------|-------------|---------------|----------------|
-| DT1 | Without duration | Valid | Radio: None |
-| DT2 | Duration in minutes (positive int) | Valid | `60` |
-| DT3 | Until date (valid future date) | Valid | Date after start |
-| DT4 | Duration in minutes (float) | Invalid | `1.5` |
-| DT5 | Duration in minutes (text) | Invalid | `abc` |
-| DT6 | Duration in minutes (negative) | Invalid | `-10` |
+Applying Weak Robust ECP (Single Fault Assumption).
+
+| TC ID | Technique | Class Tested | Event Title | Duration Min | Until Date | Expected Result |
+|-------|-----------|--------------|-------------|--------------|------------|-----------------|
+| TC-005-020 | ECP | Duration (DT4: Float) | `t020_tttttttttttttttttttt` | `1.5` | `Event + 7 days` | ❌ Error |
+| TC-005-021 | ECP | Duration (DT5: Text) | `t021_tttttttttttttttttttt` | `abc` | `Event + 7 days` | ❌ Error |
+| TC-005-022 | ECP | Duration (DT6: Negative) | `t022_tttttttttttttttttttt` | `-10` | `Event + 7 days` | ❌ Error |
 
 ## 5.5 Use-Case Testing
 
@@ -871,6 +766,8 @@ flowchart TD
 
 ## 5.6 Decision Table (Bonus)
 
+**Explanation**: Decision Tables are used to model complex business logic where different combinations of conditions (inputs) yield specific actions (outputs). We map out the rules to ensure complete coverage of the logic constraints before deriving test cases.
+
 Conditions: Duration radio selection and Repeat checkbox. These control which fields are visible/enabled — verifiable UI changes.
 
 | Rule | R1 | R2 | R3 | R4 | R5 | R6 |
@@ -884,27 +781,18 @@ Conditions: Duration radio selection and Repeat checkbox. These control which fi
 
 ## 5.7 Test Cases Summary (Feature 005)
 
-| TC ID | Technique | Test Case Name | Expected Result |
-|-------|-----------|----------------|-----------------|
-| TC-005-001 | BVA | Title empty (min−) | Error: required |
-| TC-005-002 | BVA | Title 1 char (min) | Accepted |
-| TC-005-003 | BVA | Title 255 chars (max) | Accepted |
-| TC-005-004 | BVA | Duration = −1 (min−) | Error: negative |
-| TC-005-005 | BVA | Duration = 0 | Edge case |
-| TC-005-006 | BVA | Duration = 1 (min+) | Accepted |
-| TC-005-007 | BVA | Duration = 60 (nom) | Accepted |
-| TC-005-008 | BVA | Until date before event date | Error |
-| TC-005-009 | ECP | Duration type = minutes int (DT2) | Accepted |
-| TC-005-010 | ECP | Duration type = float (DT4) | Rejected |
-| TC-005-011 | ECP | Duration type = text (DT5) | Rejected |
-| TC-005-012 | ECP | Duration type = negative (DT6) | Rejected |
-| TC-005-013 | DT | Without duration, no repeat (R1) | Duration fields hidden, repeat hidden |
-| TC-005-014 | DT | Until mode, no repeat (R2) | Until date picker visible |
-| TC-005-015 | DT | Minutes mode + repeat (R6) | Minutes input + repeat count visible |
-| TC-005-016 | UC | Happy path S1 | Event on calendar |
-| TC-005-017 | UC | With minutes S2 | Event with duration |
-| TC-005-018 | UC | Empty title error S4 | Error shown |
-| TC-005-019 | UC | Negative duration S5 | Error shown |
+The full details of BVA and ECP test cases are listed in their respective sections above to maintain readability. The table below covers the Use-Case and Decision Table test cases.
+
+| TC ID | Technique | Test Case Name | Event Title | Duration Min | Until Date | Expected Result |
+|-------|-----------|----------------|-------------|--------------|------------|-----------------|
+| TC-005-023 | DT | Without duration | `t023_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-005-024 | DT | Until mode | `t024_tttttttttttttttttttt` | `Disabled` | `Event + 7 days` | ✅ Accepted |
+| TC-005-025 | DT | Minutes mode + repeat | `t025_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
+| TC-005-026 | UC | Happy path | `t026_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-005-027 | UC | With minutes | `t027_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
+| TC-005-028 | UC | Empty title error | `*(empty)*` | `60` | `Event + 7 days` | ❌ Error |
+| TC-005-029 | UC | Negative duration | `t029_tttttttttttttttttttt` | `-10` | `Event + 7 days` | ❌ Error |
+
 
 ---
 
@@ -940,44 +828,41 @@ Teachers create Quiz activities with configurable grading rules, attempt limits,
 
 ## 6.3 Boundary Value Analysis (BVA)
 
-### Variable 1: Grade to Pass (Max grade default = 10.00)
+**Explanation**: Testing 7 boundary values (`min-`, `min`, `min+`, `nom`, `max-`, `max`, `max+`) for each identified variable. To ensure isolation (Single Fault Assumption), when one variable is tested at a boundary, all other variables are explicitly held at their valid nominal (`nom`) values.
 
-| BVA Value | Input | Expected Result |
-|-----------|-------|-----------------|
-| min− | −0.01 | ❌ Rejected |
-| min | 0.00 | ✅ Accepted (no pass threshold) |
-| min+ | 0.01 | ✅ Accepted |
-| nom | 5.00 | ✅ Accepted |
-| max− | 9.99 | ✅ Accepted |
-| max | 10.00 | ✅ Accepted |
-| max+ | 10.01 | ❌ Error: exceeds maximum grade |
+Applying Robust Single Fault BVA (6n + 1 test cases).
 
-### Variable 2: Time Limit (if enabled)
-
-| BVA Value | Value | Expected Result |
-|-----------|-------|-----------------|
-| min | 1 minute | ✅ Accepted |
-| nom | 30 minutes | ✅ Accepted |
-| max | Large value (e.g., 999) | ✅ Accepted |
-| invalid | 0 | ❌ Edge case |
-| invalid | −1 | ❌ Rejected |
-
-### Variable 3: Close Date vs Open Date
-
-| BVA | Close Date | Expected Result |
-|-----|-----------|-----------------|
-| before open | Open − 1 day | ❌ Error |
-| same as open | Same date/time | Edge case |
-| after open | Open + 1 day | ✅ Accepted |
+| TC ID | Technique | Variable Tested | Quiz Name | Grade Pass | Time Limit | Close Date | Expected Result |
+|-------|-----------|-----------------|-----------|------------|------------|------------|-----------------|
+| TC-006-001 | BVA | All (nom) | `qn001_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-002 | BVA | V1: Grade to Pass (min-) | `qn002_QuizNom` | `-0.01` | `30` | `Open + 7 days` | ❌ Error |
+| TC-006-003 | BVA | V1: Grade to Pass (min) | `qn003_QuizNom` | `0` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-004 | BVA | V1: Grade to Pass (min+) | `qn004_QuizNom` | `0.01` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-005 | BVA | V1: Grade to Pass (max-) | `qn005_QuizNom` | `9.99` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-006 | BVA | V1: Grade to Pass (max) | `qn006_QuizNom` | `10` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-007 | BVA | V1: Grade to Pass (max+) | `qn007_QuizNom` | `10.01` | `30` | `Open + 7 days` | ❌ Error |
+| TC-006-008 | BVA | V2: Time Limit (min-) | `qn008_QuizNom` | `5` | `-1` | `Open + 7 days` | ❌ Error |
+| TC-006-009 | BVA | V2: Time Limit (min) | `qn009_QuizNom` | `5` | `0` | `Open + 7 days` | ❌ Error |
+| TC-006-010 | BVA | V2: Time Limit (min+) | `qn010_QuizNom` | `5` | `1` | `Open + 7 days` | ✅ Accepted |
+| TC-006-011 | BVA | V2: Time Limit (max-) | `qn011_QuizNom` | `5` | `998` | `Open + 7 days` | ✅ Accepted |
+| TC-006-012 | BVA | V2: Time Limit (max) | `qn012_QuizNom` | `5` | `999` | `Open + 7 days` | ✅ Accepted |
+| TC-006-013 | BVA | V2: Time Limit (max+) | `qn013_QuizNom` | `5` | `1000` | `Open + 7 days` | ✅ Accepted |
+| TC-006-014 | BVA | V3: Close vs Open (min-) | `qn014_QuizNom` | `5` | `30` | `Open - 1 day` | ❌ Error |
+| TC-006-015 | BVA | V3: Close vs Open (min) | `qn015_QuizNom` | `5` | `30` | `Open Date` | ✅ Accepted |
+| TC-006-016 | BVA | V3: Close vs Open (min+) | `qn016_QuizNom` | `5` | `30` | `Open + 1 day` | ✅ Accepted |
+| TC-006-017 | BVA | V3: Close vs Open (max-) | `qn017_QuizNom` | `5` | `30` | `Open + 10 yrs` | ✅ Accepted |
+| TC-006-018 | BVA | V3: Close vs Open (max) | `qn018_QuizNom` | `5` | `30` | `Open + 11 yrs` | ✅ Accepted |
+| TC-006-019 | BVA | V3: Close vs Open (max+) | `qn019_QuizNom` | `5` | `30` | `Open + 12 yrs` | ✅ Accepted |
 
 ## 6.4 Equivalence Class Partitioning (ECP)
 
-### Variable 1: Quiz Name
+**Explanation**: Identifying invalid equivalence classes for each variable. We select one representative invalid value from each class. To prevent fault masking, we apply the Single Fault Assumption by holding all other variables at their valid nominal values.
 
-| Class ID | Description | Valid/Invalid | Representative |
-|----------|-------------|---------------|----------------|
-| QN1 | Normal text | Valid | `Midterm Quiz` |
-| QN3 | Empty | Invalid | *(empty)* |
+Applying Weak Robust ECP (Single Fault Assumption).
+
+| TC ID | Technique | Class Tested | Quiz Name | Grade Pass | Time Limit | Close Date | Expected Result |
+|-------|-----------|--------------|-----------|------------|------------|------------|-----------------|
+| TC-006-020 | ECP | Quiz Name (QN3: Empty) | `*(empty)*` | `5` | `30` | `Open + 7 days` | ❌ Error |
 
 ## 6.5 Use-Case Testing
 
@@ -1018,6 +903,8 @@ flowchart TD
 
 ## 6.6 Decision Table (Bonus)
 
+**Explanation**: Decision Tables are used to model complex business logic where different combinations of conditions (inputs) yield specific actions (outputs). We map out the rules to ensure complete coverage of the logic constraints before deriving test cases.
+
 Conditions: Timing Enable checkboxes. Each checkbox controls whether its date/time input is enabled — verifiable UI changes.
 
 | Rule | R1 | R2 | R3 | R4 | R5 |
@@ -1033,25 +920,17 @@ Conditions: Timing Enable checkboxes. Each checkbox controls whether its date/ti
 
 ## 6.7 Test Cases Summary (Feature 006)
 
-| TC ID | Technique | Test Case Name | Expected Result |
-|-------|-----------|----------------|-----------------|
-| TC-006-001 | BVA | Grade to pass = −0.01 (min−) | Rejected |
-| TC-006-002 | BVA | Grade to pass = 0 (min) | Accepted |
-| TC-006-003 | BVA | Grade to pass = 10 (max) | Accepted |
-| TC-006-004 | BVA | Grade to pass = 10.01 (max+) | Rejected |
-| TC-006-005 | BVA | Time limit = 1 min (min) | Accepted |
-| TC-006-006 | BVA | Time limit = −1 | Rejected |
-| TC-006-007 | BVA | Close before open date | Error |
-| TC-006-008 | BVA | Close after open date | Accepted |
-| TC-006-009 | ECP | Empty quiz name QN3 | Error |
-| TC-006-010 | DT | All timing enabled (R1) | Open/Close date pickers and time limit input all enabled |
-| TC-006-011 | DT | Open+Close only (R2) | Date pickers enabled, time limit input disabled |
-| TC-006-012 | DT | Open+Time only (R3) | Open date and time limit enabled, close date disabled |
-| TC-006-013 | DT | All timing disabled (R5) | All timing fields disabled |
-| TC-006-014 | UC | Happy path S1 | Quiz created |
-| TC-006-015 | UC | Unlimited + no time S2 | Created open |
-| TC-006-016 | UC | Date conflict S3 | Error shown |
-| TC-006-017 | UC | Grade exceeds max S4 | Error shown |
-| TC-006-018 | UC | Empty name S5 | Error shown |
+The full details of BVA and ECP test cases are listed in their respective sections above to maintain readability. The table below covers the Use-Case and Decision Table test cases.
 
+| TC ID | Technique | Test Case Name | Quiz Name | Grade Pass | Time Limit | Close Date | Expected Result |
+|-------|-----------|----------------|-----------|------------|------------|------------|-----------------|
+| TC-006-021 | DT | All timing enabled | `qn021_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-022 | DT | Open+Close only | `qn022_QuizNom` | `5` | `Disabled` | `Open + 7 days` | ✅ Accepted |
+| TC-006-023 | DT | Open+Time only | `qn023_QuizNom` | `5` | `30` | `Disabled` | ✅ Accepted |
+| TC-006-024 | DT | All timing disabled | `qn024_QuizNom` | `5` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-006-025 | UC | Happy path S1 | `qn025_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-026 | UC | Unlimited + no time S2 | `qn026_QuizNom` | `5` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-006-027 | UC | Date conflict S3 | `qn027_QuizNom` | `5` | `30` | `Open - 1 day` | ❌ Error |
+| TC-006-028 | UC | Grade exceeds max S4 | `qn028_QuizNom` | `10.01` | `30` | `Open + 7 days` | ❌ Error |
+| TC-006-029 | UC | Empty name S5 | `*(empty)*` | `5` | `30` | `Open + 7 days` | ❌ Error |
 
