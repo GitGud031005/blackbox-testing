@@ -644,29 +644,17 @@ flowchart TD
 | S5 | Grade < 0 error |
 | S6 | Non-numeric grade error |
 
-## 4.6 Test Cases Summary (Feature 004)
+## 4.7 Test Cases Summary (Feature 004)
 
-| TC ID | Technique | Test Case Name | Expected Result |
-|-------|-----------|----------------|-----------------|
-| TC-004-001 | BVA | Grade = −1 (min−) | Rejected |
-| TC-004-002 | BVA | Grade = 0 (min) | Accepted |
-| TC-004-003 | BVA | Grade = 0.01 (min+) | Accepted |
-| TC-004-004 | BVA | Grade = 50 (nom) | Accepted |
-| TC-004-005 | BVA | Grade = 99.99 (max−) | Accepted |
-| TC-004-006 | BVA | Grade = 100 (max) | Accepted |
-| TC-004-007 | BVA | Grade = 100.01 (max+) | Rejected |
-| TC-004-008 | BVA | Grade = 101 | Rejected |
-| TC-004-009 | ECP | Integer in range G1 (85) | Accepted |
-| TC-004-010 | ECP | Negative G5 (−5) | Rejected |
-| TC-004-011 | ECP | Alphabetic G7 (abc) | Rejected |
-| TC-004-012 | ECP | Special chars G8 (!@#) | Rejected |
-| TC-004-013 | ECP | Empty grade G9 | Accepted (ungraded) |
-| TC-004-014 | UC | Happy path S1 | Grade saved, notification sent |
-| TC-004-015 | UC | Save and next S2 | Grade saved, next student shown |
-| TC-004-016 | UC | Feedback only S3 | Saved without grade |
-| TC-004-017 | UC | Over max error S4 | Rejected |
-| TC-004-018 | UC | Non-numeric error S6 | Rejected |
+The full details of BVA and ECP test cases are listed in their respective sections above to maintain readability. The table below covers the Use-Case test cases.
 
+| TC ID | Technique | Test Case Name | Grade Value | Feedback | Notify | Expected Result |
+|-------|-----------|----------------|-------------|----------|--------|-----------------|
+| TC-004-013 | UC | Happy path | `50` | `Good work` | `Yes` | ✅ Accepted |
+| TC-004-014 | UC | Save and next | `50` | `Good work` | `Yes` | ✅ Accepted |
+| TC-004-015 | UC | Feedback only | `*(empty)*` | `Good work` | `Yes` | ✅ Accepted |
+| TC-004-016 | UC | Over max error | `105` | `Good work` | `Yes` | ❌ Error |
+| TC-004-017 | UC | Non-numeric error | `abc` | `Good work` | `Yes` | ❌ Error |
 
 
 ---
