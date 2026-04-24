@@ -205,8 +205,11 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 | TC-001-041 | UC | Invalid email (S5) | `usr041_usr` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `invalid` | ❌ Error |
 | TC-001-042 | UC | Empty required (S6) | `usr042_usr` | `A1!apppppppp` | `*(empty)*` | `llllllllll` | `usr042_nom@test.com` | ❌ Error |
 | TC-001-043 | DT | All rules met (R1) | `usr043_usr` | `Abcde1!@` | `ffffffffff` | `llllllllll` | `usr043_nom@test.com` | ✅ Accepted |
-| TC-001-044 | DT | Missing lowercase (R2) | `usr044_usr` | `ABCDE1!@` | `ffffffffff` | `llllllllll` | `usr044_nom@test.com` | ❌ Error |
-| TC-001-045 | DT | Missing uppercase (R3) | `usr045_usr` | `abcde1!@` | `ffffffffff` | `llllllllll` | `usr045_nom@test.com` | ❌ Error |
+| TC-001-044 | DT | Missing special char (R2) | `usr044_usr` | `Abcdefg1` | `ffffffffff` | `llllllllll` | `usr044_nom@test.com` | ❌ Error |
+| TC-001-045 | DT | Missing lowercase (R3) | `usr045_usr` | `ABCDEFG1!` | `ffffffffff` | `llllllllll` | `usr045_nom@test.com` | ❌ Error |
+| TC-001-046 | DT | Missing uppercase (R4) | `usr046_usr` | `abcdefg1!` | `ffffffffff` | `llllllllll` | `usr046_nom@test.com` | ❌ Error |
+| TC-001-047 | DT | Missing digit (R5) | `usr047_usr` | `Abcdefgh!` | `ffffffffff` | `llllllllll` | `usr047_nom@test.com` | ❌ Error |
+| TC-001-048 | DT | Length < 8 (R6) | `usr048_usr` | `Abc1!` | `ffffffffff` | `llllllllll` | `usr048_nom@test.com` | ❌ Error |
 
 
 ---
@@ -366,13 +369,15 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 
 | TC ID | Technique | Test Case Name | Full Name | Short Name | End Date | Sections | Expected Result |
 |-------|-----------|----------------|-----------|------------|----------|----------|-----------------|
-| TC-002-027 | DT | End date + Auto-calc ON | `fn027_nnnnnnnnnnnnnnnnnnnn` | `sn027_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-028 | DT | End date ON + Auto-calc OFF | `fn028_nnnnnnnnnnnnnnnnnnnn` | `sn028_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-029 | DT | End date OFF | `fn029_nnnnnnnnnnnnnnnnnnnn` | `sn029_ssssssss` | `Disabled` | `10` | ✅ Accepted |
-| TC-002-030 | UC | Happy path S1 | `fn030_nnnnnnnnnnnnnnnnnnnn` | `sn030_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-031 | UC | End date disabled S2 | `fn031_nnnnnnnnnnnnnnnnnnnn` | `sn031_ssssssss` | `Disabled` | `10` | ✅ Accepted |
-| TC-002-032 | UC | Duplicate short name S4 | `fn032_nnnnnnnnnnnnnnnnnnnn` | `TC001` | `Start + 30 days` | `10` | ❌ Error |
-| TC-002-033 | UC | Date conflict S5 | `fn033_nnnnnnnnnnnnnnnnnnnn` | `sn033_ssssssss` | `Start - 1 day` | `10` | ❌ Error |
+| TC-002-027 | DT | Non-Weekly + End Date OFF (R1) | `fn027_nnnnnnnnnnnnnnnnnnnn` | `sn027_ssssssss` | `Disabled` | `10` | ✅ Accepted |
+| TC-002-028 | DT | Non-Weekly + End Date ON (R2) | `fn028_nnnnnnnnnnnnnnnnnnnn` | `sn028_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-029 | DT | Weekly + End Date OFF (R3) | `fn029_nnnnnnnnnnnnnnnnnnnn` | `sn029_ssssssss` | `Disabled` | `10` | ✅ Accepted |
+| TC-002-030 | DT | Weekly + End Date ON + No Calc (R4) | `fn030_nnnnnnnnnnnnnnnnnnnn` | `sn030_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-031 | DT | Weekly + End Date ON + Auto-calc (R5) | `fn031_nnnnnnnnnnnnnnnnnnnn` | `sn031_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-032 | UC | Happy path S1 | `fn032_nnnnnnnnnnnnnnnnnnnn` | `sn032_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-033 | UC | End date disabled S2 | `fn033_nnnnnnnnnnnnnnnnnnnn` | `sn033_ssssssss` | `Disabled` | `10` | ✅ Accepted |
+| TC-002-034 | UC | Duplicate short name S4 | `fn034_nnnnnnnnnnnnnnnnnnnn` | `TC001` | `Start + 30 days` | `10` | ❌ Error |
+| TC-002-035 | UC | Date conflict S5 | `fn035_nnnnnnnnnnnnnnnnnnnn` | `sn035_ssssssss` | `Start - 1 day` | `10` | ❌ Error |
 
 
 ---
@@ -411,43 +416,45 @@ Teachers create assignment activities within courses, configuring submission typ
 
 ## 3.3 Boundary Value Analysis (BVA)
 
-### Variable 1: Assignment Name Length
+**Explanation**: Testing 7 boundary values (`min-`, `min`, `min+`, `nom`, `max-`, `max`, `max+`) for each identified variable. To ensure isolation (Single Fault Assumption), when one variable is tested at a boundary, all other variables are explicitly held at their valid nominal (`nom`) values.
 
-| BVA Value | Length | Expected Result |
-|-----------|--------|-----------------|
-| min− | 0 | ❌ Error: required |
-| min | 1 | ✅ Accepted |
-| nom | 30 | ✅ Accepted |
-| max− | 254 | ✅ Accepted |
-| max | 255 | ✅ Accepted |
-| max+ | 256 | ❌ Error or truncation |
+Applying Robust Single Fault BVA (6n + 1 test cases).
 
-### Variable 2: Grade to Pass vs Maximum Grade
+| TC ID | Technique | Variable Tested | Assig. Name | Grade to Pass | Due Date | Cut-off Date | Expected Result |
+|-------|-----------|-----------------|-------------|---------------|----------|--------------|-----------------|
+| TC-003-001 | BVA | All (nom) | `an001_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-002 | BVA | V1: Name Length (min-) | `*(empty)*` | `50` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
+| TC-003-003 | BVA | V1: Name Length (min) | `an003_a` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-004 | BVA | V1: Name Length (min+) | `an004_aa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-005 | BVA | V1: Name Length (max-) | `an005_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-006 | BVA | V1: Name Length (max) | `an006_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-007 | BVA | V1: Name Length (max+) | `an007_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
+| TC-003-008 | BVA | V2: Grade to Pass (min-) | `an008_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `-1` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
+| TC-003-009 | BVA | V2: Grade to Pass (min) | `an009_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `0` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-010 | BVA | V2: Grade to Pass (min+) | `an010_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `1` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-011 | BVA | V2: Grade to Pass (max-) | `an011_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `99` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-012 | BVA | V2: Grade to Pass (max) | `an012_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `100` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-013 | BVA | V2: Grade to Pass (max+) | `an013_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `101` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
+| TC-003-014 | BVA | V3: Due vs Allow (min-) | `an014_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow - 1 day` | `Due + 7 days` | ❌ Error |
+| TC-003-015 | BVA | V3: Due vs Allow (min) | `an015_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow Date` | `Due + 7 days` | ✅ Accepted |
+| TC-003-016 | BVA | V3: Due vs Allow (min+) | `an016_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 1 day` | `Due + 7 days` | ✅ Accepted |
+| TC-003-017 | BVA | V3: Due vs Allow (max-) | `an017_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 10 yrs` | `Due + 7 days` | ✅ Accepted |
+| TC-003-018 | BVA | V3: Due vs Allow (max) | `an018_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 11 yrs` | `Due + 7 days` | ✅ Accepted |
+| TC-003-019 | BVA | V3: Due vs Allow (max+) | `an019_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 12 yrs` | `Due + 7 days` | ✅ Accepted |
+| TC-003-020 | BVA | V4: Cut-off vs Due (min-) | `an020_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due - 1 day` | ❌ Error |
+| TC-003-021 | BVA | V4: Cut-off vs Due (min) | `an021_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due Date` | ✅ Accepted |
+| TC-003-022 | BVA | V4: Cut-off vs Due (min+) | `an022_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 1 day` | ✅ Accepted |
+| TC-003-023 | BVA | V4: Cut-off vs Due (max-) | `an023_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 10 yrs` | ✅ Accepted |
+| TC-003-024 | BVA | V4: Cut-off vs Due (max) | `an024_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 11 yrs` | ✅ Accepted |
+| TC-003-025 | BVA | V4: Cut-off vs Due (max+) | `an025_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 12 yrs` | ✅ Accepted |
 
-If Maximum grade = 100:
+## 3.4 Equivalence Class Partitioning (ECP)
 
-| BVA Value | Grade to Pass | Expected Result |
-|-----------|---------------|-----------------|
-| min | 0 | ✅ Accepted (no pass threshold) |
-| nom | 50 | ✅ Accepted |
-| max | 100 | ✅ Accepted |
-| max+ | 101 | ❌ Error: exceeds maximum grade |
+**Explanation**: Identifying invalid equivalence classes for each variable. We select one representative invalid value from each class. To prevent fault masking, we apply the Single Fault Assumption by holding all other variables at their valid nominal values.
 
-### Variable 3: Date Chronology (Due Date vs Allow Submissions From)
+Applying Weak Robust ECP.
 
-Let Allow from = Jan 10.
-
-| BVA | Due Date | Expected Result |
-|-----|----------|-----------------|
-| before Allow | Jan 9 | ❌ Error |
-| after Allow | Jan 11 | ✅ Accepted |
-
-### Variable 4: Date Chronology (Cut-off Date vs Due Date)
-
-| BVA | Cut-off Date | Expected Result |
-|-----|-------------|-----------------|
-| before Due | (Due − 1 day) | ❌ Error |
-| after Due | (Due + 1 day) | ✅ Accepted |
+No independent invalid ECP classes separate from BVA limits for this feature. Grade-to-Pass and date constraints are fully covered by BVA boundaries above.
 
 ## 3.5 Use-Case Testing
 
@@ -520,10 +527,10 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 
 | TC ID | Technique | Test Case Name | Assig. Name | Grade to Pass | Due Date | Cut-off Date | Expected Result |
 |-------|-----------|----------------|-------------|---------------|----------|--------------|-----------------|
-| TC-003-026 | DT | File + Online both on | `an026_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-027 | DT | File only | `an027_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-028 | DT | Online text only | `an028_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-029 | DT | Both off | `an029_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-026 | DT | File + Online both on (R1) | `an026_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-027 | DT | File only (R2) | `an027_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-028 | DT | Online text only (R3) | `an028_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-029 | DT | Both off (R4) | `an029_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
 | TC-003-030 | UC | Happy path | `an030_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
 | TC-003-031 | UC | No due date | `an031_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Disabled` | `Due + 7 days` | ✅ Accepted |
 | TC-003-032 | UC | Empty name error | `*(empty)*` | `50` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
@@ -785,13 +792,16 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 
 | TC ID | Technique | Test Case Name | Event Title | Duration Min | Until Date | Expected Result |
 |-------|-----------|----------------|-------------|--------------|------------|-----------------|
-| TC-005-023 | DT | Without duration | `t023_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-005-024 | DT | Until mode | `t024_tttttttttttttttttttt` | `Disabled` | `Event + 7 days` | ✅ Accepted |
-| TC-005-025 | DT | Minutes mode + repeat | `t025_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
-| TC-005-026 | UC | Happy path | `t026_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-005-027 | UC | With minutes | `t027_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
-| TC-005-028 | UC | Empty title error | `*(empty)*` | `60` | `Event + 7 days` | ❌ Error |
-| TC-005-029 | UC | Negative duration | `t029_tttttttttttttttttttt` | `-10` | `Event + 7 days` | ❌ Error |
+| TC-005-023 | DT | Without duration, No Repeat (R1) | `t023_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-005-024 | DT | Until mode, No Repeat (R2) | `t024_tttttttttttttttttttt` | `Disabled` | `Event + 7 days` | ✅ Accepted |
+| TC-005-025 | DT | Minutes mode, No Repeat (R3) | `t025_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
+| TC-005-026 | DT | Without duration, Repeat (R4) | `t026_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-005-027 | DT | Until mode, Repeat (R5) | `t027_tttttttttttttttttttt` | `Disabled` | `Event + 7 days` | ✅ Accepted |
+| TC-005-028 | DT | Minutes mode, Repeat (R6) | `t028_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
+| TC-005-029 | UC | Happy path | `t029_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-005-030 | UC | With minutes | `t030_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
+| TC-005-031 | UC | Empty title error | `*(empty)*` | `60` | `Event + 7 days` | ❌ Error |
+| TC-005-032 | UC | Negative duration error | `t032_tttttttttttttttttttt` | `-10` | `Event + 7 days` | ❌ Error |
 
 
 ---
@@ -924,13 +934,14 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 
 | TC ID | Technique | Test Case Name | Quiz Name | Grade Pass | Time Limit | Close Date | Expected Result |
 |-------|-----------|----------------|-----------|------------|------------|------------|-----------------|
-| TC-006-021 | DT | All timing enabled | `qn021_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
-| TC-006-022 | DT | Open+Close only | `qn022_QuizNom` | `5` | `Disabled` | `Open + 7 days` | ✅ Accepted |
-| TC-006-023 | DT | Open+Time only | `qn023_QuizNom` | `5` | `30` | `Disabled` | ✅ Accepted |
-| TC-006-024 | DT | All timing disabled | `qn024_QuizNom` | `5` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-006-025 | UC | Happy path S1 | `qn025_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
-| TC-006-026 | UC | Unlimited + no time S2 | `qn026_QuizNom` | `5` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-006-027 | UC | Date conflict S3 | `qn027_QuizNom` | `5` | `30` | `Open - 1 day` | ❌ Error |
-| TC-006-028 | UC | Grade exceeds max S4 | `qn028_QuizNom` | `10.01` | `30` | `Open + 7 days` | ❌ Error |
-| TC-006-029 | UC | Empty name S5 | `*(empty)*` | `5` | `30` | `Open + 7 days` | ❌ Error |
+| TC-006-021 | DT | All timing enabled (R1) | `qn021_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-022 | DT | Open+Close only (R2) | `qn022_QuizNom` | `5` | `Disabled` | `Open + 7 days` | ✅ Accepted |
+| TC-006-023 | DT | Open+Time only (R3) | `qn023_QuizNom` | `5` | `30` | `Disabled` | ✅ Accepted |
+| TC-006-024 | DT | Close+Time only (R4) | `qn024_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-025 | DT | All timing disabled (R5) | `qn025_QuizNom` | `5` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-006-026 | UC | Happy path S1 | `qn026_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-027 | UC | Unlimited + no time S2 | `qn027_QuizNom` | `5` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-006-028 | UC | Date conflict S3 | `qn028_QuizNom` | `5` | `30` | `Open - 1 day` | ❌ Error |
+| TC-006-029 | UC | Grade exceeds max S4 | `qn029_QuizNom` | `10.01` | `30` | `Open + 7 days` | ❌ Error |
+| TC-006-030 | UC | Empty name S5 | `*(empty)*` | `5` | `30` | `Open + 7 days` | ❌ Error |
 
