@@ -3,238 +3,817 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-<title>Feature 1 BVA Suite</title>
+<title>TC-001 (14)</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3" data-tags="">TC-001-001</td></tr>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-001 [BVA] All (nom)</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>https://school.moodledemo.net/user/editadvanced.php?id=-1<datalist><option>https://school.moodledemo.net/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td>testbva01</td></tr>
-<tr><td>click</td><td>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em<datalist><option>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Generate password and notify user'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Press enter to save changes'])[1]/preceding::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Force password change'])[1]/preceding::em[1]</option><option>xpath=//*/text()[normalize-space(.)='Click to enter text']/parent::*</option><option>xpath=//em</option><option>css=em</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_newpassword<datalist><option>id=id_newpassword</option><option>name=newpassword</option><option>xpath=//input[@id='id_newpassword']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_440']/input</option><option>xpath=//span/input</option><option>css=#id_newpassword</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_moodlecontainer<datalist><option>id=id_moodlecontainer</option><option>xpath=//div[@id='id_moodlecontainer']</option><option>xpath=//fieldset[@id='id_moodle']/div[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[3]/following::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[2]/following::div[3]</option><option>xpath=//fieldset/div[2]</option><option>css=#id_moodlecontainer</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option><option>name=firstname</option><option>xpath=//input[@id='id_firstname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_444']/input</option><option>xpath=//div[7]/div[2]/input</option><option>css=#id_firstname</option></datalist></td><td>John</td></tr>
-<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td>Doe</td></tr>
-<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td>test01@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_459']/input</option><option>xpath=//div[2]/div/div/div/span/input</option><option>css=#id_submitbutton</option></datalist></td><td></td></tr>
-<tr><td>verifyText</td><td>id=id_error_newpassword</td><td>- Missing</td></tr>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr001_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr001_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3" data-tags="">TC-001-002</td></tr>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-002 [BVA] V1: Username (min-)</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>https://school.moodledemo.net/user/editadvanced.php?id=-1<datalist><option>https://school.moodledemo.net/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td>testbva02</td></tr>
-<tr><td>click</td><td>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em<datalist><option>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Generate password and notify user'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Press enter to save changes'])[1]/preceding::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Force password change'])[1]/preceding::em[1]</option><option>xpath=//*/text()[normalize-space(.)='Click to enter text']/parent::*</option><option>xpath=//em</option><option>css=em</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_newpassword<datalist><option>id=id_newpassword</option><option>name=newpassword</option><option>xpath=//input[@id='id_newpassword']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_440']/input</option><option>xpath=//span/input</option><option>css=#id_newpassword</option></datalist></td><td>Abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1!</td></tr>
-<tr><td>click</td><td>id=id_moodlecontainer<datalist><option>id=id_moodlecontainer</option><option>xpath=//div[@id='id_moodlecontainer']</option><option>xpath=//fieldset[@id='id_moodle']/div[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[3]/following::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[2]/following::div[3]</option><option>xpath=//fieldset/div[2]</option><option>css=#id_moodlecontainer</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option><option>name=firstname</option><option>xpath=//input[@id='id_firstname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_444']/input</option><option>xpath=//div[7]/div[2]/input</option><option>css=#id_firstname</option></datalist></td><td>John</td></tr>
-<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td>Doe</td></tr>
-<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td>test02@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_459']/input</option><option>xpath=//div[2]/div/div/div/span/input</option><option>css=#id_submitbutton</option></datalist></td><td></td></tr>
-<tr><td>open</td><td>https://school.moodledemo.net/admin/user.php<datalist><option>https://school.moodledemo.net/admin/user.php</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=dropdownFiltersButton<datalist><option>id=dropdownFiltersButton</option><option>xpath=//button[@id='dropdownFiltersButton']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766622480_658']/button</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Add a new user'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dismiss this notification'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Full name'])[1]/preceding::button[1]</option><option>xpath=//div[3]/div/div/div/div/div/div/div/button</option><option>css=#dropdownFiltersButton</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_useremail_operator_eCxbQ01QvF6BBbg<datalist><option>id=id_useremail_operator_eCxbQ01QvF6BBbg</option><option>name=user:email_operator</option><option>xpath=//select[@id='id_useremail_operator_eCxbQ01QvF6BBbg']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_673']/select</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address operator'])[1]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address value'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Department'])[1]/preceding::select[1]</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div/span/select</option><option>css=#id_useremail_operator_eCxbQ01QvF6BBbg</option></datalist></td><td></td></tr>
-<tr><td>select</td><td>id=id_useremail_operator_eCxbQ01QvF6BBbg<datalist><option>id=id_useremail_operator_eCxbQ01QvF6BBbg</option><option>name=user:email_operator</option><option>xpath=//select[@id='id_useremail_operator_eCxbQ01QvF6BBbg']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_673']/select</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address operator'])[1]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address value'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Department'])[1]/preceding::select[1]</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div/span/select</option><option>css=#id_useremail_operator_eCxbQ01QvF6BBbg</option></datalist></td><td>label=Contains</td></tr>
-<tr><td>click</td><td>id=id_useremail_value_cJzfGq9oRvQSeYs<datalist><option>id=id_useremail_value_cJzfGq9oRvQSeYs</option><option>name=user:email_value</option><option>xpath=//input[@id='id_useremail_value_cJzfGq9oRvQSeYs']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_604']/input</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div[2]/span/input</option><option>css=#id_useremail_value_cJzfGq9oRvQSeYs</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_useremail_value_cJzfGq9oRvQSeYs<datalist><option>id=id_useremail_value_cJzfGq9oRvQSeYs</option><option>name=user:email_value</option><option>xpath=//input[@id='id_useremail_value_cJzfGq9oRvQSeYs']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_604']/input</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div[2]/span/input</option><option>css=#id_useremail_value_cJzfGq9oRvQSeYs</option></datalist></td><td>test02@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton_dlzAAyfBNrzXVR9<datalist><option>id=id_submitbutton_dlzAAyfBNrzXVR9</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton_dlzAAyfBNrzXVR9']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_690']/input</option><option>xpath=//div[25]/div[2]/fieldset/div/div/span/input</option><option>css=#id_submitbutton_dlzAAyfBNrzXVR9</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=system-report-table-15_r0_c2<datalist><option>id=system-report-table-15_r0_c2</option><option>xpath=//td[@id='system-report-table-15_r0_c2']</option><option>xpath=//tr[@id='system-report-table-15_r0']/td[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='aa'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Never'])[1]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Actions'])[2]/preceding::td[2]</option><option>xpath=//*/text()[normalize-space(.)='test02@a.cc']/parent::*</option><option>xpath=//td[3]</option><option>css=#system-report-table-15_r0_c2</option></datalist></td><td></td></tr>
-<tr><td>verifyText</td><td>id=system-report-table-15_r0_c2<datalist><option>id=system-report-table-15_r0_c2</option><option>xpath=//td[@id='system-report-table-15_r0_c2']</option><option>xpath=//tr[@id='system-report-table-15_r0']/td[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='aa'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Never'])[1]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Actions'])[2]/preceding::td[2]</option><option>xpath=//*/text()[normalize-space(.)='test02@a.cc']/parent::*</option><option>xpath=//td[3]</option><option>css=#system-report-table-15_r0_c2</option></datalist></td><td>test02@a.cc</td></tr>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr002_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3" data-tags="">TC-001-003</td></tr>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-003 [BVA] V1: Username (min)</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>https://school.moodledemo.net/user/editadvanced.php?id=-1<datalist><option>https://school.moodledemo.net/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td>testbva03</td></tr>
-<tr><td>click</td><td>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em<datalist><option>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Generate password and notify user'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Press enter to save changes'])[1]/preceding::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Force password change'])[1]/preceding::em[1]</option><option>xpath=//*/text()[normalize-space(.)='Click to enter text']/parent::*</option><option>xpath=//em</option><option>css=em</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_newpassword<datalist><option>id=id_newpassword</option><option>name=newpassword</option><option>xpath=//input[@id='id_newpassword']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_440']/input</option><option>xpath=//span/input</option><option>css=#id_newpassword</option></datalist></td><td>Abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1!</td></tr>
-<tr><td>click</td><td>id=id_moodlecontainer<datalist><option>id=id_moodlecontainer</option><option>xpath=//div[@id='id_moodlecontainer']</option><option>xpath=//fieldset[@id='id_moodle']/div[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[3]/following::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[2]/following::div[3]</option><option>xpath=//fieldset/div[2]</option><option>css=#id_moodlecontainer</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option><option>name=firstname</option><option>xpath=//input[@id='id_firstname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_444']/input</option><option>xpath=//div[7]/div[2]/input</option><option>css=#id_firstname</option></datalist></td><td>John</td></tr>
-<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td>Doe</td></tr>
-<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td>test03@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_459']/input</option><option>xpath=//div[2]/div/div/div/span/input</option><option>css=#id_submitbutton</option></datalist></td><td></td></tr>
-<tr><td>verifyText</td><td>id=id_error_newpassword</td><td>exceeds maximum</td></tr>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr003_u</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr003_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3" data-tags="">TC-001-004</td></tr>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-004 [BVA] V1: Username (min+)</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>https://school.moodledemo.net/user/editadvanced.php?id=-1<datalist><option>https://school.moodledemo.net/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em<datalist><option>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Generate password and notify user'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Press enter to save changes'])[1]/preceding::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Force password change'])[1]/preceding::em[1]</option><option>xpath=//*/text()[normalize-space(.)='Click to enter text']/parent::*</option><option>xpath=//em</option><option>css=em</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_newpassword<datalist><option>id=id_newpassword</option><option>name=newpassword</option><option>xpath=//input[@id='id_newpassword']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_440']/input</option><option>xpath=//span/input</option><option>css=#id_newpassword</option></datalist></td><td>Abcde1!@</td></tr>
-<tr><td>click</td><td>id=id_moodlecontainer<datalist><option>id=id_moodlecontainer</option><option>xpath=//div[@id='id_moodlecontainer']</option><option>xpath=//fieldset[@id='id_moodle']/div[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[3]/following::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[2]/following::div[3]</option><option>xpath=//fieldset/div[2]</option><option>css=#id_moodlecontainer</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option><option>name=firstname</option><option>xpath=//input[@id='id_firstname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_444']/input</option><option>xpath=//div[7]/div[2]/input</option><option>css=#id_firstname</option></datalist></td><td>John</td></tr>
-<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td>Doe</td></tr>
-<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td>test04@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_459']/input</option><option>xpath=//div[2]/div/div/div/span/input</option><option>css=#id_submitbutton</option></datalist></td><td></td></tr>
-<tr><td>verifyText</td><td>id=id_error_username</td><td>- Missing</td></tr>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr004_uu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr004_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3" data-tags="">TC-001-005</td></tr>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-005 [BVA] V2: Password (min-)</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>https://school.moodledemo.net/user/editadvanced.php?id=-1<datalist><option>https://school.moodledemo.net/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td>a</td></tr>
-<tr><td>click</td><td>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em<datalist><option>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Generate password and notify user'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Press enter to save changes'])[1]/preceding::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Force password change'])[1]/preceding::em[1]</option><option>xpath=//*/text()[normalize-space(.)='Click to enter text']/parent::*</option><option>xpath=//em</option><option>css=em</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_newpassword<datalist><option>id=id_newpassword</option><option>name=newpassword</option><option>xpath=//input[@id='id_newpassword']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_440']/input</option><option>xpath=//span/input</option><option>css=#id_newpassword</option></datalist></td><td>Abcde1!@</td></tr>
-<tr><td>click</td><td>id=id_moodlecontainer<datalist><option>id=id_moodlecontainer</option><option>xpath=//div[@id='id_moodlecontainer']</option><option>xpath=//fieldset[@id='id_moodle']/div[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[3]/following::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[2]/following::div[3]</option><option>xpath=//fieldset/div[2]</option><option>css=#id_moodlecontainer</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option><option>name=firstname</option><option>xpath=//input[@id='id_firstname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_444']/input</option><option>xpath=//div[7]/div[2]/input</option><option>css=#id_firstname</option></datalist></td><td>John</td></tr>
-<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td>Doe</td></tr>
-<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td>test05@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_459']/input</option><option>xpath=//div[2]/div/div/div/span/input</option><option>css=#id_submitbutton</option></datalist></td><td></td></tr>
-<tr><td>open</td><td>https://school.moodledemo.net/admin/user.php<datalist><option>https://school.moodledemo.net/admin/user.php</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=dropdownFiltersButton<datalist><option>id=dropdownFiltersButton</option><option>xpath=//button[@id='dropdownFiltersButton']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766622480_658']/button</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Add a new user'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dismiss this notification'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Full name'])[1]/preceding::button[1]</option><option>xpath=//div[3]/div/div/div/div/div/div/div/button</option><option>css=#dropdownFiltersButton</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_useremail_operator_eCxbQ01QvF6BBbg<datalist><option>id=id_useremail_operator_eCxbQ01QvF6BBbg</option><option>name=user:email_operator</option><option>xpath=//select[@id='id_useremail_operator_eCxbQ01QvF6BBbg']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_673']/select</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address operator'])[1]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address value'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Department'])[1]/preceding::select[1]</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div/span/select</option><option>css=#id_useremail_operator_eCxbQ01QvF6BBbg</option></datalist></td><td></td></tr>
-<tr><td>select</td><td>id=id_useremail_operator_eCxbQ01QvF6BBbg<datalist><option>id=id_useremail_operator_eCxbQ01QvF6BBbg</option><option>name=user:email_operator</option><option>xpath=//select[@id='id_useremail_operator_eCxbQ01QvF6BBbg']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_673']/select</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address operator'])[1]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address value'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Department'])[1]/preceding::select[1]</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div/span/select</option><option>css=#id_useremail_operator_eCxbQ01QvF6BBbg</option></datalist></td><td>label=Contains</td></tr>
-<tr><td>click</td><td>id=id_useremail_value_cJzfGq9oRvQSeYs<datalist><option>id=id_useremail_value_cJzfGq9oRvQSeYs</option><option>name=user:email_value</option><option>xpath=//input[@id='id_useremail_value_cJzfGq9oRvQSeYs']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_604']/input</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div[2]/span/input</option><option>css=#id_useremail_value_cJzfGq9oRvQSeYs</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_useremail_value_cJzfGq9oRvQSeYs<datalist><option>id=id_useremail_value_cJzfGq9oRvQSeYs</option><option>name=user:email_value</option><option>xpath=//input[@id='id_useremail_value_cJzfGq9oRvQSeYs']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_604']/input</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div[2]/span/input</option><option>css=#id_useremail_value_cJzfGq9oRvQSeYs</option></datalist></td><td>test05@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton_dlzAAyfBNrzXVR9<datalist><option>id=id_submitbutton_dlzAAyfBNrzXVR9</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton_dlzAAyfBNrzXVR9']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_690']/input</option><option>xpath=//div[25]/div[2]/fieldset/div/div/span/input</option><option>css=#id_submitbutton_dlzAAyfBNrzXVR9</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=system-report-table-15_r0_c2<datalist><option>id=system-report-table-15_r0_c2</option><option>xpath=//td[@id='system-report-table-15_r0_c2']</option><option>xpath=//tr[@id='system-report-table-15_r0']/td[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='aa'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Never'])[1]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Actions'])[2]/preceding::td[2]</option><option>xpath=//*/text()[normalize-space(.)='test05@a.cc']/parent::*</option><option>xpath=//td[3]</option><option>css=#system-report-table-15_r0_c2</option></datalist></td><td></td></tr>
-<tr><td>verifyText</td><td>id=system-report-table-15_r0_c2<datalist><option>id=system-report-table-15_r0_c2</option><option>xpath=//td[@id='system-report-table-15_r0_c2']</option><option>xpath=//tr[@id='system-report-table-15_r0']/td[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='aa'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Never'])[1]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Actions'])[2]/preceding::td[2]</option><option>xpath=//*/text()[normalize-space(.)='test05@a.cc']/parent::*</option><option>xpath=//td[3]</option><option>css=#system-report-table-15_r0_c2</option></datalist></td><td>test05@a.cc</td></tr>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr008_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr008_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3" data-tags="">TC-001-006</td></tr>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-006 [BVA] V2: Password (min)</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>https://school.moodledemo.net/user/editadvanced.php?id=-1<datalist><option>https://school.moodledemo.net/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td>ab</td></tr>
-<tr><td>click</td><td>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em<datalist><option>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Generate password and notify user'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Press enter to save changes'])[1]/preceding::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Force password change'])[1]/preceding::em[1]</option><option>xpath=//*/text()[normalize-space(.)='Click to enter text']/parent::*</option><option>xpath=//em</option><option>css=em</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_newpassword<datalist><option>id=id_newpassword</option><option>name=newpassword</option><option>xpath=//input[@id='id_newpassword']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_440']/input</option><option>xpath=//span/input</option><option>css=#id_newpassword</option></datalist></td><td>Abcde1!@</td></tr>
-<tr><td>click</td><td>id=id_moodlecontainer<datalist><option>id=id_moodlecontainer</option><option>xpath=//div[@id='id_moodlecontainer']</option><option>xpath=//fieldset[@id='id_moodle']/div[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[3]/following::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[2]/following::div[3]</option><option>xpath=//fieldset/div[2]</option><option>css=#id_moodlecontainer</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option><option>name=firstname</option><option>xpath=//input[@id='id_firstname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_444']/input</option><option>xpath=//div[7]/div[2]/input</option><option>css=#id_firstname</option></datalist></td><td>John</td></tr>
-<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td>Doe</td></tr>
-<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td>test06@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_459']/input</option><option>xpath=//div[2]/div/div/div/span/input</option><option>css=#id_submitbutton</option></datalist></td><td></td></tr>
-<tr><td>open</td><td>https://school.moodledemo.net/admin/user.php<datalist><option>https://school.moodledemo.net/admin/user.php</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=dropdownFiltersButton<datalist><option>id=dropdownFiltersButton</option><option>xpath=//button[@id='dropdownFiltersButton']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766622480_658']/button</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Add a new user'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dismiss this notification'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Full name'])[1]/preceding::button[1]</option><option>xpath=//div[3]/div/div/div/div/div/div/div/button</option><option>css=#dropdownFiltersButton</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_useremail_operator_eCxbQ01QvF6BBbg<datalist><option>id=id_useremail_operator_eCxbQ01QvF6BBbg</option><option>name=user:email_operator</option><option>xpath=//select[@id='id_useremail_operator_eCxbQ01QvF6BBbg']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_673']/select</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address operator'])[1]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address value'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Department'])[1]/preceding::select[1]</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div/span/select</option><option>css=#id_useremail_operator_eCxbQ01QvF6BBbg</option></datalist></td><td></td></tr>
-<tr><td>select</td><td>id=id_useremail_operator_eCxbQ01QvF6BBbg<datalist><option>id=id_useremail_operator_eCxbQ01QvF6BBbg</option><option>name=user:email_operator</option><option>xpath=//select[@id='id_useremail_operator_eCxbQ01QvF6BBbg']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_673']/select</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address operator'])[1]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address value'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Department'])[1]/preceding::select[1]</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div/span/select</option><option>css=#id_useremail_operator_eCxbQ01QvF6BBbg</option></datalist></td><td>label=Contains</td></tr>
-<tr><td>click</td><td>id=id_useremail_value_cJzfGq9oRvQSeYs<datalist><option>id=id_useremail_value_cJzfGq9oRvQSeYs</option><option>name=user:email_value</option><option>xpath=//input[@id='id_useremail_value_cJzfGq9oRvQSeYs']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_604']/input</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div[2]/span/input</option><option>css=#id_useremail_value_cJzfGq9oRvQSeYs</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_useremail_value_cJzfGq9oRvQSeYs<datalist><option>id=id_useremail_value_cJzfGq9oRvQSeYs</option><option>name=user:email_value</option><option>xpath=//input[@id='id_useremail_value_cJzfGq9oRvQSeYs']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_604']/input</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div[2]/span/input</option><option>css=#id_useremail_value_cJzfGq9oRvQSeYs</option></datalist></td><td>test06@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton_dlzAAyfBNrzXVR9<datalist><option>id=id_submitbutton_dlzAAyfBNrzXVR9</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton_dlzAAyfBNrzXVR9']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_690']/input</option><option>xpath=//div[25]/div[2]/fieldset/div/div/span/input</option><option>css=#id_submitbutton_dlzAAyfBNrzXVR9</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=system-report-table-15_r0_c2<datalist><option>id=system-report-table-15_r0_c2</option><option>xpath=//td[@id='system-report-table-15_r0_c2']</option><option>xpath=//tr[@id='system-report-table-15_r0']/td[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='aa'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Never'])[1]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Actions'])[2]/preceding::td[2]</option><option>xpath=//*/text()[normalize-space(.)='test06@a.cc']/parent::*</option><option>xpath=//td[3]</option><option>css=#system-report-table-15_r0_c2</option></datalist></td><td></td></tr>
-<tr><td>verifyText</td><td>id=system-report-table-15_r0_c2<datalist><option>id=system-report-table-15_r0_c2</option><option>xpath=//td[@id='system-report-table-15_r0_c2']</option><option>xpath=//tr[@id='system-report-table-15_r0']/td[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='aa'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Never'])[1]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Actions'])[2]/preceding::td[2]</option><option>xpath=//*/text()[normalize-space(.)='test06@a.cc']/parent::*</option><option>xpath=//td[3]</option><option>css=#system-report-table-15_r0_c2</option></datalist></td><td>test06@a.cc</td></tr>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr009_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@ab');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@ab');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr009_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3" data-tags="">TC-001-007</td></tr>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-007 [BVA] V2: Password (min+)</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>https://school.moodledemo.net/user/editadvanced.php?id=-1<datalist><option>https://school.moodledemo.net/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td>testbva07</td></tr>
-<tr><td>click</td><td>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em<datalist><option>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Generate password and notify user'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Press enter to save changes'])[1]/preceding::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Force password change'])[1]/preceding::em[1]</option><option>xpath=//*/text()[normalize-space(.)='Click to enter text']/parent::*</option><option>xpath=//em</option><option>css=em</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_newpassword<datalist><option>id=id_newpassword</option><option>name=newpassword</option><option>xpath=//input[@id='id_newpassword']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_440']/input</option><option>xpath=//span/input</option><option>css=#id_newpassword</option></datalist></td><td>Abcde1!@</td></tr>
-<tr><td>click</td><td>id=id_moodlecontainer<datalist><option>id=id_moodlecontainer</option><option>xpath=//div[@id='id_moodlecontainer']</option><option>xpath=//fieldset[@id='id_moodle']/div[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[3]/following::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[2]/following::div[3]</option><option>xpath=//fieldset/div[2]</option><option>css=#id_moodlecontainer</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option><option>name=firstname</option><option>xpath=//input[@id='id_firstname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_444']/input</option><option>xpath=//div[7]/div[2]/input</option><option>css=#id_firstname</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td>Doe</td></tr>
-<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td>test07@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_459']/input</option><option>xpath=//div[2]/div/div/div/span/input</option><option>css=#id_submitbutton</option></datalist></td><td></td></tr>
-<tr><td>verifyText</td><td>id=id_error_firstname</td><td>- Missing</td></tr>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr010_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@abc');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@e');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@abc');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr010_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3" data-tags="">TC-001-008</td></tr>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-008 [BVA] V2: Password (max-)</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>https://school.moodledemo.net/user/editadvanced.php?id=-1<datalist><option>https://school.moodledemo.net/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td>testbva08</td></tr>
-<tr><td>click</td><td>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em<datalist><option>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Generate password and notify user'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Press enter to save changes'])[1]/preceding::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Force password change'])[1]/preceding::em[1]</option><option>xpath=//*/text()[normalize-space(.)='Click to enter text']/parent::*</option><option>xpath=//em</option><option>css=em</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_newpassword<datalist><option>id=id_newpassword</option><option>name=newpassword</option><option>xpath=//input[@id='id_newpassword']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_440']/input</option><option>xpath=//span/input</option><option>css=#id_newpassword</option></datalist></td><td>Abcde1!@</td></tr>
-<tr><td>click</td><td>id=id_moodlecontainer<datalist><option>id=id_moodlecontainer</option><option>xpath=//div[@id='id_moodlecontainer']</option><option>xpath=//fieldset[@id='id_moodle']/div[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[3]/following::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[2]/following::div[3]</option><option>xpath=//fieldset/div[2]</option><option>css=#id_moodlecontainer</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option><option>name=firstname</option><option>xpath=//input[@id='id_firstname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_444']/input</option><option>xpath=//div[7]/div[2]/input</option><option>css=#id_firstname</option></datalist></td><td>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td></tr>
-<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td>Doe</td></tr>
-<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td>test08@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_459']/input</option><option>xpath=//div[2]/div/div/div/span/input</option><option>css=#id_submitbutton</option></datalist></td><td></td></tr>
-<tr><td>open</td><td>https://school.moodledemo.net/admin/user.php<datalist><option>https://school.moodledemo.net/admin/user.php</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=dropdownFiltersButton<datalist><option>id=dropdownFiltersButton</option><option>xpath=//button[@id='dropdownFiltersButton']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766622480_658']/button</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Add a new user'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dismiss this notification'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Full name'])[1]/preceding::button[1]</option><option>xpath=//div[3]/div/div/div/div/div/div/div/button</option><option>css=#dropdownFiltersButton</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_useremail_operator_eCxbQ01QvF6BBbg<datalist><option>id=id_useremail_operator_eCxbQ01QvF6BBbg</option><option>name=user:email_operator</option><option>xpath=//select[@id='id_useremail_operator_eCxbQ01QvF6BBbg']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_673']/select</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address operator'])[1]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address value'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Department'])[1]/preceding::select[1]</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div/span/select</option><option>css=#id_useremail_operator_eCxbQ01QvF6BBbg</option></datalist></td><td></td></tr>
-<tr><td>select</td><td>id=id_useremail_operator_eCxbQ01QvF6BBbg<datalist><option>id=id_useremail_operator_eCxbQ01QvF6BBbg</option><option>name=user:email_operator</option><option>xpath=//select[@id='id_useremail_operator_eCxbQ01QvF6BBbg']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_673']/select</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address operator'])[1]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address value'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Department'])[1]/preceding::select[1]</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div/span/select</option><option>css=#id_useremail_operator_eCxbQ01QvF6BBbg</option></datalist></td><td>label=Contains</td></tr>
-<tr><td>click</td><td>id=id_useremail_value_cJzfGq9oRvQSeYs<datalist><option>id=id_useremail_value_cJzfGq9oRvQSeYs</option><option>name=user:email_value</option><option>xpath=//input[@id='id_useremail_value_cJzfGq9oRvQSeYs']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_604']/input</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div[2]/span/input</option><option>css=#id_useremail_value_cJzfGq9oRvQSeYs</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_useremail_value_cJzfGq9oRvQSeYs<datalist><option>id=id_useremail_value_cJzfGq9oRvQSeYs</option><option>name=user:email_value</option><option>xpath=//input[@id='id_useremail_value_cJzfGq9oRvQSeYs']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_604']/input</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div[2]/span/input</option><option>css=#id_useremail_value_cJzfGq9oRvQSeYs</option></datalist></td><td>test08@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton_dlzAAyfBNrzXVR9<datalist><option>id=id_submitbutton_dlzAAyfBNrzXVR9</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton_dlzAAyfBNrzXVR9']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_690']/input</option><option>xpath=//div[25]/div[2]/fieldset/div/div/span/input</option><option>css=#id_submitbutton_dlzAAyfBNrzXVR9</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=system-report-table-15_r0_c2<datalist><option>id=system-report-table-15_r0_c2</option><option>xpath=//td[@id='system-report-table-15_r0_c2']</option><option>xpath=//tr[@id='system-report-table-15_r0']/td[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='aa'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Never'])[1]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Actions'])[2]/preceding::td[2]</option><option>xpath=//*/text()[normalize-space(.)='test08@a.cc']/parent::*</option><option>xpath=//td[3]</option><option>css=#system-report-table-15_r0_c2</option></datalist></td><td></td></tr>
-<tr><td>verifyText</td><td>id=system-report-table-15_r0_c2<datalist><option>id=system-report-table-15_r0_c2</option><option>xpath=//td[@id='system-report-table-15_r0_c2']</option><option>xpath=//tr[@id='system-report-table-15_r0']/td[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='aa'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Never'])[1]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Actions'])[2]/preceding::td[2]</option><option>xpath=//*/text()[normalize-space(.)='test08@a.cc']/parent::*</option><option>xpath=//td[3]</option><option>css=#system-report-table-15_r0_c2</option></datalist></td><td>test08@a.cc</td></tr>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr011_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr011_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3" data-tags="">TC-001-009</td></tr>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-009 [BVA] V2: Password (max)</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>https://school.moodledemo.net/user/editadvanced.php?id=-1<datalist><option>https://school.moodledemo.net/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td>testbva09</td></tr>
-<tr><td>click</td><td>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em<datalist><option>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Generate password and notify user'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Press enter to save changes'])[1]/preceding::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Force password change'])[1]/preceding::em[1]</option><option>xpath=//*/text()[normalize-space(.)='Click to enter text']/parent::*</option><option>xpath=//em</option><option>css=em</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_newpassword<datalist><option>id=id_newpassword</option><option>name=newpassword</option><option>xpath=//input[@id='id_newpassword']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_440']/input</option><option>xpath=//span/input</option><option>css=#id_newpassword</option></datalist></td><td>Abcde1!@</td></tr>
-<tr><td>click</td><td>id=id_moodlecontainer<datalist><option>id=id_moodlecontainer</option><option>xpath=//div[@id='id_moodlecontainer']</option><option>xpath=//fieldset[@id='id_moodle']/div[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[3]/following::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[2]/following::div[3]</option><option>xpath=//fieldset/div[2]</option><option>css=#id_moodlecontainer</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option><option>name=firstname</option><option>xpath=//input[@id='id_firstname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_444']/input</option><option>xpath=//div[7]/div[2]/input</option><option>css=#id_firstname</option></datalist></td><td>John</td></tr>
-<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td>test09@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_459']/input</option><option>xpath=//div[2]/div/div/div/span/input</option><option>css=#id_submitbutton</option></datalist></td><td></td></tr>
-<tr><td>verifyText</td><td>id=id_error_lastname</td><td>- Missing</td></tr>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr012_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr012_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3" data-tags="">TC-001-010</td></tr>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-010 [BVA] V2: Password (max+)</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>https://school.moodledemo.net/user/editadvanced.php?id=-1<datalist><option>https://school.moodledemo.net/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option><option>name=username</option><option>xpath=//input[@id='id_username']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_419']/input</option><option>xpath=//div[2]/input</option><option>css=#id_username</option></datalist></td><td>testbva10</td></tr>
-<tr><td>click</td><td>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em<datalist><option>xpath=//a[@id='yui_3_18_1_1_1776766589046_433']/span/span/em</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='New password'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Generate password and notify user'])[1]/following::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Press enter to save changes'])[1]/preceding::em[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Force password change'])[1]/preceding::em[1]</option><option>xpath=//*/text()[normalize-space(.)='Click to enter text']/parent::*</option><option>xpath=//em</option><option>css=em</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_newpassword<datalist><option>id=id_newpassword</option><option>name=newpassword</option><option>xpath=//input[@id='id_newpassword']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_440']/input</option><option>xpath=//span/input</option><option>css=#id_newpassword</option></datalist></td><td>Abcde1!@</td></tr>
-<tr><td>click</td><td>id=id_moodlecontainer<datalist><option>id=id_moodlecontainer</option><option>xpath=//div[@id='id_moodlecontainer']</option><option>xpath=//fieldset[@id='id_moodle']/div[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[3]/following::div[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='General'])[2]/following::div[3]</option><option>xpath=//fieldset/div[2]</option><option>css=#id_moodlecontainer</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option><option>name=firstname</option><option>xpath=//input[@id='id_firstname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_444']/input</option><option>xpath=//div[7]/div[2]/input</option><option>css=#id_firstname</option></datalist></td><td>John</td></tr>
-<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option><option>name=lastname</option><option>xpath=//input[@id='id_lastname']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_448']/input</option><option>xpath=//div[8]/div[2]/input</option><option>css=#id_lastname</option></datalist></td><td>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td></tr>
-<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option><option>name=email</option><option>xpath=//input[@id='id_email']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766589046_452']/input</option><option>xpath=//div[9]/div[2]/input</option><option>css=#id_email</option></datalist></td><td>test10@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766589046_459']/input</option><option>xpath=//div[2]/div/div/div/span/input</option><option>css=#id_submitbutton</option></datalist></td><td></td></tr>
-<tr><td>open</td><td>https://school.moodledemo.net/admin/user.php<datalist><option>https://school.moodledemo.net/admin/user.php</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=dropdownFiltersButton<datalist><option>id=dropdownFiltersButton</option><option>xpath=//button[@id='dropdownFiltersButton']</option><option>xpath=//div[@id='yui_3_18_1_1_1776766622480_658']/button</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Add a new user'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dismiss this notification'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Full name'])[1]/preceding::button[1]</option><option>xpath=//div[3]/div/div/div/div/div/div/div/button</option><option>css=#dropdownFiltersButton</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=id_useremail_operator_eCxbQ01QvF6BBbg<datalist><option>id=id_useremail_operator_eCxbQ01QvF6BBbg</option><option>name=user:email_operator</option><option>xpath=//select[@id='id_useremail_operator_eCxbQ01QvF6BBbg']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_673']/select</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address operator'])[1]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address value'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Department'])[1]/preceding::select[1]</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div/span/select</option><option>css=#id_useremail_operator_eCxbQ01QvF6BBbg</option></datalist></td><td></td></tr>
-<tr><td>select</td><td>id=id_useremail_operator_eCxbQ01QvF6BBbg<datalist><option>id=id_useremail_operator_eCxbQ01QvF6BBbg</option><option>name=user:email_operator</option><option>xpath=//select[@id='id_useremail_operator_eCxbQ01QvF6BBbg']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_673']/select</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address operator'])[1]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address value'])[1]/preceding::select[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Department'])[1]/preceding::select[1]</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div/span/select</option><option>css=#id_useremail_operator_eCxbQ01QvF6BBbg</option></datalist></td><td>label=Contains</td></tr>
-<tr><td>click</td><td>id=id_useremail_value_cJzfGq9oRvQSeYs<datalist><option>id=id_useremail_value_cJzfGq9oRvQSeYs</option><option>name=user:email_value</option><option>xpath=//input[@id='id_useremail_value_cJzfGq9oRvQSeYs']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_604']/input</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div[2]/span/input</option><option>css=#id_useremail_value_cJzfGq9oRvQSeYs</option></datalist></td><td></td></tr>
-<tr><td>type</td><td>id=id_useremail_value_cJzfGq9oRvQSeYs<datalist><option>id=id_useremail_value_cJzfGq9oRvQSeYs</option><option>name=user:email_value</option><option>xpath=//input[@id='id_useremail_value_cJzfGq9oRvQSeYs']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_604']/input</option><option>xpath=//div[7]/div[2]/div[2]/fieldset/div/div[2]/span/input</option><option>css=#id_useremail_value_cJzfGq9oRvQSeYs</option></datalist></td><td>test10@a.cc</td></tr>
-<tr><td>click</td><td>id=id_submitbutton_dlzAAyfBNrzXVR9<datalist><option>id=id_submitbutton_dlzAAyfBNrzXVR9</option><option>name=submitbutton</option><option>xpath=//input[@id='id_submitbutton_dlzAAyfBNrzXVR9']</option><option>xpath=//span[@id='yui_3_18_1_1_1776766622480_690']/input</option><option>xpath=//div[25]/div[2]/fieldset/div/div/span/input</option><option>css=#id_submitbutton_dlzAAyfBNrzXVR9</option></datalist></td><td></td></tr>
-<tr><td>click</td><td>id=system-report-table-15_r0_c2<datalist><option>id=system-report-table-15_r0_c2</option><option>xpath=//td[@id='system-report-table-15_r0_c2']</option><option>xpath=//tr[@id='system-report-table-15_r0']/td[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='aa'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Never'])[1]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Actions'])[2]/preceding::td[2]</option><option>xpath=//*/text()[normalize-space(.)='test10@a.cc']/parent::*</option><option>xpath=//td[3]</option><option>css=#system-report-table-15_r0_c2</option></datalist></td><td></td></tr>
-<tr><td>verifyText</td><td>id=system-report-table-15_r0_c2<datalist><option>id=system-report-table-15_r0_c2</option><option>xpath=//td[@id='system-report-table-15_r0_c2']</option><option>xpath=//tr[@id='system-report-table-15_r0']/td[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='aa'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Never'])[1]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Actions'])[2]/preceding::td[2]</option><option>xpath=//*/text()[normalize-space(.)='test10@a.cc']/parent::*</option><option>xpath=//td[3]</option><option>css=#system-report-table-15_r0_c2</option></datalist></td><td>test10@a.cc</td></tr>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr013_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=s');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Ab1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=s');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr013_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-011 [BVA] V3: First Name (min-)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr014_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr014_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-012 [BVA] V3: First Name (min)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr015_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>f</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr015_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-013 [BVA] V3: First Name (min+)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr016_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr016_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-014 [BVA] V3: First Name (max-)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr017_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr017_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-015 [BVA] V3: First Name (max)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr018_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr018_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-016 [BVA] V4: Last Name (min-)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr020_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr020_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-017 [BVA] V4: Last Name (min)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr021_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>l</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr021_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-018 [BVA] V4: Last Name (min+)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr022_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>ll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr022_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-019 [BVA] V4: Last Name (max-)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr023_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr023_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-020 [BVA] V4: Last Name (max)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr024_uuuuuuuuuu</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr024_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-021 [ECP]</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr026_UsrNom</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr026_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-022 [ECP]</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr027_usr nom</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr027_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-023 [ECP]</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr028_usr!nom</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr028_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-024 [ECP]</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>admin</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr029_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-025 [ECP]</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr030_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Abcdefg!@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Abcdefg!@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr030_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-026 [ECP]</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr031_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'abcdefg1!@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'abcdefg1!@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr031_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-027 [ECP]</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr032_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'ABCDEFG1!@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'ABCDEFG1!@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr032_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-028 [ECP]</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr033_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Abcdefg123');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Abcdefg123');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr033_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-029 [ECP]</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr034_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>testexample.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-030 [ECP]</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr035_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>test@</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-031 [ECP]</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr036_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>te st@ex.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-032 [UC] Happy path (S1)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr037_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr037_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-033 [UC] Generate password (S2)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr038_usr</td></tr>
+<tr><td>click</td><td>id=id_createpassword<datalist><option>id=id_createpassword</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr038_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-034 [UC] Duplicate username (S3)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>admin</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr039_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-035 [UC] Invalid password (S4)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr040_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'invalid');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'invalid');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr040_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-036 [UC] Invalid email (S5)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr041_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>invalid</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-037 [UC] Empty required (S6)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr042_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr042_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-038 [DT] All rules met (R1)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr043_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'XuanSang12@');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr043_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyTextPresent</td><td>Changes saved<datalist><option>Changes saved</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-039 [DT] Missing special char (R2)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr044_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Abcdefg1');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Abcdefg1');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr044_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-040 [DT] Missing lowercase (R3)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr045_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'ABCDEFG1!');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'ABCDEFG1!');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr045_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-041 [DT] Missing uppercase (R4)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr046_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'abcdefg1!');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'abcdefg1!');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr046_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-042 [DT] Missing digit (R5)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr047_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Abcdefgh!');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Abcdefgh!');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr047_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC-001-043 [DT] Length &lt; 8 (R6)</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1<datalist><option>https://ihatetesting.moodlecloud.com/user/editadvanced.php?id=-1</option></datalist></td><td></td></tr>
+<tr><td>pause</td><td>1000<datalist><option>1000</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_username<datalist><option>id=id_username</option></datalist></td><td>usr048_usr</td></tr>
+<tr><td>runScript</td><td>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Abc1!');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}<datalist><option>var i=document.getElementById('id_newpassword');if(i){i.removeAttribute('readonly');i.removeAttribute('disabled');i.style.display='';var s=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;s.call(i,'Abc1!');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}));i.dispatchEvent(new Event('blur',{bubbles:true}));}</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_firstname<datalist><option>id=id_firstname</option></datalist></td><td>ffffffffff</td></tr>
+<tr><td>click</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_lastname<datalist><option>id=id_lastname</option></datalist></td><td>llllllllll</td></tr>
+<tr><td>click</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>id=id_email<datalist><option>id=id_email</option></datalist></td><td>usr048_nom@test.com</td></tr>
+<tr><td>click</td><td>id=id_submitbutton<datalist><option>id=id_submitbutton</option></datalist></td><td></td></tr>
+<tr><td>verifyElementPresent</td><td>css=[id^="id_error_"]<datalist><option>css=[id^="id_error_"]</option></datalist></td><td></td></tr>
 </tbody></table>
 </body>
 </html>
