@@ -35,10 +35,11 @@ This project used **Antigravity (Google Gemini-based AI agent)** to assist with:
 The Site Administration module allows managers to manually create new user accounts in the Moodle system. The form includes multiple input fields with validation rules.
 
 **Execution Flow:**
-1. Log in as `manager` (credentials from login page).
-2. Navigate to **Site administration > Users > Add a new user**.
-3. Fill in the required and optional fields.
-4. Click **Create user**.
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
+2. Switch role to Manager.
+3. Navigate to: **Site administration > Users > Accounts > Add a new user**.
+4. Fill in the required and optional fields.
+5. Click **Create user**.
 
 ## 1.2 Form Fields Catalog (from browser exploration)
 
@@ -111,7 +112,10 @@ Following the lecture theory (Chapter on Use-case testing): Define actors, preco
 
 **Use Case Name:** Add a New User  
 **Actor:** Site Administrator (Manager)  
-**Precondition:** Admin is logged in and on the "Add a new user" page.  
+**Precondition:** 
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
+2. Switch role to Manager.
+3. Navigate to: **Site administration > Users > Accounts > Add a new user**.  
 **Postcondition:** A new user account exists in the system.
 
 **Basic Flow (BF):**
@@ -218,10 +222,11 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 Managers can create new course spaces with configurable settings. The form enforces chronological constraints on dates and uniqueness of short names.
 
 **Execution Flow:**
-1. Log in as `manager`.
-2. Go to **Site administration > Courses > Add a new course**.
-3. Fill in Course full name, Short name, dates, format, etc.
-4. Click **Save and display**.
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
+2. Switch role to Manager.
+3. Navigate to: **Site administration > Courses > Add a new course**.
+4. Fill in Course full name, Short name, dates, format, etc.
+5. Click **Save and display**.
 
 ## 2.2 Form Fields Catalog
 
@@ -281,7 +286,10 @@ Applying Weak Robust ECP (Single Fault Assumption).
 
 **Use Case Name:** Create a New Course  
 **Actor:** Site Administrator  
-**Precondition:** Admin is on "Add a new course" page.  
+**Precondition:** 
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
+2. Switch role to Manager.
+3. Navigate to: **Site administration > Courses > Add a new course**.  
 **Postcondition:** Course is created and visible.
 
 **Basic Flow (BF):**
@@ -379,7 +387,7 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 Teachers create assignment activities within courses, configuring submission types, deadlines, file limits, and grading settings.
 
 **Execution Flow:**
-1. Log in as `teacher`.
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
 2. Navigate to a course, toggle **Edit mode** on.
 3. Click **Add an activity or resource > Assignment**.
 4. Configure settings. Click **Save and return to course**.
@@ -446,7 +454,10 @@ No independent invalid ECP classes separate from BVA limits for this feature. Gr
 
 **Use Case Name:** Create Assignment  
 **Actor:** Teacher  
-**Precondition:** Teacher is in a course with Edit mode on.
+**Precondition:** 
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
+2. Navigate to a course, toggle **Edit mode** on.
+3. Click **Add an activity or resource > Assignment**.
 
 **Basic Flow:** Enter name → Set dates → Choose submission type → Set file limits → Set grade → Save.
 
@@ -532,7 +543,7 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 The grading interface allows teachers to assign numerical scores and provide feedback on student submissions.
 
 **Execution Flow:**
-1. Log in as `teacher`.
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
 2. Navigate to a course > Assignment.
 3. Click **Grade** or access **View all submissions** > Grade icon.
 4. Enter score in grade field, add feedback, click **Save changes**.
@@ -580,7 +591,10 @@ Applying Weak Robust ECP (Single Fault Assumption).
 
 **Use Case Name:** Grade a Student Submission  
 **Actor:** Teacher  
-**Precondition:** Teacher is viewing a student's submission in the grading panel.
+**Precondition:** 
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
+2. Navigate to a course > Assignment.
+3. Click **Grade** or access **View all submissions** > Grade icon.
 
 **Basic Flow:**
 1. Teacher enters a valid numeric grade (0–100).
@@ -652,8 +666,8 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 Users create personal events on their Moodle calendar, specifying title, date, and optionally a duration.
 
 **Execution Flow:**
-1. Log in to Moodle.
-2. Navigate to **Calendar** (from Dashboard or navigation).
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
+2. Navigate to **Calendar**.
 3. Click **New event**.
 4. Fill in event title, date, type, duration.
 5. Click **Save**.
@@ -679,23 +693,23 @@ Applying Robust Single Fault BVA (6n + 1 test cases).
 
 > **Note:** Event Title has no maximum limit. Date dropdowns do not have a `max+` boundary. These impossible boundaries are omitted from testing.
 
-| TC ID | Technique | Variable Tested | Event Title | Duration Min | Until Date | Expected Result |
-|-------|-----------|-----------------|-------------|--------------|------------|-----------------|
-| TC-005-001 | BVA | All (nom) | `t001_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
-| TC-005-002 | BVA | V1: Title Length (min-) | `*(empty)*` | `60` | `Disabled` | ❌ Error |
-| TC-005-003 | BVA | V1: Title Length (min) | `t` | `60` | `Disabled` | ✅ Accepted |
-| TC-005-004 | BVA | V1: Title Length (min+) | `ti` | `60` | `Disabled` | ✅ Accepted |
-| TC-005-005 | BVA | V2: Duration Mins (min-) | `t008_tttttttttttttttttttt` | `0` | `Disabled` | ❌ Error |
-| TC-005-006 | BVA | V2: Duration Mins (min) | `t009_tttttttttttttttttttt` | `1` | `Disabled` | ✅ Accepted |
-| TC-005-007 | BVA | V2: Duration Mins (min+) | `t010_tttttttttttttttttttt` | `2` | `Disabled` | ✅ Accepted |
-| TC-005-008 | BVA | V2: Duration Mins (max-) | `t011_tttttttttttttttttttt` | `9999998` | `Disabled` | ✅ Accepted |
-| TC-005-009 | BVA | V2: Duration Mins (max) | `t012_tttttttttttttttttttt` | `9999999` | `Disabled` | ✅ Accepted |
-| TC-005-010 | BVA | V2: Duration Mins (max+) | `t013_tttttttttttttttttttt` | `10000000` | `Disabled` | ❌ Error |
-| TC-005-011 | BVA | V3: Until Date (min-) | `t014_tttttttttttttttttttt` | `Disabled` | `Event - 1 day` | ❌ Error |
-| TC-005-012 | BVA | V3: Until Date (min) | `t015_tttttttttttttttttttt` | `Disabled` | `Event Date` | ✅ Accepted |
-| TC-005-013 | BVA | V3: Until Date (min+) | `t016_tttttttttttttttttttt` | `Disabled` | `Event + 1 day` | ✅ Accepted |
-| TC-005-014 | BVA | V3: Until Date (max-) | `t017_tttttttttttttttttttt` | `Disabled` | `Event + 10 yrs` | ✅ Accepted |
-| TC-005-015 | BVA | V3: Until Date (max) | `t018_tttttttttttttttttttt` | `Disabled` | `Event + 11 yrs` | ✅ Accepted |
+| TC ID | Technique | Variable Tested | Event Title | Duration | Expected Result |
+|-------|-----------|-----------------|-------------|----------|-----------------|
+| TC-005-001 | BVA | All (nom) | `t001_tttttttttttttttttttt` | `60 mins` | ✅ Accepted |
+| TC-005-002 | BVA | V1: Title Length (min-) | `*(empty)*` | `60 mins` | ❌ Error |
+| TC-005-003 | BVA | V1: Title Length (min) | `t` | `60 mins` | ✅ Accepted |
+| TC-005-004 | BVA | V1: Title Length (min+) | `ti` | `60 mins` | ✅ Accepted |
+| TC-005-005 | BVA | V2: Duration Mins (min-) | `t008_tttttttttttttttttttt` | `0 mins` | ❌ Error |
+| TC-005-006 | BVA | V2: Duration Mins (min) | `t009_tttttttttttttttttttt` | `1 min` | ✅ Accepted |
+| TC-005-007 | BVA | V2: Duration Mins (min+) | `t010_tttttttttttttttttttt` | `2 mins` | ✅ Accepted |
+| TC-005-008 | BVA | V2: Duration Mins (max-) | `t011_tttttttttttttttttttt` | `9999998 mins` | ✅ Accepted |
+| TC-005-009 | BVA | V2: Duration Mins (max) | `t012_tttttttttttttttttttt` | `9999999 mins` | ✅ Accepted |
+| TC-005-010 | BVA | V2: Duration Mins (max+) | `t013_tttttttttttttttttttt` | `10000000 mins` | ❌ Error |
+| TC-005-011 | BVA | V3: Until Date (min-) | `t014_tttttttttttttttttttt` | `Until: Event - 1 day` | ❌ Error |
+| TC-005-012 | BVA | V3: Until Date (min) | `t015_tttttttttttttttttttt` | `Until: Event Date` | ✅ Accepted |
+| TC-005-013 | BVA | V3: Until Date (min+) | `t016_tttttttttttttttttttt` | `Until: Event + 1 day` | ✅ Accepted |
+| TC-005-014 | BVA | V3: Until Date (max-) | `t017_tttttttttttttttttttt` | `Until: Event + 10 yrs` | ✅ Accepted |
+| TC-005-015 | BVA | V3: Until Date (max) | `t018_tttttttttttttttttttt` | `Until: Event + 11 yrs` | ✅ Accepted |
 
 ## 5.4 Equivalence Class Partitioning (ECP)
 
@@ -703,17 +717,20 @@ Applying Robust Single Fault BVA (6n + 1 test cases).
 
 Applying Weak Robust ECP (Single Fault Assumption).
 
-| TC ID | Technique | Class Tested | Event Title | Duration Min | Until Date | Expected Result |
-|-------|-----------|--------------|-------------|--------------|------------|-----------------|
-| TC-005-016 | ECP | Duration (DT4: Float) | `t020_tttttttttttttttttttt` | `1.5` | `Disabled` | ❌ Error |
-| TC-005-017 | ECP | Duration (DT5: Text) | `t021_tttttttttttttttttttt` | `abc` | `Disabled` | ❌ Error |
-| TC-005-018 | ECP | Duration (DT6: Negative) | `t022_tttttttttttttttttttt` | `-10` | `Disabled` | ❌ Error |
+| TC ID | Technique | Class Tested | Event Title | Duration | Expected Result |
+|-------|-----------|--------------|-------------|----------|-----------------|
+| TC-005-016 | ECP | Duration (DT4: Float) | `t020_tttttttttttttttttttt` | `1.5 mins` | ❌ Error |
+| TC-005-017 | ECP | Duration (DT5: Text) | `t021_tttttttttttttttttttt` | `abc` | ❌ Error |
+| TC-005-018 | ECP | Duration (DT6: Negative) | `t022_tttttttttttttttttttt` | `-10 mins` | ❌ Error |
 
 ## 5.5 Use-Case Testing
 
 **Use Case Name:** Create Calendar Event  
 **Actor:** User (student, teacher, or admin)  
-**Precondition:** User is on the Calendar page.
+**Precondition:** 
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
+2. Navigate to **Calendar**.
+3. Click **New event**.
 
 ```mermaid
 flowchart TD
@@ -762,18 +779,18 @@ Conditions: Duration radio selection and Repeat checkbox. These control which fi
 
 The full details of BVA and ECP test cases are listed in their respective sections above to maintain readability. The table below covers the Use-Case and Decision Table test cases.
 
-| TC ID | Technique | Test Case Name | Event Title | Duration Min | Until Date | Expected Result |
-|-------|-----------|----------------|-------------|--------------|------------|-----------------|
-| TC-005-019 | DT | Without duration, No Repeat (R1) | `t023_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-005-020 | DT | Until mode, No Repeat (R2) | `t024_tttttttttttttttttttt` | `Disabled` | `Event + 7 days` | ✅ Accepted |
-| TC-005-021 | DT | Minutes mode, No Repeat (R3) | `t025_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
-| TC-005-022 | DT | Without duration, Repeat (R4) | `t026_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-005-023 | DT | Until mode, Repeat (R5) | `t027_tttttttttttttttttttt` | `Disabled` | `Event + 7 days` | ✅ Accepted |
-| TC-005-024 | DT | Minutes mode, Repeat (R6) | `t028_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
-| TC-005-025 | UC | Happy path | `t029_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-005-026 | UC | With minutes | `t030_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
-| TC-005-027 | UC | Empty title error | `*(empty)*` | `60` | `Event + 7 days` | ❌ Error |
-| TC-005-028 | UC | Negative duration error | `t032_tttttttttttttttttttt` | `-10` | `Event + 7 days` | ❌ Error |
+| TC ID | Technique | Test Case Name | Event Title | Duration | Expected Result |
+|-------|-----------|----------------|-------------|----------|-----------------|
+| TC-005-019 | DT | Without duration, No Repeat (R1) | `t023_tttttttttttttttttttt` | `None` | ✅ Accepted |
+| TC-005-020 | DT | Until mode, No Repeat (R2) | `t024_tttttttttttttttttttt` | `Until: Event + 7 days` | ✅ Accepted |
+| TC-005-021 | DT | Minutes mode, No Repeat (R3) | `t025_tttttttttttttttttttt` | `60 mins` | ✅ Accepted |
+| TC-005-022 | DT | Without duration, Repeat (R4) | `t026_tttttttttttttttttttt` | `None` | ✅ Accepted |
+| TC-005-023 | DT | Until mode, Repeat (R5) | `t027_tttttttttttttttttttt` | `Until: Event + 7 days` | ✅ Accepted |
+| TC-005-024 | DT | Minutes mode, Repeat (R6) | `t028_tttttttttttttttttttt` | `60 mins` | ✅ Accepted |
+| TC-005-025 | UC | Happy path | `t029_tttttttttttttttttttt` | `None` | ✅ Accepted |
+| TC-005-026 | UC | With minutes | `t030_tttttttttttttttttttt` | `60 mins` | ✅ Accepted |
+| TC-005-027 | UC | Empty title error | `*(empty)*` | `60 mins` | ❌ Error |
+| TC-005-028 | UC | Negative duration error | `t032_tttttttttttttttttttt` | `-10 mins` | ❌ Error |
 
 
 ---
@@ -785,7 +802,7 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 Teachers create Quiz activities with configurable grading rules, attempt limits, time limits, and access restrictions.
 
 **Execution Flow:**
-1. Log in as `teacher`.
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
 2. Enter a Course, toggle **Edit mode** on.
 3. Click **Add an activity or resource > Quiz**.
 4. Configure: Name, Timing, Grade, Layout, Review options.
@@ -823,7 +840,7 @@ Applying Robust Single Fault BVA (6n + 1 test cases).
 | TC-006-003 | BVA | V1: Grade to Pass (max) | `qn006_QuizNom` | `10` | `30` | `Open + 7 days` | ✅ Accepted |
 | TC-006-004 | BVA | V1: Grade to Pass (max+) | `qn007_QuizNom` | `10.01` | `30` | `Open + 7 days` | ❌ Error |
 | TC-006-005 | BVA | V2: Time Limit (min-) | `qn008_QuizNom` | `5` | `-1` | `Open + 7 days` | ❌ Error |
-| TC-006-006 | BVA | V2: Time Limit (min) | `qn009_QuizNom` | `5` | `0` | `Open + 7 days` | ❌ Error |
+| TC-006-006 | BVA | V2: Time Limit (min) | `qn009_QuizNom` | `5` | `0` | `Open + 7 days` | ✅ Accepted |
 | TC-006-007 | BVA | V2: Time Limit (min+) | `qn010_QuizNom` | `5` | `1` | `Open + 7 days` | ✅ Accepted |
 | TC-006-008 | BVA | V2: Time Limit (max-) | `qn011_QuizNom` | `5` | `998` | `Open + 7 days` | ✅ Accepted |
 | TC-006-009 | BVA | V2: Time Limit (max) | `qn012_QuizNom` | `5` | `999` | `Open + 7 days` | ✅ Accepted |
@@ -849,6 +866,10 @@ Applying Weak Robust ECP (Single Fault Assumption).
 
 **Use Case Name:** Create Quiz  
 **Actor:** Teacher
+**Precondition:** 
+1. Log in to `https://ihatetesting.moodlecloud.com/` with username `phuc.nguyen0310@hcmut.edu.vn` and password `Huuphuc0310@`.
+2. Enter a Course, toggle **Edit mode** on.
+3. Click **Add an activity or resource > Quiz**.
 
 ```mermaid
 flowchart TD
