@@ -60,33 +60,30 @@ The Site Administration module allows managers to manually create new user accou
 
 Applying Robust Single Fault BVA (6n + 1 test cases).
 
+> **Note:** Username has no maximum length constraint on the UI, so `max-`, `max`, and `max+` boundaries are omitted. First Name, Last Name, and Email inputs have hard UI maximum limits, so `max+` boundaries are impossible and omitted.
+
 | TC ID | Technique | Variable Tested | Username | Password | First Name | Last Name | Email | Expected Result |
 |-------|-----------|-----------------|----------|----------|------------|-----------|-------|-----------------|
-| TC-001-001 | BVA | All (nom) | `usr001_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr001_nom@test.com` | ✅ Accepted |
-| TC-001-002 | BVA | V1: Username (min-) | `*(empty)*` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr002_nom@test.com` | ❌ Error |
-| TC-001-003 | BVA | V1: Username (min) | `usr003_u` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr003_nom@test.com` | ✅ Accepted |
-| TC-001-004 | BVA | V1: Username (min+) | `usr004_uu` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr004_nom@test.com` | ✅ Accepted |
-| TC-001-005 | BVA | V1: Username (max-) | `usr005_uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr005_nom@test.com` | ✅ Accepted |
-| TC-001-006 | BVA | V1: Username (max) | `usr006_uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr006_nom@test.com` | ✅ Accepted |
-| TC-001-007 | BVA | V1: Username (max+) | `usr007_uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr007_nom@test.com` | ❌ Error |
-| TC-001-008 | BVA | V2: Password (min-) | `usr008_uuuuuuuuuu` | `ppppppp` | `ffffffffff` | `llllllllll` | `usr008_nom@test.com` | ❌ Error |
-| TC-001-009 | BVA | V2: Password (min) | `usr009_uuuuuuuuuu` | `A1!apppp` | `ffffffffff` | `llllllllll` | `usr009_nom@test.com` | ✅ Accepted |
-| TC-001-010 | BVA | V2: Password (min+) | `usr010_uuuuuuuuuu` | `A1!appppp` | `ffffffffff` | `llllllllll` | `usr010_nom@test.com` | ✅ Accepted |
-| TC-001-011 | BVA | V2: Password (max-) | `usr011_uuuuuuuuuu` | `A1!appppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp` | `ffffffffff` | `llllllllll` | `usr011_nom@test.com` | ✅ Accepted |
-| TC-001-012 | BVA | V2: Password (max) | `usr012_uuuuuuuuuu` | `A1!apppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp` | `ffffffffff` | `llllllllll` | `usr012_nom@test.com` | ✅ Accepted |
-| TC-001-013 | BVA | V2: Password (max+) | `usr013_uuuuuuuuuu` | `A1!appppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp` | `ffffffffff` | `llllllllll` | `usr013_nom@test.com` | ❌ Error |
-| TC-001-014 | BVA | V3: First Name (min-) | `usr014_uuuuuuuuuu` | `A1!apppppppp` | `*(empty)*` | `llllllllll` | `usr014_nom@test.com` | ❌ Error |
-| TC-001-015 | BVA | V3: First Name (min) | `usr015_uuuuuuuuuu` | `A1!apppppppp` | `f` | `llllllllll` | `usr015_nom@test.com` | ✅ Accepted |
-| TC-001-016 | BVA | V3: First Name (min+) | `usr016_uuuuuuuuuu` | `A1!apppppppp` | `ff` | `llllllllll` | `usr016_nom@test.com` | ✅ Accepted |
-| TC-001-017 | BVA | V3: First Name (max-) | `usr017_uuuuuuuuuu` | `A1!apppppppp` | `fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff` | `llllllllll` | `usr017_nom@test.com` | ✅ Accepted |
-| TC-001-018 | BVA | V3: First Name (max) | `usr018_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff` | `llllllllll` | `usr018_nom@test.com` | ✅ Accepted |
-| TC-001-019 | BVA | V3: First Name (max+) | `usr019_uuuuuuuuuu` | `A1!apppppppp` | `fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff` | `llllllllll` | `usr019_nom@test.com` | ❌ Error |
-| TC-001-020 | BVA | V4: Last Name (min-) | `usr020_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `*(empty)*` | `usr020_nom@test.com` | ❌ Error |
-| TC-001-021 | BVA | V4: Last Name (min) | `usr021_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `l` | `usr021_nom@test.com` | ✅ Accepted |
-| TC-001-022 | BVA | V4: Last Name (min+) | `usr022_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `ll` | `usr022_nom@test.com` | ✅ Accepted |
-| TC-001-023 | BVA | V4: Last Name (max-) | `usr023_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll` | `usr023_nom@test.com` | ✅ Accepted |
-| TC-001-024 | BVA | V4: Last Name (max) | `usr024_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll` | `usr024_nom@test.com` | ✅ Accepted |
-| TC-001-025 | BVA | V4: Last Name (max+) | `usr025_uuuuuuuuuu` | `A1!apppppppp` | `ffffffffff` | `lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll` | `usr025_nom@test.com` | ❌ Error |
+| TC-001-001 | BVA | All (nom) | `usr001_uuuuuuuuuu` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr001_nom@test.com` | ✅ Accepted |
+| TC-001-002 | BVA | V1: Username (min-) | `*(empty)*` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr002_nom@test.com` | ❌ Error |
+| TC-001-003 | BVA | V1: Username (min) | `usr003_u` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr003_nom@test.com` | ✅ Accepted |
+| TC-001-004 | BVA | V1: Username (min+) | `usr004_uu` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr004_nom@test.com` | ✅ Accepted |
+| TC-001-005 | BVA | V2: Password (min-) | `usr008_uuuuuuuuuu` | `Ab1!cD2` | `ffffffffff` | `llllllllll` | `usr008_nom@test.com` | ❌ Error |
+| TC-001-006 | BVA | V2: Password (min) | `usr009_uuuuuuuuuu` | `Ab1!cD2@ab` | `ffffffffff` | `llllllllll` | `usr009_nom@test.com` | ✅ Accepted |
+| TC-001-007 | BVA | V2: Password (min+) | `usr010_uuuuuuuuuu` | `Ab1!cD2@abc` | `ffffffffff` | `llllllllll` | `usr010_nom@test.com` | ✅ Accepted |
+| TC-001-008 | BVA | V2: Password (max-) | `usr011_uuuuuuuuuu` | `Ab1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9` | `ffffffffff` | `llllllllll` | `usr011_nom@test.com` | ✅ Accepted |
+| TC-001-009 | BVA | V2: Password (max) | `usr012_uuuuuuuuuu` | `Ab1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=` | `ffffffffff` | `llllllllll` | `usr012_nom@test.com` | ✅ Accepted |
+| TC-001-010 | BVA | V2: Password (max+) | `usr013_uuuuuuuuuu` | `Ab1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=sT0+uVwXyZAb1!cD2@eF3#gH4$iJ5%kL6^mN7&oP8*qR9=s` | `ffffffffff` | `llllllllll` | `usr013_nom@test.com` | ❌ Error |
+| TC-001-011 | BVA | V3: First Name (min-) | `usr014_uuuuuuuuuu` | `XuanSang12@` | `*(empty)*` | `llllllllll` | `usr014_nom@test.com` | ❌ Error |
+| TC-001-012 | BVA | V3: First Name (min) | `usr015_uuuuuuuuuu` | `XuanSang12@` | `f` | `llllllllll` | `usr015_nom@test.com` | ✅ Accepted |
+| TC-001-013 | BVA | V3: First Name (min+) | `usr016_uuuuuuuuuu` | `XuanSang12@` | `ff` | `llllllllll` | `usr016_nom@test.com` | ✅ Accepted |
+| TC-001-014 | BVA | V3: First Name (max-) | `usr017_uuuuuuuuuu` | `XuanSang12@` | `fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff` | `llllllllll` | `usr017_nom@test.com` | ✅ Accepted |
+| TC-001-015 | BVA | V3: First Name (max) | `usr018_uuuuuuuuuu` | `XuanSang12@` | `ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff` | `llllllllll` | `usr018_nom@test.com` | ✅ Accepted |
+| TC-001-016 | BVA | V4: Last Name (min-) | `usr020_uuuuuuuuuu` | `XuanSang12@` | `ffffffffff` | `*(empty)*` | `usr020_nom@test.com` | ❌ Error |
+| TC-001-017 | BVA | V4: Last Name (min) | `usr021_uuuuuuuuuu` | `XuanSang12@` | `ffffffffff` | `l` | `usr021_nom@test.com` | ✅ Accepted |
+| TC-001-018 | BVA | V4: Last Name (min+) | `usr022_uuuuuuuuuu` | `XuanSang12@` | `ffffffffff` | `ll` | `usr022_nom@test.com` | ✅ Accepted |
+| TC-001-019 | BVA | V4: Last Name (max-) | `usr023_uuuuuuuuuu` | `XuanSang12@` | `ffffffffff` | `lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll` | `usr023_nom@test.com` | ✅ Accepted |
+| TC-001-020 | BVA | V4: Last Name (max) | `usr024_uuuuuuuuuu` | `XuanSang12@` | `ffffffffff` | `llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll` | `usr024_nom@test.com` | ✅ Accepted |
 
 ## 1.4 Equivalence Class Partitioning (ECP)
 
@@ -96,17 +93,17 @@ Applying Weak Robust ECP (Single Fault Assumption).
 
 | TC ID | Technique | Class Tested | Username | Password | First Name | Last Name | Email | Expected Result |
 |-------|-----------|--------------|----------|----------|------------|-----------|-------|-----------------|
-| TC-001-026 | ECP | Username (U5: Uppercase) | `usr026_UsrNom` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr026_nom@test.com` | ❌ Error |
-| TC-001-027 | ECP | Username (U6: Space) | `usr027_usr nom` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr027_nom@test.com` | ❌ Error |
-| TC-001-028 | ECP | Username (U7: Special) | `usr028_usr!nom` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr028_nom@test.com` | ❌ Error |
-| TC-001-029 | ECP | Username (U9: Duplicate) | `admin` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr029_nom@test.com` | ❌ Error |
-| TC-001-030 | ECP | Password (P2: No digit) | `usr030_usr` | `Abcdefg!@` | `ffffffffff` | `llllllllll` | `usr030_nom@test.com` | ❌ Error |
-| TC-001-031 | ECP | Password (P3: No uppercase) | `usr031_usr` | `abcdefg1!@` | `ffffffffff` | `llllllllll` | `usr031_nom@test.com` | ❌ Error |
-| TC-001-032 | ECP | Password (P4: No lowercase) | `usr032_usr` | `ABCDEFG1!@` | `ffffffffff` | `llllllllll` | `usr032_nom@test.com` | ❌ Error |
-| TC-001-033 | ECP | Password (P5: No special) | `usr033_usr` | `Abcdefg123` | `ffffffffff` | `llllllllll` | `usr033_nom@test.com` | ❌ Error |
-| TC-001-034 | ECP | Email (E4: No @) | `usr034_usr` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `testexample.com` | ❌ Error |
-| TC-001-035 | ECP | Email (E5: No domain) | `usr035_usr` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `test@` | ❌ Error |
-| TC-001-036 | ECP | Email (E7: Space) | `usr036_usr` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `te st@ex.com` | ❌ Error |
+| TC-001-021 | ECP | Username (U5: Uppercase) | `usr026_UsrNom` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr026_nom@test.com` | ❌ Error |
+| TC-001-022 | ECP | Username (U6: Space) | `usr027_usr nom` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr027_nom@test.com` | ❌ Error |
+| TC-001-023 | ECP | Username (U7: Special) | `usr028_usr!nom` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr028_nom@test.com` | ❌ Error |
+| TC-001-024 | ECP | Username (U9: Duplicate) | `admin` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr029_nom@test.com` | ❌ Error |
+| TC-001-025 | ECP | Password (P2: No digit) | `usr030_usr` | `Abcdefg!@` | `ffffffffff` | `llllllllll` | `usr030_nom@test.com` | ❌ Error |
+| TC-001-026 | ECP | Password (P3: No uppercase) | `usr031_usr` | `abcdefg1!@` | `ffffffffff` | `llllllllll` | `usr031_nom@test.com` | ❌ Error |
+| TC-001-027 | ECP | Password (P4: No lowercase) | `usr032_usr` | `ABCDEFG1!@` | `ffffffffff` | `llllllllll` | `usr032_nom@test.com` | ❌ Error |
+| TC-001-028 | ECP | Password (P5: No special) | `usr033_usr` | `Abcdefg123` | `ffffffffff` | `llllllllll` | `usr033_nom@test.com` | ❌ Error |
+| TC-001-029 | ECP | Email (E4: No @) | `usr034_usr` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `testexample.com` | ❌ Error |
+| TC-001-030 | ECP | Email (E5: No domain) | `usr035_usr` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `test@` | ❌ Error |
+| TC-001-031 | ECP | Email (E7: Space) | `usr036_usr` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `te st@ex.com` | ❌ Error |
 
 ## 1.5 Use-Case Testing
 
@@ -198,18 +195,18 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 
 | TC ID | Technique | Test Case Name | Username | Password | First Name | Last Name | Email | Expected Result |
 |-------|-----------|----------------|----------|----------|------------|-----------|-------|-----------------|
-| TC-001-037 | UC | Happy path (S1) | `usr037_usr` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr037_nom@test.com` | ✅ Accepted |
-| TC-001-038 | UC | Generate password (S2) | `usr038_usr` | `*(empty)*` | `ffffffffff` | `llllllllll` | `usr038_nom@test.com` | ✅ Accepted |
-| TC-001-039 | UC | Duplicate username (S3) | `admin` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `usr039_nom@test.com` | ❌ Error |
-| TC-001-040 | UC | Invalid password (S4) | `usr040_usr` | `invalid` | `ffffffffff` | `llllllllll` | `usr040_nom@test.com` | ❌ Error |
-| TC-001-041 | UC | Invalid email (S5) | `usr041_usr` | `A1!apppppppp` | `ffffffffff` | `llllllllll` | `invalid` | ❌ Error |
-| TC-001-042 | UC | Empty required (S6) | `usr042_usr` | `A1!apppppppp` | `*(empty)*` | `llllllllll` | `usr042_nom@test.com` | ❌ Error |
-| TC-001-043 | DT | All rules met (R1) | `usr043_usr` | `Abcde1!@` | `ffffffffff` | `llllllllll` | `usr043_nom@test.com` | ✅ Accepted |
-| TC-001-044 | DT | Missing special char (R2) | `usr044_usr` | `Abcdefg1` | `ffffffffff` | `llllllllll` | `usr044_nom@test.com` | ❌ Error |
-| TC-001-045 | DT | Missing lowercase (R3) | `usr045_usr` | `ABCDEFG1!` | `ffffffffff` | `llllllllll` | `usr045_nom@test.com` | ❌ Error |
-| TC-001-046 | DT | Missing uppercase (R4) | `usr046_usr` | `abcdefg1!` | `ffffffffff` | `llllllllll` | `usr046_nom@test.com` | ❌ Error |
-| TC-001-047 | DT | Missing digit (R5) | `usr047_usr` | `Abcdefgh!` | `ffffffffff` | `llllllllll` | `usr047_nom@test.com` | ❌ Error |
-| TC-001-048 | DT | Length < 8 (R6) | `usr048_usr` | `Abc1!` | `ffffffffff` | `llllllllll` | `usr048_nom@test.com` | ❌ Error |
+| TC-001-032 | UC | Happy path (S1) | `usr037_usr` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr037_nom@test.com` | ✅ Accepted |
+| TC-001-033 | UC | Generate password (S2) | `usr038_usr` | `*(empty)*` | `ffffffffff` | `llllllllll` | `usr038_nom@test.com` | ✅ Accepted |
+| TC-001-034 | UC | Duplicate username (S3) | `admin` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr039_nom@test.com` | ❌ Error |
+| TC-001-035 | UC | Invalid password (S4) | `usr040_usr` | `invalid` | `ffffffffff` | `llllllllll` | `usr040_nom@test.com` | ❌ Error |
+| TC-001-036 | UC | Invalid email (S5) | `usr041_usr` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `invalid` | ❌ Error |
+| TC-001-037 | UC | Empty required (S6) | `usr042_usr` | `XuanSang12@` | `*(empty)*` | `llllllllll` | `usr042_nom@test.com` | ❌ Error |
+| TC-001-038 | DT | All rules met (R1) | `usr043_usr` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr043_nom@test.com` | ✅ Accepted |
+| TC-001-039 | DT | Missing special char (R2) | `usr044_usr` | `Abcdefg1` | `ffffffffff` | `llllllllll` | `usr044_nom@test.com` | ❌ Error |
+| TC-001-040 | DT | Missing lowercase (R3) | `usr045_usr` | `ABCDEFG1!` | `ffffffffff` | `llllllllll` | `usr045_nom@test.com` | ❌ Error |
+| TC-001-041 | DT | Missing uppercase (R4) | `usr046_usr` | `abcdefg1!` | `ffffffffff` | `llllllllll` | `usr046_nom@test.com` | ❌ Error |
+| TC-001-042 | DT | Missing digit (R5) | `usr047_usr` | `Abcdefgh!` | `ffffffffff` | `llllllllll` | `usr047_nom@test.com` | ❌ Error |
+| TC-001-043 | DT | Length < 8 (R6) | `usr048_usr` | `Abc1!` | `ffffffffff` | `llllllllll` | `usr048_nom@test.com` | ❌ Error |
 
 
 ---
@@ -241,7 +238,6 @@ Managers can create new course spaces with configurable settings. The form enfor
 | Course summary | Rich text editor | No | Free text |
 | Course image | File upload | No | Image files only (GIF, JPG, PNG) |
 | Course format | Dropdown | Yes | Weekly, Topics, Social, Single activity |
-| Number of sections | Number input | Yes | Default 10. Range depends on format. |
 
 ## 2.3 Boundary Value Analysis (BVA)
 
@@ -249,33 +245,27 @@ Managers can create new course spaces with configurable settings. The form enfor
 
 Applying Robust Single Fault BVA (6n + 1 test cases).
 
+> **Note:** Full Name and Short Name inputs have hard UI maximum limits, so `max+` boundaries are impossible and omitted.
+
 | TC ID | Technique | Variable Tested | Full Name | Short Name | End Date | Sections | Expected Result |
 |-------|-----------|-----------------|-----------|------------|----------|----------|-----------------|
 | TC-002-001 | BVA | All (nom) | `fn001_nnnnnnnnnnnnnnnnnnnn` | `sn001_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
 | TC-002-002 | BVA | V1: Full Name Length (min-) | `*(empty)*` | `sn002_ssssssss` | `Start + 30 days` | `10` | ❌ Error |
-| TC-002-003 | BVA | V1: Full Name Length (min) | `fn003_n` | `sn003_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-004 | BVA | V1: Full Name Length (min+) | `fn004_nn` | `sn004_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-003 | BVA | V1: Full Name Length (min) | `f` | `sn003_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-004 | BVA | V1: Full Name Length (min+) | `fn` | `sn004_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
 | TC-002-005 | BVA | V1: Full Name Length (max-) | `fn005_nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn` | `sn005_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
 | TC-002-006 | BVA | V1: Full Name Length (max) | `fn006_nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn` | `sn006_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-007 | BVA | V1: Full Name Length (max+) | `fn007_nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn` | `sn007_ssssssss` | `Start + 30 days` | `10` | ❌ Error |
-| TC-002-008 | BVA | V2: Short Name Length (min-) | `fn008_nnnnnnnnnnnnnnnnnnnn` | `*(empty)*` | `Start + 30 days` | `10` | ❌ Error |
-| TC-002-009 | BVA | V2: Short Name Length (min) | `fn009_nnnnnnnnnnnnnnnnnnnn` | `sn009_s` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-010 | BVA | V2: Short Name Length (min+) | `fn010_nnnnnnnnnnnnnnnnnnnn` | `sn010_ss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-011 | BVA | V2: Short Name Length (max-) | `fn011_nnnnnnnnnnnnnnnnnnnn` | `sn011_ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-012 | BVA | V2: Short Name Length (max) | `fn012_nnnnnnnnnnnnnnnnnnnn` | `sn012_ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-013 | BVA | V2: Short Name Length (max+) | `fn013_nnnnnnnnnnnnnnnnnnnn` | `sn013_ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss` | `Start + 30 days` | `10` | ❌ Error |
-| TC-002-014 | BVA | V3: End Date Chronology (min-) | `fn014_nnnnnnnnnnnnnnnnnnnn` | `sn014_ssssssss` | `Start - 1 day` | `10` | ❌ Error |
-| TC-002-015 | BVA | V3: End Date Chronology (min) | `fn015_nnnnnnnnnnnnnnnnnnnn` | `sn015_ssssssss` | `Start Date` | `10` | ❌ Error |
-| TC-002-016 | BVA | V3: End Date Chronology (min+) | `fn016_nnnnnnnnnnnnnnnnnnnn` | `sn016_ssssssss` | `Start + 1 day` | `10` | ✅ Accepted |
-| TC-002-017 | BVA | V3: End Date Chronology (max-) | `fn017_nnnnnnnnnnnnnnnnnnnn` | `sn017_ssssssss` | `Start + 10 yrs` | `10` | ✅ Accepted |
-| TC-002-018 | BVA | V3: End Date Chronology (max) | `fn018_nnnnnnnnnnnnnnnnnnnn` | `sn018_ssssssss` | `Start + 11 yrs` | `10` | ✅ Accepted |
-| TC-002-019 | BVA | V3: End Date Chronology (max+) | `fn019_nnnnnnnnnnnnnnnnnnnn` | `sn019_ssssssss` | `Start + 12 yrs` | `10` | ✅ Accepted |
-| TC-002-020 | BVA | V4: Number of Sections (min-) | `fn020_nnnnnnnnnnnnnnnnnnnn` | `sn020_ssssssss` | `Start + 30 days` | `-1` | ❌ Error |
-| TC-002-021 | BVA | V4: Number of Sections (min) | `fn021_nnnnnnnnnnnnnnnnnnnn` | `sn021_ssssssss` | `Start + 30 days` | `0` | ✅ Accepted |
-| TC-002-022 | BVA | V4: Number of Sections (min+) | `fn022_nnnnnnnnnnnnnnnnnnnn` | `sn022_ssssssss` | `Start + 30 days` | `1` | ✅ Accepted |
-| TC-002-023 | BVA | V4: Number of Sections (max-) | `fn023_nnnnnnnnnnnnnnnnnnnn` | `sn023_ssssssss` | `Start + 30 days` | `51` | ✅ Accepted |
-| TC-002-024 | BVA | V4: Number of Sections (max) | `fn024_nnnnnnnnnnnnnnnnnnnn` | `sn024_ssssssss` | `Start + 30 days` | `52` | ✅ Accepted |
-| TC-002-025 | BVA | V4: Number of Sections (max+) | `fn025_nnnnnnnnnnnnnnnnnnnn` | `sn025_ssssssss` | `Start + 30 days` | `53` | ❌ Error |
+| TC-002-007 | BVA | V2: Short Name Length (min-) | `fn008_nnnnnnnnnnnnnnnnnnnn` | `*(empty)*` | `Start + 30 days` | `10` | ❌ Error |
+| TC-002-008 | BVA | V2: Short Name Length (min) | `fn009_nnnnnnnnnnnnnnnnnnnn` | `s` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-009 | BVA | V2: Short Name Length (min+) | `fn010_nnnnnnnnnnnnnnnnnnnn` | `sn` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-010 | BVA | V2: Short Name Length (max-) | `fn011_nnnnnnnnnnnnnnnnnnnn` | `sn011_ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-011 | BVA | V2: Short Name Length (max) | `fn012_nnnnnnnnnnnnnnnnnnnn` | `sn012_ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-012 | BVA | V3: End Date Chronology (min-) | `fn014_nnnnnnnnnnnnnnnnnnnn` | `sn014_ssssssss` | `Start - 1 day` | `10` | ❌ Error |
+| TC-002-013 | BVA | V3: End Date Chronology (min) | `fn015_nnnnnnnnnnnnnnnnnnnn` | `sn015_ssssssss` | `Start Date` | `10` | ❌ Error |
+| TC-002-014 | BVA | V3: End Date Chronology (min+) | `fn016_nnnnnnnnnnnnnnnnnnnn` | `sn016_ssssssss` | `Start + 1 day` | `10` | ✅ Accepted |
+| TC-002-015 | BVA | V3: End Date Chronology (max-) | `fn017_nnnnnnnnnnnnnnnnnnnn` | `sn017_ssssssss` | `Start + 10 yrs` | `10` | ✅ Accepted |
+| TC-002-016 | BVA | V3: End Date Chronology (max) | `fn018_nnnnnnnnnnnnnnnnnnnn` | `sn018_ssssssss` | `Start + 11 yrs` | `10` | ✅ Accepted |
+| TC-002-017 | BVA | V3: End Date Chronology (max+) | `fn019_nnnnnnnnnnnnnnnnnnnn` | `sn019_ssssssss` | `Start + 12 yrs` | `10` | ✅ Accepted |
 
 ## 2.4 Equivalence Class Partitioning (ECP)
 
@@ -285,7 +275,7 @@ Applying Weak Robust ECP (Single Fault Assumption).
 
 | TC ID | Technique | Class Tested | Full Name | Short Name | End Date | Sections | Expected Result |
 |-------|-----------|--------------|-----------|------------|----------|----------|-----------------|
-| TC-002-026 | ECP | Short Name (SN2: Duplicate) | `fn026_nnnnnnnnnnnnnnnnnnnn` | `TC001` | `Start + 30 days` | `10` | ❌ Error |
+| TC-002-018 | ECP | Short Name (SN2: Duplicate) | `fn026_nnnnnnnnnnnnnnnnnnnn` | `TC001` | `Start + 30 days` | `10` | ❌ Error |
 
 ## 2.5 Use-Case Testing
 
@@ -369,15 +359,15 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 
 | TC ID | Technique | Test Case Name | Full Name | Short Name | End Date | Sections | Expected Result |
 |-------|-----------|----------------|-----------|------------|----------|----------|-----------------|
-| TC-002-027 | DT | Non-Weekly + End Date OFF (R1) | `fn027_nnnnnnnnnnnnnnnnnnnn` | `sn027_ssssssss` | `Disabled` | `10` | ✅ Accepted |
-| TC-002-028 | DT | Non-Weekly + End Date ON (R2) | `fn028_nnnnnnnnnnnnnnnnnnnn` | `sn028_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-029 | DT | Weekly + End Date OFF (R3) | `fn029_nnnnnnnnnnnnnnnnnnnn` | `sn029_ssssssss` | `Disabled` | `10` | ✅ Accepted |
-| TC-002-030 | DT | Weekly + End Date ON + No Calc (R4) | `fn030_nnnnnnnnnnnnnnnnnnnn` | `sn030_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-031 | DT | Weekly + End Date ON + Auto-calc (R5) | `fn031_nnnnnnnnnnnnnnnnnnnn` | `sn031_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-032 | UC | Happy path S1 | `fn032_nnnnnnnnnnnnnnnnnnnn` | `sn032_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
-| TC-002-033 | UC | End date disabled S2 | `fn033_nnnnnnnnnnnnnnnnnnnn` | `sn033_ssssssss` | `Disabled` | `10` | ✅ Accepted |
-| TC-002-034 | UC | Duplicate short name S4 | `fn034_nnnnnnnnnnnnnnnnnnnn` | `TC001` | `Start + 30 days` | `10` | ❌ Error |
-| TC-002-035 | UC | Date conflict S5 | `fn035_nnnnnnnnnnnnnnnnnnnn` | `sn035_ssssssss` | `Start - 1 day` | `10` | ❌ Error |
+| TC-002-019 | DT | Non-Weekly + End Date OFF (R1) | `fn027_nnnnnnnnnnnnnnnnnnnn` | `sn027_ssssssss` | `Disabled` | `10` | ✅ Accepted |
+| TC-002-020 | DT | Non-Weekly + End Date ON (R2) | `fn028_nnnnnnnnnnnnnnnnnnnn` | `sn028_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-021 | DT | Weekly + End Date OFF (R3) | `fn029_nnnnnnnnnnnnnnnnnnnn` | `sn029_ssssssss` | `Disabled` | `10` | ✅ Accepted |
+| TC-002-022 | DT | Weekly + End Date ON + No Calc (R4) | `fn030_nnnnnnnnnnnnnnnnnnnn` | `sn030_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-023 | DT | Weekly + End Date ON + Auto-calc (R5) | `fn031_nnnnnnnnnnnnnnnnnnnn` | `sn031_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-024 | UC | Happy path S1 | `fn032_nnnnnnnnnnnnnnnnnnnn` | `sn032_ssssssss` | `Start + 30 days` | `10` | ✅ Accepted |
+| TC-002-025 | UC | End date disabled S2 | `fn033_nnnnnnnnnnnnnnnnnnnn` | `sn033_ssssssss` | `Disabled` | `10` | ✅ Accepted |
+| TC-002-026 | UC | Duplicate short name S4 | `fn034_nnnnnnnnnnnnnnnnnnnn` | `TC001` | `Start + 30 days` | `10` | ❌ Error |
+| TC-002-027 | UC | Date conflict S5 | `fn035_nnnnnnnnnnnnnnnnnnnn` | `sn035_ssssssss` | `Start - 1 day` | `10` | ❌ Error |
 
 
 ---
@@ -420,33 +410,29 @@ Teachers create assignment activities within courses, configuring submission typ
 
 Applying Robust Single Fault BVA (6n + 1 test cases).
 
+> **Note:** Grade to pass has no minimum limit. Assignment Name has a hard UI maximum limit. Date dropdowns do not have a `max+` boundary. These impossible boundaries are omitted from testing.
+
 | TC ID | Technique | Variable Tested | Assig. Name | Grade to Pass | Due Date | Cut-off Date | Expected Result |
 |-------|-----------|-----------------|-------------|---------------|----------|--------------|-----------------|
 | TC-003-001 | BVA | All (nom) | `an001_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
 | TC-003-002 | BVA | V1: Name Length (min-) | `*(empty)*` | `50` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
-| TC-003-003 | BVA | V1: Name Length (min) | `an003_a` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-004 | BVA | V1: Name Length (min+) | `an004_aa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-003 | BVA | V1: Name Length (min) | `a` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-004 | BVA | V1: Name Length (min+) | `as` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
 | TC-003-005 | BVA | V1: Name Length (max-) | `an005_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
 | TC-003-006 | BVA | V1: Name Length (max) | `an006_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-007 | BVA | V1: Name Length (max+) | `an007_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
-| TC-003-008 | BVA | V2: Grade to Pass (min-) | `an008_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `-1` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
-| TC-003-009 | BVA | V2: Grade to Pass (min) | `an009_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `0` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-010 | BVA | V2: Grade to Pass (min+) | `an010_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `1` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-011 | BVA | V2: Grade to Pass (max-) | `an011_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `99` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-012 | BVA | V2: Grade to Pass (max) | `an012_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `100` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-013 | BVA | V2: Grade to Pass (max+) | `an013_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `101` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
-| TC-003-014 | BVA | V3: Due vs Allow (min-) | `an014_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow - 1 day` | `Due + 7 days` | ❌ Error |
-| TC-003-015 | BVA | V3: Due vs Allow (min) | `an015_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow Date` | `Due + 7 days` | ✅ Accepted |
-| TC-003-016 | BVA | V3: Due vs Allow (min+) | `an016_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 1 day` | `Due + 7 days` | ✅ Accepted |
-| TC-003-017 | BVA | V3: Due vs Allow (max-) | `an017_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 10 yrs` | `Due + 7 days` | ✅ Accepted |
-| TC-003-018 | BVA | V3: Due vs Allow (max) | `an018_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 11 yrs` | `Due + 7 days` | ✅ Accepted |
-| TC-003-019 | BVA | V3: Due vs Allow (max+) | `an019_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 12 yrs` | `Due + 7 days` | ✅ Accepted |
-| TC-003-020 | BVA | V4: Cut-off vs Due (min-) | `an020_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due - 1 day` | ❌ Error |
-| TC-003-021 | BVA | V4: Cut-off vs Due (min) | `an021_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due Date` | ✅ Accepted |
-| TC-003-022 | BVA | V4: Cut-off vs Due (min+) | `an022_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 1 day` | ✅ Accepted |
-| TC-003-023 | BVA | V4: Cut-off vs Due (max-) | `an023_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 10 yrs` | ✅ Accepted |
-| TC-003-024 | BVA | V4: Cut-off vs Due (max) | `an024_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 11 yrs` | ✅ Accepted |
-| TC-003-025 | BVA | V4: Cut-off vs Due (max+) | `an025_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 12 yrs` | ✅ Accepted |
+| TC-003-007 | BVA | V2: Grade to Pass (max-) | `an011_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `99` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-008 | BVA | V2: Grade to Pass (max) | `an012_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `100` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-009 | BVA | V2: Grade to Pass (max+) | `an013_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `101` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
+| TC-003-010 | BVA | V3: Due vs Allow (min-) | `an014_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow - 1 day` | `Due + 7 days` | ❌ Error |
+| TC-003-011 | BVA | V3: Due vs Allow (min) | `an015_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow Date` | `Due + 7 days` | ✅ Accepted |
+| TC-003-012 | BVA | V3: Due vs Allow (min+) | `an016_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 1 day` | `Due + 7 days` | ✅ Accepted |
+| TC-003-013 | BVA | V3: Due vs Allow (max-) | `an017_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 10 yrs` | `Due + 7 days` | ✅ Accepted |
+| TC-003-014 | BVA | V3: Due vs Allow (max) | `an018_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 11 yrs` | `Due + 7 days` | ✅ Accepted |
+| TC-003-015 | BVA | V4: Cut-off vs Due (min-) | `an020_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due - 1 day` | ❌ Error |
+| TC-003-016 | BVA | V4: Cut-off vs Due (min) | `an021_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due Date` | ✅ Accepted |
+| TC-003-017 | BVA | V4: Cut-off vs Due (min+) | `an022_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 1 day` | ✅ Accepted |
+| TC-003-018 | BVA | V4: Cut-off vs Due (max-) | `an023_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 10 yrs` | ✅ Accepted |
+| TC-003-019 | BVA | V4: Cut-off vs Due (max) | `an024_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 11 yrs` | ✅ Accepted |
 
 ## 3.4 Equivalence Class Partitioning (ECP)
 
@@ -527,14 +513,14 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 
 | TC ID | Technique | Test Case Name | Assig. Name | Grade to Pass | Due Date | Cut-off Date | Expected Result |
 |-------|-----------|----------------|-------------|---------------|----------|--------------|-----------------|
-| TC-003-026 | DT | File + Online both on (R1) | `an026_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-027 | DT | File only (R2) | `an027_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-028 | DT | Online text only (R3) | `an028_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-029 | DT | Both off (R4) | `an029_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-030 | UC | Happy path | `an030_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
-| TC-003-031 | UC | No due date | `an031_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Disabled` | `Due + 7 days` | ✅ Accepted |
-| TC-003-032 | UC | Empty name error | `*(empty)*` | `50` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
-| TC-003-033 | UC | Date conflict | `an033_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow - 1 day` | `Due + 7 days` | ❌ Error |
+| TC-003-020 | DT | File + Online both on (R1) | `an026_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-021 | DT | File only (R2) | `an027_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-022 | DT | Online text only (R3) | `an028_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-023 | DT | Both off (R4) | `an029_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-024 | UC | Happy path | `an030_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow + 7 days` | `Due + 7 days` | ✅ Accepted |
+| TC-003-025 | UC | No due date | `an031_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Disabled` | `Due + 7 days` | ✅ Accepted |
+| TC-003-026 | UC | Empty name error | `*(empty)*` | `50` | `Allow + 7 days` | `Due + 7 days` | ❌ Error |
+| TC-003-027 | UC | Date conflict | `an033_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` | `50` | `Allow - 1 day` | `Due + 7 days` | ❌ Error |
 
 
 ---
@@ -691,27 +677,25 @@ Users create personal events on their Moodle calendar, specifying title, date, a
 
 Applying Robust Single Fault BVA (6n + 1 test cases).
 
+> **Note:** Event Title has no maximum limit. Date dropdowns do not have a `max+` boundary. These impossible boundaries are omitted from testing.
+
 | TC ID | Technique | Variable Tested | Event Title | Duration Min | Until Date | Expected Result |
 |-------|-----------|-----------------|-------------|--------------|------------|-----------------|
-| TC-005-001 | BVA | All (nom) | `t001_tttttttttttttttttttt` | `60` | `Event + 7 days` | ✅ Accepted |
-| TC-005-002 | BVA | V1: Title Length (min-) | `*(empty)*` | `60` | `Event + 7 days` | ❌ Error |
-| TC-005-003 | BVA | V1: Title Length (min) | `t003_t` | `60` | `Event + 7 days` | ✅ Accepted |
-| TC-005-004 | BVA | V1: Title Length (min+) | `t004_tt` | `60` | `Event + 7 days` | ✅ Accepted |
-| TC-005-005 | BVA | V1: Title Length (max-) | `t005_tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt` | `60` | `Event + 7 days` | ✅ Accepted |
-| TC-005-006 | BVA | V1: Title Length (max) | `t006_tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt` | `60` | `Event + 7 days` | ✅ Accepted |
-| TC-005-007 | BVA | V1: Title Length (max+) | `t007_tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt` | `60` | `Event + 7 days` | ❌ Error |
-| TC-005-008 | BVA | V2: Duration Mins (min-) | `t008_tttttttttttttttttttt` | `-1` | `Event + 7 days` | ❌ Error |
-| TC-005-009 | BVA | V2: Duration Mins (min) | `t009_tttttttttttttttttttt` | `0` | `Event + 7 days` | ✅ Accepted |
-| TC-005-010 | BVA | V2: Duration Mins (min+) | `t010_tttttttttttttttttttt` | `1` | `Event + 7 days` | ✅ Accepted |
-| TC-005-011 | BVA | V2: Duration Mins (max-) | `t011_tttttttttttttttttttt` | `998` | `Event + 7 days` | ✅ Accepted |
-| TC-005-012 | BVA | V2: Duration Mins (max) | `t012_tttttttttttttttttttt` | `999` | `Event + 7 days` | ✅ Accepted |
-| TC-005-013 | BVA | V2: Duration Mins (max+) | `t013_tttttttttttttttttttt` | `1000` | `Event + 7 days` | ✅ Accepted |
-| TC-005-014 | BVA | V3: Until Date (min-) | `t014_tttttttttttttttttttt` | `60` | `Event - 1 day` | ❌ Error |
-| TC-005-015 | BVA | V3: Until Date (min) | `t015_tttttttttttttttttttt` | `60` | `Event Date` | ✅ Accepted |
-| TC-005-016 | BVA | V3: Until Date (min+) | `t016_tttttttttttttttttttt` | `60` | `Event + 1 day` | ✅ Accepted |
-| TC-005-017 | BVA | V3: Until Date (max-) | `t017_tttttttttttttttttttt` | `60` | `Event + 10 yrs` | ✅ Accepted |
-| TC-005-018 | BVA | V3: Until Date (max) | `t018_tttttttttttttttttttt` | `60` | `Event + 11 yrs` | ✅ Accepted |
-| TC-005-019 | BVA | V3: Until Date (max+) | `t019_tttttttttttttttttttt` | `60` | `Event + 12 yrs` | ✅ Accepted |
+| TC-005-001 | BVA | All (nom) | `t001_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
+| TC-005-002 | BVA | V1: Title Length (min-) | `*(empty)*` | `60` | `Disabled` | ❌ Error |
+| TC-005-003 | BVA | V1: Title Length (min) | `t` | `60` | `Disabled` | ✅ Accepted |
+| TC-005-004 | BVA | V1: Title Length (min+) | `ti` | `60` | `Disabled` | ✅ Accepted |
+| TC-005-005 | BVA | V2: Duration Mins (min-) | `t008_tttttttttttttttttttt` | `0` | `Disabled` | ❌ Error |
+| TC-005-006 | BVA | V2: Duration Mins (min) | `t009_tttttttttttttttttttt` | `1` | `Disabled` | ✅ Accepted |
+| TC-005-007 | BVA | V2: Duration Mins (min+) | `t010_tttttttttttttttttttt` | `2` | `Disabled` | ✅ Accepted |
+| TC-005-008 | BVA | V2: Duration Mins (max-) | `t011_tttttttttttttttttttt` | `9999998` | `Disabled` | ✅ Accepted |
+| TC-005-009 | BVA | V2: Duration Mins (max) | `t012_tttttttttttttttttttt` | `9999999` | `Disabled` | ✅ Accepted |
+| TC-005-010 | BVA | V2: Duration Mins (max+) | `t013_tttttttttttttttttttt` | `10000000` | `Disabled` | ❌ Error |
+| TC-005-011 | BVA | V3: Until Date (min-) | `t014_tttttttttttttttttttt` | `Disabled` | `Event - 1 day` | ❌ Error |
+| TC-005-012 | BVA | V3: Until Date (min) | `t015_tttttttttttttttttttt` | `Disabled` | `Event Date` | ✅ Accepted |
+| TC-005-013 | BVA | V3: Until Date (min+) | `t016_tttttttttttttttttttt` | `Disabled` | `Event + 1 day` | ✅ Accepted |
+| TC-005-014 | BVA | V3: Until Date (max-) | `t017_tttttttttttttttttttt` | `Disabled` | `Event + 10 yrs` | ✅ Accepted |
+| TC-005-015 | BVA | V3: Until Date (max) | `t018_tttttttttttttttttttt` | `Disabled` | `Event + 11 yrs` | ✅ Accepted |
 
 ## 5.4 Equivalence Class Partitioning (ECP)
 
@@ -721,9 +705,9 @@ Applying Weak Robust ECP (Single Fault Assumption).
 
 | TC ID | Technique | Class Tested | Event Title | Duration Min | Until Date | Expected Result |
 |-------|-----------|--------------|-------------|--------------|------------|-----------------|
-| TC-005-020 | ECP | Duration (DT4: Float) | `t020_tttttttttttttttttttt` | `1.5` | `Event + 7 days` | ❌ Error |
-| TC-005-021 | ECP | Duration (DT5: Text) | `t021_tttttttttttttttttttt` | `abc` | `Event + 7 days` | ❌ Error |
-| TC-005-022 | ECP | Duration (DT6: Negative) | `t022_tttttttttttttttttttt` | `-10` | `Event + 7 days` | ❌ Error |
+| TC-005-016 | ECP | Duration (DT4: Float) | `t020_tttttttttttttttttttt` | `1.5` | `Disabled` | ❌ Error |
+| TC-005-017 | ECP | Duration (DT5: Text) | `t021_tttttttttttttttttttt` | `abc` | `Disabled` | ❌ Error |
+| TC-005-018 | ECP | Duration (DT6: Negative) | `t022_tttttttttttttttttttt` | `-10` | `Disabled` | ❌ Error |
 
 ## 5.5 Use-Case Testing
 
@@ -780,16 +764,16 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 
 | TC ID | Technique | Test Case Name | Event Title | Duration Min | Until Date | Expected Result |
 |-------|-----------|----------------|-------------|--------------|------------|-----------------|
-| TC-005-023 | DT | Without duration, No Repeat (R1) | `t023_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-005-024 | DT | Until mode, No Repeat (R2) | `t024_tttttttttttttttttttt` | `Disabled` | `Event + 7 days` | ✅ Accepted |
-| TC-005-025 | DT | Minutes mode, No Repeat (R3) | `t025_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
-| TC-005-026 | DT | Without duration, Repeat (R4) | `t026_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-005-027 | DT | Until mode, Repeat (R5) | `t027_tttttttttttttttttttt` | `Disabled` | `Event + 7 days` | ✅ Accepted |
-| TC-005-028 | DT | Minutes mode, Repeat (R6) | `t028_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
-| TC-005-029 | UC | Happy path | `t029_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-005-030 | UC | With minutes | `t030_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
-| TC-005-031 | UC | Empty title error | `*(empty)*` | `60` | `Event + 7 days` | ❌ Error |
-| TC-005-032 | UC | Negative duration error | `t032_tttttttttttttttttttt` | `-10` | `Event + 7 days` | ❌ Error |
+| TC-005-019 | DT | Without duration, No Repeat (R1) | `t023_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-005-020 | DT | Until mode, No Repeat (R2) | `t024_tttttttttttttttttttt` | `Disabled` | `Event + 7 days` | ✅ Accepted |
+| TC-005-021 | DT | Minutes mode, No Repeat (R3) | `t025_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
+| TC-005-022 | DT | Without duration, Repeat (R4) | `t026_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-005-023 | DT | Until mode, Repeat (R5) | `t027_tttttttttttttttttttt` | `Disabled` | `Event + 7 days` | ✅ Accepted |
+| TC-005-024 | DT | Minutes mode, Repeat (R6) | `t028_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
+| TC-005-025 | UC | Happy path | `t029_tttttttttttttttttttt` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-005-026 | UC | With minutes | `t030_tttttttttttttttttttt` | `60` | `Disabled` | ✅ Accepted |
+| TC-005-027 | UC | Empty title error | `*(empty)*` | `60` | `Event + 7 days` | ❌ Error |
+| TC-005-028 | UC | Negative duration error | `t032_tttttttttttttttttttt` | `-10` | `Event + 7 days` | ❌ Error |
 
 
 ---
@@ -830,27 +814,26 @@ Teachers create Quiz activities with configurable grading rules, attempt limits,
 
 Applying Robust Single Fault BVA (6n + 1 test cases).
 
+> **Note:** Grade to pass has no minimum limit constraint on the UI. Impossible boundaries are omitted from testing.
+
 | TC ID | Technique | Variable Tested | Quiz Name | Grade Pass | Time Limit | Close Date | Expected Result |
 |-------|-----------|-----------------|-----------|------------|------------|------------|-----------------|
 | TC-006-001 | BVA | All (nom) | `qn001_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
-| TC-006-002 | BVA | V1: Grade to Pass (min-) | `qn002_QuizNom` | `-0.01` | `30` | `Open + 7 days` | ❌ Error |
-| TC-006-003 | BVA | V1: Grade to Pass (min) | `qn003_QuizNom` | `0` | `30` | `Open + 7 days` | ✅ Accepted |
-| TC-006-004 | BVA | V1: Grade to Pass (min+) | `qn004_QuizNom` | `0.01` | `30` | `Open + 7 days` | ✅ Accepted |
-| TC-006-005 | BVA | V1: Grade to Pass (max-) | `qn005_QuizNom` | `9.99` | `30` | `Open + 7 days` | ✅ Accepted |
-| TC-006-006 | BVA | V1: Grade to Pass (max) | `qn006_QuizNom` | `10` | `30` | `Open + 7 days` | ✅ Accepted |
-| TC-006-007 | BVA | V1: Grade to Pass (max+) | `qn007_QuizNom` | `10.01` | `30` | `Open + 7 days` | ❌ Error |
-| TC-006-008 | BVA | V2: Time Limit (min-) | `qn008_QuizNom` | `5` | `-1` | `Open + 7 days` | ❌ Error |
-| TC-006-009 | BVA | V2: Time Limit (min) | `qn009_QuizNom` | `5` | `0` | `Open + 7 days` | ❌ Error |
-| TC-006-010 | BVA | V2: Time Limit (min+) | `qn010_QuizNom` | `5` | `1` | `Open + 7 days` | ✅ Accepted |
-| TC-006-011 | BVA | V2: Time Limit (max-) | `qn011_QuizNom` | `5` | `998` | `Open + 7 days` | ✅ Accepted |
-| TC-006-012 | BVA | V2: Time Limit (max) | `qn012_QuizNom` | `5` | `999` | `Open + 7 days` | ✅ Accepted |
-| TC-006-013 | BVA | V2: Time Limit (max+) | `qn013_QuizNom` | `5` | `1000` | `Open + 7 days` | ✅ Accepted |
-| TC-006-014 | BVA | V3: Close vs Open (min-) | `qn014_QuizNom` | `5` | `30` | `Open - 1 day` | ❌ Error |
-| TC-006-015 | BVA | V3: Close vs Open (min) | `qn015_QuizNom` | `5` | `30` | `Open Date` | ✅ Accepted |
-| TC-006-016 | BVA | V3: Close vs Open (min+) | `qn016_QuizNom` | `5` | `30` | `Open + 1 day` | ✅ Accepted |
-| TC-006-017 | BVA | V3: Close vs Open (max-) | `qn017_QuizNom` | `5` | `30` | `Open + 10 yrs` | ✅ Accepted |
-| TC-006-018 | BVA | V3: Close vs Open (max) | `qn018_QuizNom` | `5` | `30` | `Open + 11 yrs` | ✅ Accepted |
-| TC-006-019 | BVA | V3: Close vs Open (max+) | `qn019_QuizNom` | `5` | `30` | `Open + 12 yrs` | ✅ Accepted |
+| TC-006-002 | BVA | V1: Grade to Pass (max-) | `qn005_QuizNom` | `9.99` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-003 | BVA | V1: Grade to Pass (max) | `qn006_QuizNom` | `10` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-004 | BVA | V1: Grade to Pass (max+) | `qn007_QuizNom` | `10.01` | `30` | `Open + 7 days` | ❌ Error |
+| TC-006-005 | BVA | V2: Time Limit (min-) | `qn008_QuizNom` | `5` | `-1` | `Open + 7 days` | ❌ Error |
+| TC-006-006 | BVA | V2: Time Limit (min) | `qn009_QuizNom` | `5` | `0` | `Open + 7 days` | ❌ Error |
+| TC-006-007 | BVA | V2: Time Limit (min+) | `qn010_QuizNom` | `5` | `1` | `Open + 7 days` | ✅ Accepted |
+| TC-006-008 | BVA | V2: Time Limit (max-) | `qn011_QuizNom` | `5` | `998` | `Open + 7 days` | ✅ Accepted |
+| TC-006-009 | BVA | V2: Time Limit (max) | `qn012_QuizNom` | `5` | `999` | `Open + 7 days` | ✅ Accepted |
+| TC-006-010 | BVA | V2: Time Limit (max+) | `qn013_QuizNom` | `5` | `1000` | `Open + 7 days` | ✅ Accepted |
+| TC-006-011 | BVA | V3: Close vs Open (min-) | `qn014_QuizNom` | `5` | `30` | `Open - 1 day` | ❌ Error |
+| TC-006-012 | BVA | V3: Close vs Open (min) | `qn015_QuizNom` | `5` | `30` | `Open Date` | ✅ Accepted |
+| TC-006-013 | BVA | V3: Close vs Open (min+) | `qn016_QuizNom` | `5` | `30` | `Open + 1 day` | ✅ Accepted |
+| TC-006-014 | BVA | V3: Close vs Open (max-) | `qn017_QuizNom` | `5` | `30` | `Open + 10 yrs` | ✅ Accepted |
+| TC-006-015 | BVA | V3: Close vs Open (max) | `qn018_QuizNom` | `5` | `30` | `Open + 11 yrs` | ✅ Accepted |
+| TC-006-016 | BVA | V3: Close vs Open (max+) | `qn019_QuizNom` | `5` | `30` | `Open + 12 yrs` | ✅ Accepted |
 
 ## 6.4 Equivalence Class Partitioning (ECP)
 
@@ -860,7 +843,7 @@ Applying Weak Robust ECP (Single Fault Assumption).
 
 | TC ID | Technique | Class Tested | Quiz Name | Grade Pass | Time Limit | Close Date | Expected Result |
 |-------|-----------|--------------|-----------|------------|------------|------------|-----------------|
-| TC-006-020 | ECP | Quiz Name (QN3: Empty) | `*(empty)*` | `5` | `30` | `Open + 7 days` | ❌ Error |
+| TC-006-017 | ECP | Quiz Name (QN3: Empty) | `*(empty)*` | `5` | `30` | `Open + 7 days` | ❌ Error |
 
 ## 6.5 Use-Case Testing
 
@@ -922,14 +905,14 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 
 | TC ID | Technique | Test Case Name | Quiz Name | Grade Pass | Time Limit | Close Date | Expected Result |
 |-------|-----------|----------------|-----------|------------|------------|------------|-----------------|
-| TC-006-021 | DT | All timing enabled (R1) | `qn021_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
-| TC-006-022 | DT | Open+Close only (R2) | `qn022_QuizNom` | `5` | `Disabled` | `Open + 7 days` | ✅ Accepted |
-| TC-006-023 | DT | Open+Time only (R3) | `qn023_QuizNom` | `5` | `30` | `Disabled` | ✅ Accepted |
-| TC-006-024 | DT | Close+Time only (R4) | `qn024_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
-| TC-006-025 | DT | All timing disabled (R5) | `qn025_QuizNom` | `5` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-006-026 | UC | Happy path S1 | `qn026_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
-| TC-006-027 | UC | Unlimited + no time S2 | `qn027_QuizNom` | `5` | `Disabled` | `Disabled` | ✅ Accepted |
-| TC-006-028 | UC | Date conflict S3 | `qn028_QuizNom` | `5` | `30` | `Open - 1 day` | ❌ Error |
-| TC-006-029 | UC | Grade exceeds max S4 | `qn029_QuizNom` | `10.01` | `30` | `Open + 7 days` | ❌ Error |
-| TC-006-030 | UC | Empty name S5 | `*(empty)*` | `5` | `30` | `Open + 7 days` | ❌ Error |
+| TC-006-018 | DT | All timing enabled (R1) | `qn021_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-019 | DT | Open+Close only (R2) | `qn022_QuizNom` | `5` | `Disabled` | `Open + 7 days` | ✅ Accepted |
+| TC-006-020 | DT | Open+Time only (R3) | `qn023_QuizNom` | `5` | `30` | `Disabled` | ✅ Accepted |
+| TC-006-021 | DT | Close+Time only (R4) | `qn024_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-022 | DT | All timing disabled (R5) | `qn025_QuizNom` | `5` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-006-023 | UC | Happy path S1 | `qn026_QuizNom` | `5` | `30` | `Open + 7 days` | ✅ Accepted |
+| TC-006-024 | UC | Unlimited + no time S2 | `qn027_QuizNom` | `5` | `Disabled` | `Disabled` | ✅ Accepted |
+| TC-006-025 | UC | Date conflict S3 | `qn028_QuizNom` | `5` | `30` | `Open - 1 day` | ❌ Error |
+| TC-006-026 | UC | Grade exceeds max S4 | `qn029_QuizNom` | `10.01` | `30` | `Open + 7 days` | ❌ Error |
+| TC-006-027 | UC | Empty name S5 | `*(empty)*` | `5` | `30` | `Open + 7 days` | ❌ Error |
 
