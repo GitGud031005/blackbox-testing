@@ -201,12 +201,12 @@ The full details of BVA and ECP test cases are listed in their respective sectio
 | TC-001-035 | UC | Invalid password (S4) | `usr040_usr` | `invalid` | `ffffffffff` | `llllllllll` | `usr040_nom@test.com` | ❌ Error |
 | TC-001-036 | UC | Invalid email (S5) | `usr041_usr` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `invalid` | ❌ Error |
 | TC-001-037 | UC | Empty required (S6) | `usr042_usr` | `XuanSang12@` | `*(empty)*` | `llllllllll` | `usr042_nom@test.com` | ❌ Error |
-| TC-001-038 | DT | All rules met (R1) | `usr043_usr` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr043_nom@test.com` | ✅ Accepted |
-| TC-001-039 | DT | Missing special char (R2) | `usr044_usr` | `Abcdefg1` | `ffffffffff` | `llllllllll` | `usr044_nom@test.com` | ❌ Error |
-| TC-001-040 | DT | Missing lowercase (R3) | `usr045_usr` | `ABCDEFG1!` | `ffffffffff` | `llllllllll` | `usr045_nom@test.com` | ❌ Error |
-| TC-001-041 | DT | Missing uppercase (R4) | `usr046_usr` | `abcdefg1!` | `ffffffffff` | `llllllllll` | `usr046_nom@test.com` | ❌ Error |
-| TC-001-042 | DT | Missing digit (R5) | `usr047_usr` | `Abcdefgh!` | `ffffffffff` | `llllllllll` | `usr047_nom@test.com` | ❌ Error |
-| TC-001-043 | DT | Length < 8 (R6) | `usr048_usr` | `Abc1!` | `ffffffffff` | `llllllllll` | `usr048_nom@test.com` | ❌ Error |
+| TC-001-038 | DT | R1: All password complexity rules satisfied | `usr043_usr` | `XuanSang12@` | `ffffffffff` | `llllllllll` | `usr043_nom@test.com` | ✅ Accepted |
+| TC-001-039 | DT | R2: Password missing non-alphanumeric character | `usr044_usr` | `Abcdefg1` | `ffffffffff` | `llllllllll` | `usr044_nom@test.com` | ❌ Error |
+| TC-001-040 | DT | R3: Password missing lowercase letter | `usr045_usr` | `ABCDEFG1!` | `ffffffffff` | `llllllllll` | `usr045_nom@test.com` | ❌ Error |
+| TC-001-041 | DT | R4: Password missing uppercase letter | `usr046_usr` | `abcdefg1!` | `ffffffffff` | `llllllllll` | `usr046_nom@test.com` | ❌ Error |
+| TC-001-042 | DT | R5: Password missing numeric digit | `usr047_usr` | `Abcdefgh!` | `ffffffffff` | `llllllllll` | `usr047_nom@test.com` | ❌ Error |
+| TC-001-043 | DT | R6: Password length below minimum (7 chars) | `usr048_usr` | `Abc1!` | `ffffffffff` | `llllllllll` | `usr048_nom@test.com` | ❌ Error |
 
 
 ---

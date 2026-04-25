@@ -98,7 +98,7 @@ def tc_name_desc(tc, fid):
     """Build [TECHNIQUE] name and description for a TC."""
     tech = tc.get('Technique', tc.get('technique', 'BVA')).strip()
     prefix = f'[{tech}]'
-    raw_name = tc.get('Variable Tested', tc.get('Test Case Name', tc.get('Test case name', ''))).strip()
+    raw_name = tc.get('Variable Tested', tc.get('Test Case Name', tc.get('Test case name', tc.get('Class Tested', '')))).strip()
 
     if tech == 'BVA':
         name = f'{prefix} {raw_name}'
@@ -148,11 +148,24 @@ def gen_steps(tc, fid):
         steps.append('Leave the "Last name" field empty.' if l == '*(empty)*' else f'In the "Last name" field, type: {l}')
         steps.append('Leave the "Email address" field empty.' if e == '*(empty)*' else f'In the "Email address" field, type: {e}')
         submit = 'Click the "Create user" button.'
+        def get_error_field():
+            vt = tc.get('Variable Tested', tc.get('Class Tested', tc.get('Test Case Name', tc.get('Test case name', ''))))
+            vt_lower = vt.lower()
+            if 'username' in vt_lower: return 'Username'
+            if 'password' in vt_lower or 'length < 8' in vt_lower or 'missing' in vt_lower: return 'Password'
+            if 'first name' in vt_lower: return 'First name'
+            if 'last name' in vt_lower: return 'Last name'
+            if 'email' in vt_lower: return 'Email address'
+            if 'empty required' in vt_lower: return 'Required fields'
+            return 'the form'
+
         if is_pass:
-            verify = f'Verify: The page redirects to the user list and the new user "{u}" appears in the list. No error messages are shown.'
+            verify = 'Verify: verifyTextPresent "Changes saved"'
+            result = '✅ User created successfully.'
         else:
-            verify = 'Verify: An error message appears on the form (e.g., near the Username, Password, Name, or Email field). The page does not redirect and no user is created.'
-        result = '✅ User created successfully.' if is_pass else '❌ Form submission fails. Error message shown on form.'
+            err_field = get_error_field()
+            verify = f'Verify: Error message is displayed near {err_field}'
+            result = f'❌ Form submission fails. Error message shown near {err_field}.'
 
     elif fid == '002':
         fn = tc.get('Full Name', '')
@@ -396,9 +409,9 @@ def build_summary_sheet(ws, all_tcs):
     ws.column_dimensions['C'].width = 70
 
 def build_project_summary(ws, all_tcs):
-    # Find existing data rows and fill them
-    # Template has rows 1-4 as headers, row 7 as feature header, rows 8-9 as sample features
-    # We'll overwrite from row 8 onwards
+    # Unmerge all cells first to avoid MergedCell read-only errors
+    for mc in list(ws.merged_cells.ranges):
+        ws.unmerge_cells(str(mc))
     start_row = 8
     for i, fid in enumerate(sorted(all_tcs.keys())):
         info = FEATURE_INFO[fid]
@@ -408,6 +421,7 @@ def build_project_summary(ws, all_tcs):
         ws.cell(row=r, column=3, value='5.2')
         ws.cell(row=r, column=4, value=info['desc'])
         ws.cell(row=r, column=5, value=info['tester'])
+
 
 def main():
     print('Parsing report.md...')
@@ -434,24 +448,26 @@ def main():
     build_summary_sheet(ws_sum, all_tcs)
 
     # Create feature detail sheets
-    template_feat_sheet = wb['<Feature Name 1>']
+    # Detect the template feature sheet (last sheet in template, not a fixed sheet)
+    fixed_sheets = {'CoverPage', 'Test project summary', 'Test case summary'}
+    template_feat_sheet_name = next((s for s in wb.sheetnames if s not in fixed_sheets), None)
+    if not template_feat_sheet_name:
+        raise ValueError("Could not find a template feature sheet in the workbook.")
+    template_feat_sheet = wb[template_feat_sheet_name]
     for fid in sorted(all_tcs.keys()):
         sheet_name = f'Feature {fid}'
         print(f'Building {sheet_name}...')
-        # Create a new sheet for this feature
         ws_new = wb.copy_worksheet(template_feat_sheet)
         ws_new.title = sheet_name
-        # Clear all content from copied sheet
         for row in ws_new.iter_rows():
             for cell in row:
                 cell.value = None
-        # Unmerge all merged cells
         for mc in list(ws_new.merged_cells.ranges):
             ws_new.unmerge_cells(str(mc))
         build_feature_sheet(ws_new, fid, all_tcs[fid])
 
     # Remove original template sheet
-    del wb['<Feature Name 1>']
+    del wb[template_feat_sheet_name]
 
     print(f'Saving to {OUTPUT}...')
     wb.save(OUTPUT)
